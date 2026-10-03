@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Create Post - The Review</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-tint": "#515f77",
+                      "on-primary-fixed-variant": "#39475e",
+                      "inverse-surface": "#313030",
+                      "background": "#fcf9f8",
+                      "surface-container-lowest": "#ffffff",
+                      "outline": "#75777d",
+                      "outline-variant": "#c5c6cd",
+                      "on-primary": "#ffffff",
+                      "secondary-container": "#c8f17a",
+                      "error": "#ba1a1a",
+                      "on-secondary": "#ffffff",
+                      "secondary-fixed": "#c8f17a",
+                      "surface-container-low": "#f6f3f2",
+                      "on-primary-container": "#c8d6f2",
+                      "on-secondary-fixed": "#131f00",
+                      "tertiary": "#564220",
+                      "on-error-container": "#93000a",
+                      "inverse-primary": "#b9c7e3",
+                      "on-surface-variant": "#44474d",
+                      "surface-container-highest": "#e5e2e1",
+                      "surface": "#fcf9f8",
+                      "on-error": "#ffffff",
+                      "tertiary-fixed-dim": "#e1c296",
+                      "surface-dim": "#dcd9d9",
+                      "secondary-fixed-dim": "#add461",
+                      "on-background": "#1c1b1b",
+                      "on-tertiary-container": "#f1d1a4",
+                      "on-tertiary-fixed-variant": "#584321",
+                      "on-secondary-fixed-variant": "#364e00",
+                      "inverse-on-surface": "#f3f0ef",
+                      "on-surface": "#1c1b1b",
+                      "on-tertiary-fixed": "#281900",
+                      "secondary": "#496800",
+                      "primary-container": "#4f5d75",
+                      "on-secondary-container": "#4e6e00",
+                      "surface-bright": "#fcf9f8",
+                      "surface-container-high": "#eae7e7",
+                      "on-tertiary": "#ffffff",
+                      "primary": "#37455c",
+                      "tertiary-container": "#705935",
+                      "surface-container": "#f0eded",
+                      "primary-fixed-dim": "#b9c7e3",
+                      "on-primary-fixed": "#0d1c31",
+                      "surface-variant": "#e5e2e1",
+                      "tertiary-fixed": "#fedeb0",
+                      "error-container": "#ffdad6",
+                      "primary-fixed": "#d5e3ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "gutter": "16px",
+                      "stack-md": "24px",
+                      "stack-sm": "12px",
+                      "stack-lg": "48px",
+                      "section-padding": "64px",
+                      "container-margin": "20px",
+                      "base": "8px"
+              },
+              "fontFamily": {
+                      "display-lg-mobile": [
+                              "Playfair Display"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "headline-sm": [
+                              "Playfair Display"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "headline-md-mobile": [
+                              "Playfair Display"
+                      ],
+                      "headline-md": [
+                              "Playfair Display"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "Playfair Display"
+                      ]
+              },
+              "fontSize": {
+                      "display-lg-mobile": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-sm": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "26px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-md-mobile": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-md": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "30px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        
+        /* Auto-resizing textarea magic */
+        .auto-resize {
+            resize: none;
+            overflow: hidden;
+        }
+      </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="w-full sticky top-0 z-50 bg-background dark:bg-on-background flex justify-between items-center px-container-margin h-16 w-full flat no-shadows">
+<!-- Leading Action (Back) -->
+<button class="text-primary dark:text-primary-fixed hover:text-primary transition-colors duration-200 Active: opacity-80 transition-opacity p-2 -ml-2 rounded-full focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<!-- Headline / Brand -->
+<div class="font-display-lg-mobile text-display-lg-mobile italic text-primary dark:text-primary-fixed md:font-display-lg md:text-display-lg">
+            The Review
+        </div>
+<!-- Trailing Action (Publish) -->
+<button class="bg-primary text-on-primary font-label-md text-label-md px-4 py-2 rounded-full hover:bg-primary/90 transition-colors duration-200 shadow-[0px_4px_20px_rgba(0,0,0,0.04)] focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background">
+            Publish
+        </button>
+</header>
+<!-- Main Editor Canvas -->
+<main class="flex-grow w-full max-w-[800px] mx-auto px-container-margin py-stack-lg flex flex-col items-center">
+<div class="w-full max-w-[680px]"> <!-- Optimal reading/writing width -->
+<!-- Title Input -->
+<textarea class="w-full bg-transparent border-none focus:ring-0 font-headline-md-mobile text-headline-md-mobile md:font-headline-md md:text-headline-md text-on-surface placeholder:text-outline-variant p-0 mb-stack-md resize-none overflow-hidden auto-resize" id="title-input" placeholder="Title" rows="1"></textarea>
+<!-- Formatting Toolbar (Sticky) -->
+<div class="sticky top-16 z-40 bg-background/95 backdrop-blur-sm py-2 mb-stack-sm flex gap-2 border-b border-outline-variant/30">
+<button class="p-2 rounded hover:bg-surface-container-high text-on-surface-variant transition-colors" title="Add Image">
+<span class="material-symbols-outlined" data-icon="image">image</span>
+</button>
+<div class="w-px h-6 bg-outline-variant/50 self-center mx-1"></div>
+<button class="p-2 rounded hover:bg-surface-container-high text-on-surface-variant transition-colors" title="Bold">
+<span class="material-symbols-outlined font-bold" data-icon="format_bold">format_bold</span>
+</button>
+<button class="p-2 rounded hover:bg-surface-container-high text-on-surface-variant transition-colors" title="Italic">
+<span class="material-symbols-outlined italic" data-icon="format_italic">format_italic</span>
+</button>
+<button class="p-2 rounded hover:bg-surface-container-high text-on-surface-variant transition-colors" title="Link">
+<span class="material-symbols-outlined" data-icon="link">link</span>
+</button>
+<button class="p-2 rounded hover:bg-surface-container-high text-on-surface-variant transition-colors" title="Quote">
+<span class="material-symbols-outlined" data-icon="format_quote">format_quote</span>
+</button>
+<div class="w-px h-6 bg-outline-variant/50 self-center mx-1"></div>
+<button class="p-2 rounded hover:bg-surface-container-high text-on-surface-variant transition-colors" title="More">
+<span class="material-symbols-outlined" data-icon="more_horiz">more_horiz</span>
+</button>
+</div>
+<!-- Story Input -->
+<textarea class="w-full bg-transparent border-none focus:ring-0 font-body-lg text-body-lg text-on-surface placeholder:text-outline-variant p-0 min-h-[50vh] resize-none overflow-hidden auto-resize leading-relaxed" id="story-input" placeholder="Tell your story..."></textarea>
+</div>
+</main>
+<!-- BottomNavBar (Hidden on this transactional screen as per Semantic Shell Mandate) -->
+<!-- NavigationDrawer (Hidden on this transactional screen) -->
+<script>
+        // Simple auto-resize for textareas to feel seamless
+        const textareas = document.querySelectorAll('.auto-resize');
+        
+        function resize() {
+            this.style.height = 'auto';
+            this.style.height = this.scrollHeight + 'px';
+        }
+
+        textareas.forEach(ta => {
+            ta.addEventListener('input', resize, false);
+            // Initial resize
+            // ta.style.height = ta.scrollHeight + 'px'; 
+            // Better initial setup: delay slightly to ensure rendering is complete
+            setTimeout(() => {
+                ta.style.height = 'auto';
+                ta.style.height = ta.scrollHeight + 'px';
+            }, 0);
+        });
+    </script>
+</body></html>

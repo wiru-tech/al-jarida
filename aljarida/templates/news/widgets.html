@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load i18n i18n_extras %}
+{% block title %}{% trans "Utility Widgets" %} — Al-Jarida{% endblock %}
+{% block meta_desc %}{% trans "Currency rates, transport schedules, daily horoscope, and Islamic content." %}{% endblock %}
+{% block content %}
+<div class="wrap">
+  <div class="page-head">
+    <div class="kicker">{% trans "Tools" %}</div>
+    <h1>{% trans "Utility Widgets" %}</h1>
+    <p>{% trans "Currency rates, transport schedules, daily horoscope, and Islamic content — in one place." %}</p>
+  </div>
+
+  <div style="padding:1.5rem 0">
+
+    <!-- Currency converter -->
+    <div class="tool-card">
+      <h3>{% trans "Currency Converter" %}</h3>
+      {% include "partials/_currency_widget.html" %}
+    </div>
+
+    <!-- Transport schedules -->
+    {% if transport %}
+    <div class="tool-card">
+      <h3>{% trans "Train / Bus Schedules" %}</h3>
+      {% for t in transport %}
+      <div style="margin-bottom:{% if not forloop.last %}1.5rem{% else %}0{% endif %}">
+        <div class="byline">{{ t.title }}
+          {% if t.subtitle %}<span class="muted" style="font-weight:400"> — {{ t.subtitle }}</span>{% endif %}</div>
+        {% for stop, time in t.meta.rows %}
+        <div class="schedule-row">
+          <span>{{ stop|translate }}</span>
+          <span class="i18n-ltr">{{ time }}</span>
+        </div>
+        {% endfor %}
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- Horoscope -->
+    {% if horoscope %}
+    <div class="tool-card">
+      <h3>{% trans "Daily Horoscope" %}</h3>
+      <div class="mini-grid" style="margin-top:0">
+        {% for h in horoscope %}
+        <div>
+          <div class="kicker">{{ h.title }}</div>
+          <p class="muted" style="font-size:14px">{{ h.body }}</p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+
+    <!-- Islamic content: Ahadith / Aayat -->
+    {% if islamic %}
+    <div class="tool-card">
+      <h3>{% trans "Ahadith &amp; Aayat" %}</h3>
+      {% for i in islamic %}
+      <div class="islamic-item">
+        <div class="kicker">{{ i.subtitle }}</div>
+        {% if i.meta.arabic %}<div class="arabic-block">{{ i.meta.arabic }}</div>{% endif %}
+        <p>{{ i.body }}</p>
+        <div class="muted" style="font-size:12px">— {{ i.title }}</div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+  </div>
+</div>
+{% endblock %}

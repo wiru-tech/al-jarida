@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load i18n i18n_extras %}
+{% block title %}{{ category.name }} — Al-Jarida{% endblock %}
+{% block content %}
+<div class="wrap">
+  <div class="page-head">
+    <div class="kicker">{% if is_tag %}{% trans "Tag" %}{% else %}{% trans "Section" %}{% endif %}</div>
+    <h1>{{ category.name }}</h1>
+    {% if category.description %}<p class="raw-content" lang="{{ category|content_lang:"description" }}">{{ category.description }}</p>{% endif %}
+  </div>
+
+  {% if not lead %}
+  <p class="muted" style="padding:2rem 0">{% trans "No articles in this section yet." %}</p>
+  {% else %}
+  <div class="article-wrap section-wrap">
+    <div>
+      <!-- Featured lead story — same card language as the homepage hero,
+           so a section page doesn't look like a different, unfinished site. -->
+      <article class="section-lead hero-featured" lang="{{ lead|content_lang }}">
+        {% if lead.image_src %}
+        <a href="{{ lead.get_absolute_url }}" class="hero-featured__media">
+          <img class="hero__img" src="{{ lead.image_src }}" alt="{{ lead.title }}">
+          {% if lead.kicker %}<span class="kicker kicker--badge">{{ lead.kicker }}</span>{% endif %}
+        </a>
+        {% endif %}
+        <div class="hero-featured__body">
+          <h2 class="hero__title"><a href="{{ lead.get_absolute_url }}">{{ lead.title }}</a></h2>
+          <p class="hero__excerpt">{{ lead.excerpt }}</p>
+          <div class="byline">
+            {% if lead.author %}<span>{% trans "By" %} <span class="i18n-ltr">{{ lead.author.display_name }}</span></span> {% endif %}
+            <span>· {{ lead.read_minutes }} {% trans "min read" %}</span>
+          </div>
+          {% include "partials/_share_rail.html" with a=lead %}
+        </div>
+      </article>
+
+      <!-- Remaining category feed -->
+      {% for a in articles %}
+        {% include "partials/_result_item.html" with a=a excerpt_words=28 show_byline=True %}
+      {% endfor %}
+    </div>
+
+    <!-- Most Read sidebar -->
+    <aside>
+      <div class="tw">
+        <h3>{% trans "Most Read" %}</h3>
+        {% for a in sidebar_most_read %}
+        <div class="item" lang="{{ a|content_lang }}">
+          <h4><a href="{{ a.get_absolute_url }}">{{ a.title }}</a></h4>
+          <div class="m">{{ a.category.name }} · {{ a.publish_at|smart_timesince }} {% trans "ago" %}</div>
+        </div>
+        {% endfor %}
+      </div>
+    </aside>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

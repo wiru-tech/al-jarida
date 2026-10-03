@@ -1,0 +1,7 @@
+{# Social share icons for an article. Vars: a (Article). #}
+<div class="share-rail">
+  <a href="#" data-share="whatsapp" data-url="{{ a.get_absolute_url }}" data-title="{{ a.title }}" title="WhatsApp"><span class="material-symbols-outlined" style="font-size:18px">chat</span></a>
+  <a href="#" data-share="twitter" data-url="{{ a.get_absolute_url }}" data-title="{{ a.title }}" title="X / Twitter">𝕏</a>
+  <a href="#" data-share="facebook" data-url="{{ a.get_absolute_url }}" data-title="{{ a.title }}" title="Facebook">f</a>
+  <a href="#" data-share="linkedin" data-url="{{ a.get_absolute_url }}" data-title="{{ a.title }}" title="LinkedIn">in</a>
+</div>

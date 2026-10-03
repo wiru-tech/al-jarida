@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Review - Article</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-tint": "#515f77",
+                      "on-primary-fixed-variant": "#39475e",
+                      "inverse-surface": "#313030",
+                      "background": "#fcf9f8",
+                      "surface-container-lowest": "#ffffff",
+                      "outline": "#75777d",
+                      "outline-variant": "#c5c6cd",
+                      "on-primary": "#ffffff",
+                      "secondary-container": "#c8f17a",
+                      "error": "#ba1a1a",
+                      "on-secondary": "#ffffff",
+                      "secondary-fixed": "#c8f17a",
+                      "surface-container-low": "#f6f3f2",
+                      "on-primary-container": "#c8d6f2",
+                      "on-secondary-fixed": "#131f00",
+                      "tertiary": "#564220",
+                      "on-error-container": "#93000a",
+                      "inverse-primary": "#b9c7e3",
+                      "on-surface-variant": "#44474d",
+                      "surface-container-highest": "#e5e2e1",
+                      "surface": "#fcf9f8",
+                      "on-error": "#ffffff",
+                      "tertiary-fixed-dim": "#e1c296",
+                      "surface-dim": "#dcd9d9",
+                      "secondary-fixed-dim": "#add461",
+                      "on-background": "#1c1b1b",
+                      "on-tertiary-container": "#f1d1a4",
+                      "on-tertiary-fixed-variant": "#584321",
+                      "on-secondary-fixed-variant": "#364e00",
+                      "inverse-on-surface": "#f3f0ef",
+                      "on-surface": "#1c1b1b",
+                      "on-tertiary-fixed": "#281900",
+                      "secondary": "#496800",
+                      "primary-container": "#4f5d75",
+                      "on-secondary-container": "#4e6e00",
+                      "surface-bright": "#fcf9f8",
+                      "surface-container-high": "#eae7e7",
+                      "on-tertiary": "#ffffff",
+                      "primary": "#37455c",
+                      "tertiary-container": "#705935",
+                      "surface-container": "#f0eded",
+                      "primary-fixed-dim": "#b9c7e3",
+                      "on-primary-fixed": "#0d1c31",
+                      "surface-variant": "#e5e2e1",
+                      "tertiary-fixed": "#fedeb0",
+                      "error-container": "#ffdad6",
+                      "primary-fixed": "#d5e3ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "gutter": "16px",
+                      "stack-md": "24px",
+                      "stack-sm": "12px",
+                      "stack-lg": "48px",
+                      "section-padding": "64px",
+                      "container-margin": "20px",
+                      "base": "8px"
+              },
+              "fontFamily": {
+                      "display-lg-mobile": [
+                              "Playfair Display"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "headline-sm": [
+                              "Playfair Display"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "headline-md-mobile": [
+                              "Playfair Display"
+                      ],
+                      "headline-md": [
+                              "Playfair Display"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "Playfair Display"
+                      ]
+              },
+              "fontSize": {
+                      "display-lg-mobile": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-sm": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "26px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-md-mobile": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-md": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "30px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 2px;
+            background-color: theme('colors.primary');
+            width: 0%;
+            z-index: 100;
+            transition: width 0.1s ease-out;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md antialiased selection:bg-primary selection:text-on-primary">
+<!-- Progress Indicator -->
+<div class="progress-bar" id="reading-progress"></div>
+<!-- TopAppBar Component -->
+<header class="w-full sticky top-0 z-50 bg-background dark:bg-on-background flex justify-between items-center px-container-margin h-16 shadow-[0_4px_20px_rgba(0,0,0,0.02)]">
+<button class="text-on-surface-variant hover:text-primary transition-colors duration-200 p-2 rounded-full flex items-center justify-center">
+<span aria-hidden="true" class="material-symbols-outlined">menu</span>
+</button>
+<div class="font-display-lg-mobile text-display-lg-mobile italic text-primary dark:text-primary-fixed">
+            The Review
+        </div>
+<button class="w-8 h-8 rounded-full overflow-hidden hover:opacity-80 transition-opacity">
+<img alt="User profile picture" class="w-full h-full object-cover" data-alt="A small, professional headshot of a person looking directly at the camera. The background is a soft, neutral grey to emphasize the subject. Lighting is even and flattering, typical of a high-quality studio corporate portrait." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDp89rojShRJFmG8ShcU_lRIjNVfz3eO0J6FrcWl327YCTeHkdzmuuWbXh_rSmJaGHNp7-j4uE8K2dqOP_lGuptAfHCcqxGV_msdsz9vhJm9kdoHsFTpkYrhPl5IFsUmn15cTINTFMIPfeG0aphC9XiPjfxS5Zo0PtUTgdkqEpRN2fc4VieEKbbr1MxecL39jtytbgUASzse5xUPzpOCFcKay3MgrnesSygDvr29JkZemgrXPQ8a7dB"/>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="w-full max-w-[1140px] mx-auto px-container-margin py-stack-lg md:grid md:grid-cols-12 md:gap-gutter">
+<!-- Center column for reading (8 cols wide on desktop) -->
+<article class="md:col-span-8 md:col-start-3 flex flex-col gap-stack-md">
+<!-- Article Header Info -->
+<header class="flex flex-col gap-stack-sm items-start">
+<span class="bg-surface-variant text-on-surface-variant font-label-sm text-label-sm px-3 py-1 rounded-DEFAULT tracking-wider uppercase">Architecture</span>
+<h1 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg text-on-surface mt-2 mb-4 leading-tight">
+                    The Silent Brutalism of Modern Data Centers
+                </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant opacity-90 leading-relaxed mb-6">
+                    Hidden in plain sight, the immense, windowless structures housing the cloud are reshaping rural landscapes and redefining our relationship with monumental architecture.
+                </p>
+<!-- Author Block & Social Inline -->
+<div class="w-full flex flex-col sm:flex-row justify-between items-start sm:items-center py-4 border-y border-outline-variant/30 gap-4">
+<div class="flex items-center gap-4">
+<img alt="Author" class="w-12 h-12 rounded-full object-cover shadow-sm" data-alt="A black and white portrait of a thoughtful author, wearing a simple dark turtleneck. The lighting is dramatic, casting soft shadows to emphasize a serious, intellectual mood suitable for an editorial publication." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQLRbyu8REZYLxYuDD-LSBNzbHbbo2NUJGNIMoeoZIGHOdvv0s31SvSWRZns2aj6zSbI5F-7jIIEk5CNsK_VvdHWjRzrrQzXAm8-clCJy4JQP8l0pyUuoG5sq_LXRB8mdq938Gdy_OjaACzMsAa5alX-VpgyoZ1hUh75YOK2K43wWIE_UwcsKA9uVEL9RBr6UPuw8p9WZVdVywAGs8Wz2Tyw17EYy5Jbb1nIwry8oSpGzoNDBsWltg"/>
+<div>
+<div class="font-label-md text-label-md text-on-surface">Elena Rostova</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">Published Oct 24 • 8 min read</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="border border-outline text-on-surface px-6 py-2 rounded-DEFAULT font-label-md text-label-md hover:bg-surface-container-low transition-colors duration-200">
+                            Follow
+                        </button>
+<div class="flex gap-2 text-on-surface-variant">
+<button class="p-2 rounded-full hover:bg-surface-container-low transition-colors duration-200"><span class="material-symbols-outlined text-[20px]">share</span></button>
+<button class="p-2 rounded-full hover:bg-surface-container-low transition-colors duration-200"><span class="material-symbols-outlined text-[20px]">bookmark</span></button>
+</div>
+</div>
+</div>
+</header>
+<!-- Hero Image -->
+<figure class="w-full my-stack-sm">
+<img class="w-full h-auto aspect-[16/9] object-cover rounded-xl shadow-[0_10px_40px_rgba(0,0,0,0.08)]" data-alt="A sprawling, minimalist concrete data center building sitting starkly against a barren, misty landscape. The structure is brutalist, windowless, and immense. The lighting is overcast, giving the scene a cool, moody, and almost dystopian high-end architectural photography aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXfy8mhE3gXFBN58VroAnAFHtkGPXCLi45NUw0mTyHfjLxZ8xrVUM_JmwX2xXtZYph1VFDQd8v5GNmSK3JUR3XWs1PFgpdp1SQ4uXXcZ7niXmTB1ioIHmqxTfwz2seA62YxsyPn3AyVtLu0zOv14krpnyvigqyiDZsqf3txtIobeU7P5KY__EoaUlFtca9rdSPDg6RqoTFI80AN_Z6tGog_wShlYNoLrL7ar6XBq12h9QoLihiobZu"/>
+<figcaption class="font-label-sm text-label-sm text-on-surface-variant mt-3 text-center">A facility in northern Nevada, blending into the high desert.</figcaption>
+</figure>
+<!-- Article Body -->
+<div class="font-body-lg text-body-lg text-on-surface flex flex-col gap-stack-md leading-relaxed mt-4">
+<p>
+                    We rarely think about the physical shape of the internet. It exists, conceptually, as an ethereal mesh floating somewhere above our heads. Yet, every email sent, every movie streamed, and every digital thought processed is grounded in immense physical reality. 
+                </p>
+<p>
+                    These structures—data centers—are perhaps the truest expression of contemporary architecture. They are designed entirely without human comfort in mind. Their scale is dictated not by the proportions of a person, but by the thermal requirements of thousands of server racks. 
+                </p>
+<h2 class="font-headline-sm text-headline-sm text-on-surface mt-6 mb-2">Form Follows Cooling</h2>
+<p>
+                    To approach a modern hyperscale data center is to experience a profound sense of exclusion. There are no grand entryways. There is no facade meant to communicate civic importance. There are only vast expanses of precast concrete, punctuated occasionally by the massive intake vents required to pull millions of cubic feet of air through the facility every minute.
+                </p>
+<blockquote class="border-l-4 border-primary pl-6 py-2 my-4 italic font-headline-md-mobile text-headline-md-mobile text-on-surface-variant">
+                    "They are the modern equivalents of the pyramids; monuments to a society that values the preservation of data above all else."
+                </blockquote>
+<p>
+                    This is brutalism stripped even of its theoretical underpinnings. Where mid-century brutalists sought to express truth in materials and democratic ideals through raw concrete, the data center uses concrete simply because it is cheap, secure, and thermally massive.
+                </p>
+</div>
+<!-- Tags -->
+<div class="flex flex-wrap gap-2 mt-stack-lg pt-8 border-t border-outline-variant/30">
+<span class="bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm px-4 py-2 rounded-full cursor-pointer hover:bg-surface-container-highest transition-colors">Technology</span>
+<span class="bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm px-4 py-2 rounded-full cursor-pointer hover:bg-surface-container-highest transition-colors">Architecture</span>
+<span class="bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm px-4 py-2 rounded-full cursor-pointer hover:bg-surface-container-highest transition-colors">Society</span>
+</div>
+<!-- Comments Section -->
+<section class="mt-section-padding pt-stack-lg border-t border-outline-variant/30">
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-stack-md flex items-center gap-2">
+                    Responses <span class="bg-surface-container-highest text-on-surface px-2 py-0.5 rounded-full font-label-sm text-label-sm">3</span>
+</h3>
+<!-- Comment Input -->
+<div class="flex gap-4 mb-stack-lg bg-surface-container-lowest p-6 rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.04)]">
+<img alt="Current user" class="w-10 h-10 rounded-full object-cover" data-alt="A generic avatar silhouette in light grey on a white background, representing an anonymous user profile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3LEpW3gyKdKjRI1zs_mFcyZydgdb2-XyJAzVRd7Oicb9CHz68WxORLY64GzEgLfzFHZJRwCkBz1zEXsRYeZ3OSmGY4taDmc1lYmT9bCuAUVDROgliEDjXlqHqtZ3VDZDwgXZAkZKGqg1oJL3cIXzZsWGmg9N8PRuDH0wurkITTJOcjuBTwYqUei3B3tCZcwdw2wsPZ3GdrSrTwCcGzvbjBeyqg9xHzozLMc4u8CptN0jjVFFv6ePF"/>
+<div class="flex-1">
+<textarea class="w-full bg-transparent border-0 border-b border-outline-variant focus:border-primary focus:ring-0 px-0 py-2 font-body-md text-body-md text-on-surface resize-none placeholder:text-outline" placeholder="What are your thoughts?" rows="2"></textarea>
+<div class="flex justify-end mt-3">
+<button class="bg-primary text-on-primary px-6 py-2 rounded-DEFAULT font-label-md text-label-md hover:bg-on-primary-fixed-variant transition-colors">Respond</button>
+</div>
+</div>
+</div>
+<!-- Comment List -->
+<div class="flex flex-col gap-stack-md">
+<!-- Comment 1 -->
+<div class="flex gap-4">
+<img alt="Commenter 1" class="w-10 h-10 rounded-full object-cover" data-alt="A portrait of a young male architect wearing glasses. The image is brightly lit, modern, and casual, fitting for a professional but relaxed online community profile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAS10zJVTfrC-9prdFn6o8g9I-tYkylpaseQOcyIGpqj4dG2eGpQCZEEgejU22tqQyBOu8_YWEZwRn069Q4_NhT6g_-k75zBRdyLa37M9s0Rsmq5P6UKrjTNOjP18XPe2plgWtHNnM_z22lz3gd3zi8XGPuU1SozenaxYNvRK6_V424EhilGecJzP0laKmtokGqQGceO4x8YcDOAOA7WM8ADROYP97KRqY4PevqV3ggEKHkqNaAa74O"/>
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="font-label-md text-label-md text-on-surface">Marcus Vance</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">2 days ago</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                                Fascinating read. I've often driven past the facilities in Ashburn, VA, and the sheer scale is oppressive. They truly are anti-human spaces, yet essential for our highly connected human existence.
+                            </p>
+<div class="flex gap-4 mt-3 text-on-surface-variant">
+<button class="flex items-center gap-1 hover:text-primary transition-colors font-label-sm text-label-sm"><span class="material-symbols-outlined text-[16px]">thumb_up</span> 12</button>
+<button class="hover:text-primary transition-colors font-label-sm text-label-sm">Reply</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</article>
+</main>
+<script>
+        // Reading Progress Indicator Logic
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById("reading-progress").style.width = scrolled + "%";
+        });
+    </script>
+</body></html>

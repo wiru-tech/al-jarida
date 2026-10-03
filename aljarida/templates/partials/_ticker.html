@@ -1,0 +1,26 @@
+{% load i18n %}
+{% if breaking_items %}
+{% comment %}
+The headline list is rendered twice: the marquee slides the track by half its
+own width, so copy two lands exactly where copy one started and the loop is
+seamless. The duplicate is aria-hidden (and its links removed from the tab
+order) so assistive tech reads each headline only once.
+{% endcomment %}
+<div class="ticker">
+  <span class="ticker__tag">{% trans "Breaking News" %}</span>
+  <div class="ticker__viewport">
+    <div class="ticker__track">
+      <div class="ticker__group">
+        {% for item in breaking_items %}
+          <a href="{% url 'news:article' item.slug %}" lang="{{ item.lang }}">{{ item.title }}</a>
+        {% endfor %}
+      </div>
+      <div class="ticker__group" aria-hidden="true">
+        {% for item in breaking_items %}
+          <a href="{% url 'news:article' item.slug %}" lang="{{ item.lang }}" tabindex="-1">{{ item.title }}</a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}

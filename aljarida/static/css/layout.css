@@ -1,0 +1,216 @@
+/* ============================================================
+   PAGE CENTERING
+   `margin-inline:auto` (not `margin:0 auto`) is used deliberately: this
+   file is RTL-aware, and margin-inline centers correctly in both LTR and
+   RTL without needing a separate override in rtl.css. Reuses
+   var(--container-max) so every centered block lines up to one width.
+   ============================================================ */
+body{margin:0}
+.container,.wrapper{max-width:var(--container-max,1180px);
+  width:100%;margin-inline:auto}
+/* `main` is deliberately NOT in that list.
+   Every page puts its content inside a .wrap, which already centres and
+   caps it — so capping `main` as well was redundant for those pages and
+   actively wrong for the one element that is meant to be full-bleed:
+   .auth-card-wrap paints a tinted gradient band behind the Sign in /
+   Sign up card. Clipped to 1120px, that band rendered as a free-floating
+   grey rectangle with bare page either side of it.
+   A full-width section is a legitimate layout; the container has to be
+   opt-in (.wrap) rather than imposed on every page by its wrapper. */
+main{width:100%}
+
+/* ============================================================
+   BREAKING TICKER
+
+   The marquee duplicates its headline list and slides the track by exactly
+   half its own width, so the second copy lands where the first began and the
+   loop is seamless.
+
+   The previous version paired `padding-inline-start:100%` with
+   `translateX(-100%)`: the padding resolves against the *viewport* width but
+   the transform resolves against the *track's own* width. Those two never
+   agree, so headlines started off-screen and left long dead stretches.
+   Halving a doubled track removes the mismatch because both sides now
+   measure against the same box.
+
+   `min-width:0` on the viewport is what guarantees the headlines can never
+   ride over the BREAKING NEWS badge: a flex item defaults to
+   `min-width:auto`, meaning it refuses to shrink below its content.
+   ============================================================ */
+/* Sleeker marquee: 24px on a charcoal ground rather than pure black, and
+   the BREAKING tag reduced to a small red dot plus a label instead of a
+   full-height red slab. The slab was the loudest object on the page and
+   it sat above the masthead — a breaking-news strip should be noticeable
+   without out-ranking the publication's own name. */
+.ticker{background:var(--inverse-surface);color:var(--inverse-on-surface);
+  font-size:var(--fs-sm);letter-spacing:.005em;
+  display:flex;align-items:center;overflow:hidden;height:24px}
+.ticker__tag{background:transparent;color:var(--negative);font-weight:700;
+  letter-spacing:.09em;text-transform:uppercase;padding:0 .8rem 0 0;
+  margin-inline-start:var(--container-pad);
+  height:100%;display:flex;align-items:center;gap:.4rem;white-space:nowrap;
+  font-size:10px;flex-shrink:0;z-index:2}
+/* The dot carries the urgency the red slab used to. */
+.ticker__tag::before{content:"";width:6px;height:6px;border-radius:50%;
+  background:var(--negative);flex:none;animation:pulse 1.6s infinite}
+@media(prefers-reduced-motion:reduce){.ticker__tag::before{animation:none}}
+.ticker__viewport{overflow:hidden;flex:1 1 auto;min-width:0;position:relative}
+/* Slower than the old 38s: at a 24px strip the eye tracks a single line
+   of moving text, and faster than ~45s it reads as motion rather than as
+   headlines. */
+.ticker__track{display:flex;width:max-content;
+  animation:ticker 52s linear infinite}
+/* Each copy carries its own trailing gap so spacing across the seam matches
+   spacing between items — otherwise the two copies butt together. */
+.ticker__group{display:flex;gap:2.5rem;padding-inline-end:2.5rem;flex:none}
+.ticker__track a{opacity:.8;unicode-bidi:isolate;white-space:nowrap;
+  transition:opacity .15s ease}
+.ticker__track a:hover{opacity:1;color:#fff}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes ticker-rtl{from{transform:translateX(0)}to{transform:translateX(50%)}}
+.ticker:hover .ticker__track{animation-play-state:paused}
+@media(prefers-reduced-motion:reduce){
+  .ticker__track{animation:none}
+}
+
+/* ============================================================
+   MASTHEAD + NAV
+   ============================================================ */
+.masthead{background:var(--glass-bg-strong);backdrop-filter:blur(var(--glass-blur));
+  -webkit-backdrop-filter:blur(var(--glass-blur));
+  border-bottom:var(--rule);position:sticky;top:0;z-index:40}
+/* The outer columns are equal 1fr shares so the brand sits dead centre —
+   but the right column carries more (language switcher + account controls
+   + subscribe) than the left, and a plain `minmax(0,1fr)` lets that content
+   shrink *below* what it needs. `minmax(max-content,1fr)` keeps the equal-
+   share centring whenever there's room but never lets the track get
+   smaller than its content requires. */
+/* Masthead and nav share one padding-block so the two bars read as a
+   single header unit rather than as two strips of different weights. */
+.masthead__row{display:grid;
+  grid-template-columns:minmax(0,1fr) auto minmax(max-content,1fr);
+  align-items:center;padding-block:.55rem;gap:1rem}
+.masthead__left{display:flex;gap:.7rem;align-items:center}
+/* Distinct control groups (language / account / subscribe) get a wider gap
+   plus a hairline divider, so same-styled buttons from different groups
+   never read as one run-on control. */
+.masthead__right{display:flex;gap:1rem;align-items:center;
+  justify-content:flex-end}
+.account-cluster{display:flex;gap:.5rem;align-items:center;
+  padding-inline-start:1rem;border-inline-start:var(--rule)}
+.masthead__right .subscribe-txt{margin-inline-start:0;
+  padding-inline-start:1rem;border-inline-start:var(--rule)}
+/* white-space:nowrap — the masthead grid gives the brand an `auto` track,
+   but on a narrow phone the two flanking tracks squeeze it until
+   "AL-JARIDA" breaks across two lines at the hyphen, which pushes the row
+   ~20px taller and puts the publication's own name on two ragged lines.
+   A masthead wordmark is one object; it should shrink the row it sits in
+   before it ever wraps. */
+.brand{font-family:var(--serif);font-weight:700;font-style:italic;
+  font-size:19px;letter-spacing:.01em;text-align:center;color:var(--primary);
+  white-space:nowrap}
+.icon-btn{background:none;border:none;cursor:pointer;color:var(--outline);
+  font-size:17px;line-height:1;display:flex;align-items:center;padding:.2rem;
+  transition:color .15s ease}
+.icon-btn:hover{color:var(--primary)}
+
+/* Buttons. Three near-identical filled pills sitting side by side in the
+   masthead was a large share of the "too much going on up there" weight —
+   Sign In / Sign Up / Subscribe were all competing to be the primary
+   action. Only Subscribe keeps the gradient fill now; the other two step
+   down to outline and ghost, which is the actual priority order. */
+/* Fully rounded. A pill reads as an action; a 5px-radius rectangle reads
+   as a container, which is the wrong signal for a control sitting beside
+   editorial content that now has no rounded containers at all. The
+   horizontal padding goes up with the radius — a pill needs its label
+   set in from the curve or the text looks like it is falling out. */
+.btn{font-family:var(--sans);font-size:var(--fs-xs);font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;padding:.45rem 1.05rem;
+  border-radius:999px;cursor:pointer;border:1px solid transparent;
+  transition:transform .18s var(--ease-smooth),box-shadow .25s var(--ease-smooth),
+    background .2s var(--ease-smooth),color .2s var(--ease-smooth),
+    border-color .2s var(--ease-smooth);
+  white-space:nowrap;line-height:1.2}
+.btn--solid{background:var(--gradient-accent);color:#fff;box-shadow:var(--shadow-glow)}
+.btn--solid:hover{transform:translateY(-1px);box-shadow:var(--shadow-glow-lift)}
+.btn--navy{background:var(--gradient-primary);color:#fff;box-shadow:var(--shadow-glow)}
+.btn--navy:hover{transform:translateY(-1px);box-shadow:var(--shadow-glow-lift)}
+.btn--outline{border-color:var(--outline-variant);color:var(--on-surface);
+  background:transparent}
+.btn--outline:hover{border-color:var(--primary);color:var(--primary);
+  background:var(--surface-container-low)}
+/* Ghost: text-only, for the lowest-priority action in a cluster. */
+.btn--ghost{background:transparent;border-color:transparent;
+  color:var(--on-surface-variant)}
+.btn--ghost:hover{color:var(--primary);background:var(--surface-container-low)}
+.btn:active{transform:translateY(1px)}
+@media(prefers-reduced-motion:reduce){
+  .btn,.btn:hover,.btn:active{transform:none}
+}
+
+.lang-switch{position:relative}
+/* `visibility`, not `display:none` — display can't be transitioned, so a
+   fade on open/close needs visibility instead. */
+.lang-switch__menu{position:absolute;inset-inline-end:0;top:120%;
+  background:var(--glass-bg-strong);backdrop-filter:blur(var(--glass-blur));
+  -webkit-backdrop-filter:blur(var(--glass-blur));
+  border:1px solid var(--glass-border);border-radius:var(--radius);
+  min-width:126px;box-shadow:var(--shadow-lift);
+  visibility:hidden;pointer-events:none;z-index:40;overflow:hidden;
+  opacity:0;transform:translateY(-4px);transition:opacity .18s var(--ease-smooth),
+    transform .18s var(--ease-smooth),visibility .18s}
+.lang-switch.open .lang-switch__menu{visibility:visible;pointer-events:auto;
+  opacity:1;transform:translateY(0)}
+.lang-switch__menu button{display:block;width:100%;text-align:start;
+  background:none;border:none;padding:.55rem .85rem;cursor:pointer;
+  font-family:var(--sans);font-size:var(--fs-meta);
+  transition:background .15s var(--ease-smooth)}
+.lang-switch__menu button:hover{background:var(--surface-container-low)}
+
+.mainnav{border-bottom:var(--rule);
+  background:var(--surface-container-lowest)}
+.nav-links{display:flex;gap:1.35rem;justify-content:center;
+  padding-block:.55rem;flex-wrap:wrap}
+.nav-links a{font-size:var(--fs-meta);font-weight:600;
+  color:var(--on-surface-variant);padding:.15rem 0;
+  border-bottom:2px solid transparent;transition:.15s}
+.nav-links a:hover,.nav-links a.active{color:var(--primary);
+  border-color:var(--primary)}
+
+/* Search overlay */
+.search-bar{display:none;border-bottom:var(--rule);
+  background:#fff;padding:.7rem 0}
+.search-bar.open{display:block}
+.search-bar form{display:flex;gap:.6rem;align-items:center}
+.search-bar input{flex:1;border:none;border-bottom:2px solid var(--on-surface);
+  font-size:var(--fs-sub);font-family:var(--serif);padding:.35rem 0;
+  outline:none;background:transparent}
+.search-results-live{max-width:var(--container-max);margin:.4rem auto 0}
+.search-results-live a{display:block;padding:.45rem .2rem;
+  border-bottom:var(--rule);font-size:var(--fs-meta)}
+.search-results-live a:hover{background:var(--surface-container-low)}
+.search-results-live .rk{color:var(--secondary);font-weight:700;
+  font-size:var(--fs-xs);text-transform:uppercase;margin-inline-end:.5rem}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.site-footer{background:var(--on-surface);color:#cfd3d8;
+  border-top:3px solid var(--primary);margin-top:2rem}
+.footer-cols{display:grid;
+  grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) minmax(0,1fr) minmax(0,1.4fr);
+  gap:var(--gap);padding-block:1.9rem}
+.footer-cols h4{color:#fff;font-size:var(--fs-sm);font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;margin-bottom:.8rem}
+.footer-cols .fbrand{font-family:var(--serif);font-size:22px;font-weight:700;
+  font-style:italic;color:#fff;margin-bottom:.6rem}
+.footer-cols a{display:block;padding:.25rem 0;font-size:var(--fs-meta);
+  color:#cfd3d8}
+.footer-cols a:hover{color:#fff}
+.footer-cols p{font-size:var(--fs-meta);line-height:var(--lh-body)}
+.foot-sub{display:flex;gap:.5rem;margin-top:.7rem}
+.foot-sub input{flex:1;border:1px solid #333;background:#111;color:#fff;
+  border-radius:var(--radius);padding:.5rem .65rem;font-size:var(--fs-meta)}
+.footer-bottom{border-top:1px solid #222;padding-block:1rem;
+  display:flex;justify-content:space-between;align-items:center;
+  gap:1rem;flex-wrap:wrap;font-size:var(--fs-sm);color:#8a8f96} 

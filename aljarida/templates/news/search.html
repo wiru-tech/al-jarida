@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Search" %} — Al-Jarida{% endblock %}
+{% block content %}
+<div class="wrap">
+  <div class="page-head">
+    <h1>{% trans "Search" %}</h1>
+    {% if q %}<p>{% blocktrans count counter=results|length %}{{ counter }} result for "{{ q }}"{% plural %}{{ counter }} results for "{{ q }}"{% endblocktrans %}</p>{% endif %}
+  </div>
+
+  <form class="filters" method="get">
+    <input type="search" name="q" value="{{ q }}" placeholder="{% trans 'Keywords…' %}">
+    <select name="category">
+      <option value="">{% trans "All categories" %}</option>
+      {% for c in categories %}
+      <option value="{{ c.slug }}" {% if c.slug == active_category %}selected{% endif %}>{{ c.name }}</option>
+      {% endfor %}
+    </select>
+    <select name="sort">
+      <option value="relevance" {% if sort == 'relevance' %}selected{% endif %}>{% trans "Relevance" %}</option>
+      <option value="recent" {% if sort == 'recent' %}selected{% endif %}>{% trans "Most recent" %}</option>
+      <option value="popular" {% if sort == 'popular' %}selected{% endif %}>{% trans "Most read" %}</option>
+    </select>
+    <button class="btn btn--navy">{% trans "Filter" %}</button>
+  </form>
+
+  <div>
+    {% for a in results %}
+      {% include "partials/_result_item.html" with a=a excerpt_words=26 %}
+    {% empty %}
+    <p class="muted" style="padding:2rem 0">{% trans "No stories matched your search." %}</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

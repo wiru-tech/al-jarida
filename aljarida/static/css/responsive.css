@@ -1,0 +1,162 @@
+/* ============================================================
+   RESPONSIVE
+
+   The headline sizes that used to live here as hardcoded pixel values
+   (.hero__title, .article-head h1, .band__head h2, .page-head h1,
+   .article-standfirst) have been removed rather than retuned. Those
+   sizes are now clamp() tokens in variables.css, so they already
+   interpolate smoothly between the small-screen and large-screen ends
+   — a fixed px override at a breakpoint would replace that smooth ramp
+   with a jump, and would win the cascade because this file loads last.
+
+   What stays here is the two things clamp() genuinely can't express:
+   layout that has to change shape (multi-column to single-column), and
+   token overrides where the mobile value isn't a smooth function of
+   viewport width — spacing that should collapse faster than type does.
+   ============================================================ */
+.menu-toggle{display:none}
+
+/* ---- Token overrides ----
+   Reducing --gap here retunes every grid on the site at once: card grid,
+   mini grid, widgets strip, footer columns, hero/sidebar split. That is
+   the whole point of routing them through one scale — the alternative is
+   a per-component gap override in each breakpoint, which is how spacing
+   drifts out of sync in the first place. */
+@media(max-width:1024px){
+  :root{--gap-lg:1.5rem}
+}
+@media(max-width:768px){
+  :root{--container-pad:1rem;--gap:1rem;--gap-lg:1.25rem;--band-pad:1.5rem}
+}
+@media(max-width:480px){
+  /* Body copy is the one size that should NOT keep shrinking with the
+     viewport: 17px is comfortable on a desktop but on a phone held at
+     arm's length 16px with the same measure reads better, and below
+     that it stops being long-form readable. Overriding the token keeps
+     .article-body p and .prose p in step automatically. */
+  :root{--container-pad:.85rem;--gap:.9rem;--band-pad:1.25rem;--fs-lg:1rem}
+}
+
+/* ---- Layout shape changes ---- */
+@media(max-width:1024px){
+  /* Legacy .home-grid generation — see the block at the end of
+     components.css. Sidebar drops below and splits two-up. */
+  .home-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .home-grid .sidebar-col{grid-column:1/-1;display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--gap-lg);
+    align-items:start}
+  .col-divider{border-inline-start:none;padding-inline-start:0}
+
+  /* Stacked: the fixed fold height stops applying — there is no second
+     column left to align to. (The rail no longer needs an override to
+     un-cap itself here; it is uncapped at every width now. See the
+     .hero-trending block in components.css.) */
+  .hero-section{grid-template-columns:minmax(0,1fr);--fold-h:auto}
+  .hero-featured{height:auto}
+  .hero-featured__media{min-height:240px}
+  .article-wrap{grid-template-columns:minmax(0,1fr)}
+  /* Stacked to one column below — sticky reads as a stuck-mid-page
+     sidebar once it's no longer beside the article list. */
+  .article-wrap aside{position:static}
+  .footer-cols{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  /* The trending rail sits under the hero now rather than beside it, so
+     it needs its own top rule to stay a distinct section instead of
+     running straight on from the hero's byline. */
+  .hero-trending{border-top:var(--rule);padding-top:1rem}
+}
+
+@media(max-width:900px){
+  /* The lead story's internal image/text split needs ~640px to keep both
+     columns readable; below that the headline column gets too narrow and
+     starts breaking words. Stack it back to image-over-text — the shape
+     that was wrong on desktop is the right one on a narrow screen. */
+  .hero-featured{grid-template-columns:minmax(0,1fr)}
+  .hero-featured__media{min-height:0;aspect-ratio:16/9}
+  .hero__img{position:static;height:100%}
+  .hero-featured__body{padding:1rem 1.1rem 1.15rem}
+}
+
+@media(max-width:768px){
+  .home-grid{grid-template-columns:minmax(0,1fr);gap:var(--gap)}
+  .home-grid .sidebar-col{grid-template-columns:minmax(0,1fr);gap:var(--gap)}
+  .widgets-strip{grid-template-columns:minmax(0,1fr)}
+  .card-grid,.mini-grid{grid-template-columns:minmax(0,1fr)}
+  .islamic__grid{grid-template-columns:minmax(0,1fr)}
+  /* The lead's 150px picture column leaves the headline ~120px of text
+     on a phone, which breaks words. Stack it instead — the photograph
+     goes full width above the copy, matching every other card here. */
+  .islamic__lead{grid-template-columns:minmax(0,1fr)}
+  .islamic__media img{aspect-ratio:16/9}
+  .islamic{padding:1rem}
+  .footer-cols{grid-template-columns:minmax(0,1fr);gap:1.25rem}
+  .masthead__row{grid-template-columns:auto minmax(0,1fr) auto}
+  .brand{text-align:start}
+  .nav-links{justify-content:flex-start;gap:1rem;overflow-x:auto;
+    flex-wrap:nowrap;padding-block:.45rem;
+    /* Hides the horizontal scrollbar that appears under the nav strip on
+       Windows/Chrome, where overlay scrollbars aren't the default and a
+       permanent 15px track would otherwise sit across the masthead. */
+    scrollbar-width:none;-ms-overflow-style:none}
+  .nav-links::-webkit-scrollbar{display:none}
+  .result-item{grid-template-columns:minmax(0,1fr)}
+  .result-item img{width:100%;aspect-ratio:16/9}
+  .masthead__right .subscribe-txt{display:none}
+  /* With Subscribe gone, BOTH of the cluster's dividers have nothing left
+     to separate — the trailing one was still painting a hairline hard
+     against the right edge of the masthead, reading as a stray mark
+     rather than as a rule between two groups. */
+  .masthead__right .account-cluster{border-inline-start:none;
+    padding-inline-start:0;border-inline-end:none;padding-inline-end:0;
+    margin-inline-end:0}
+  /* Single-column cards run the full content width, so a 16/9 image is
+     ~200px tall on a phone. Squarer keeps more of the picture without
+     pushing the headline further down the scroll. */
+  .card img{aspect-ratio:3/2}
+  .field-row{grid-template-columns:minmax(0,1fr)}
+  .comment .reply{margin-inline-start:.75rem}
+}
+
+@media(max-width:480px){
+  .brand{font-size:17px}
+  /* ---- Masthead at phone width ----
+     The row is one grid of three tracks and the wordmark no longer wraps
+     (see .brand in layout.css), so at ~390px the three groups together
+     want ~15px more than the row has and the brand rides over the
+     language button. Labels come off, in priority order:
+       · the "EN" text beside the globe — the icon alone still opens the
+         switcher, and the active language is marked in the menu;
+       · the "Sign In" outline pill — Sign Up remains, and the sign-up
+         page carries an "Already have an account? Sign in" link;
+       · signed in, the username beside the avatar — the coloured initial
+         still identifies the account, and Write / Sign out both stay.
+     Trimming what the row contains is the fix; shrinking type until it
+     fits would just move the problem to the next-narrower phone. */
+  .lang-switch [data-lang-btn] .i18n-ltr{display:none}
+  /* `> a` on purpose: that selects the Sign In link only. Sign out is
+     also a .btn--outline but sits inside a POST <form>, and hiding the
+     way out of an account is not a layout decision. */
+  .account-cluster > a.btn--outline{display:none}
+  .user-chip__name{display:none}
+  .user-chip{padding:.25rem}
+  .masthead__row{gap:.6rem}
+  .calc-row{grid-template-columns:minmax(0,1fr)}
+  .calc-row>*{width:100%}
+  .gallery{grid-template-columns:minmax(0,1fr)}
+  .ticker__tag{padding:0 .55rem}
+  /* Two-line clamps on a narrow column truncate mid-thought and leave
+     several stories reading as the same fragment. A third line costs
+     little vertically once the grid is single-column. */
+  .card h3{-webkit-line-clamp:3;height:calc(var(--lh-snug) * 3em)}
+  .hero-featured__body{padding:1rem}
+  .auth-card{padding:1.5rem}
+  .share-rail{flex-wrap:wrap}
+}
+
+/* Coarse pointers get a real touch target regardless of viewport width —
+   a 34px share button is under the 44px minimum on any touchscreen,
+   including tablets wide enough to miss the breakpoints above. */
+@media(pointer:coarse){
+  .share-rail a{width:44px;height:44px}
+  .icon-btn{padding:.5rem}
+  .nav-links a{padding-block:.4rem}
+}

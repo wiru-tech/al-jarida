@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Live TV" %} — Al-Jarida{% endblock %}
+{% block meta_desc %}{% trans "Watch Al-Jarida's news, entertainment, and religious broadcasts live." %}{% endblock %}
+{% block content %}
+<div class="wrap">
+  <div class="page-head">
+    <div class="kicker">{% trans "Multimedia" %}</div>
+    <h1>{% trans "Live TV" %}</h1>
+    <p>{% trans "News, entertainment, and religious broadcasts — streaming live." %}</p>
+  </div>
+
+  <div class="mini-grid" style="padding:1.5rem 0">
+    {% trans "Live" as live_label %}
+    {% for w in streams %}
+    <div class="widget">
+      <div class="widget__title">
+        <span class="live-dot"></span>
+        <span>{{ w.subtitle|default:live_label }}</span>
+      </div>
+      {% include "partials/_live_tv_widget.html" with w=w %}
+    </div>
+    {% empty %}
+    <p class="muted" style="padding:2rem 0">{% trans "No live streams are available right now." %}</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

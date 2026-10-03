@@ -1,0 +1,23 @@
+
+{% load i18n %}
+{# Reusable currency-conversion calculator, driven by /api/markets/ + static/js/main.js. #}
+<div data-currency-calc>
+  <div class="calc-row">
+    <div><label>{% trans "Amount" %}</label>
+      <input class="field-input" type="number" value="100" data-amount></div>
+    <div><label>{% trans "From" %}</label>
+      <select class="field-input" data-from>
+        <option>USD</option><option>EUR</option><option>GBP</option>
+        <option>AED</option><option>PKR</option><option>SAR</option>
+      </select></div>
+    <div><label>{% trans "To" %}</label>
+      <select class="field-input" data-to>
+        <option>PKR</option><option>USD</option><option>EUR</option>
+        <option>GBP</option><option>AED</option><option>SAR</option>
+      </select></div>
+  </div>
+  <div class="calc-out">
+    <span class="i18n-ltr" data-calc-out>—</span>
+    <span class="calc-live-tag stale" data-calc-live>{% trans "Reference rates" %}</span>
+  </div>
+</div>

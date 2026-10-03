@@ -1,0 +1,21 @@
+{% load i18n_extras %}
+{% comment %}
+Article card used in "Latest Dispatch", the category section grids and
+the related-stories row under an article.
+Vars: a, show_kicker (bool), excerpt_words (int).
+
+The picture is unconditional: Article.image_src always resolves to
+something (upload -> featured_image_url -> section stock photo), so the
+media is no longer wrapped in a conditional and there is therefore no
+card that renders ~195px shorter than its neighbours and breaks the
+row's alignment. .card__media owns the 16/9 box, which reserves the
+space before the file arrives instead of reflowing the grid once it does.
+{% endcomment %}
+<article class="card" lang="{{ a|content_lang }}">
+  <a href="{{ a.get_absolute_url }}" class="card__media">
+    <img src="{{ a.image_src }}" alt="{{ a.title }}" loading="lazy">
+  </a>
+  {% if show_kicker %}<div class="kicker">{{ a.category.name }}</div>{% endif %}
+  <h3><a href="{{ a.get_absolute_url }}">{{ a.title }}</a></h3>
+  <p>{{ a.excerpt|truncatewords:excerpt_words }}</p>
+</article>

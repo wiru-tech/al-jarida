@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Sign In" %} — Al-Jarida{% endblock %}
+{% block content %}
+{% comment %}
+No .wrap here on purpose. .auth-card-wrap paints a tinted gradient panel
+and supplies its own --container-pad gutter; nested inside a .wrap it was
+capped at the 1120px content width, so the panel rendered as a floating
+grey rectangle with bare page either side of it instead of a full-width
+band behind the card.
+{% endcomment %}
+  <div class="auth-card-wrap">
+    <div class="auth-card">
+      <h1>{% trans "Sign in" %}</h1>
+      <p class="muted">{% trans "Welcome back. Enter your details to continue." %}</p>
+
+      <form method="post" novalidate>
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ next }}">
+
+        <label class="label-caps muted" for="{{ form.username.id_for_label }}">{% trans "Username" %}</label>
+        {{ form.username }}
+
+        <label class="label-caps muted" for="{{ form.password.id_for_label }}">{% trans "Password" %}</label>
+        {{ form.password }}
+
+        {% if form.errors %}
+          <div class="flash error">{% trans "Incorrect username or password." %}</div>
+        {% endif %}
+
+        <button type="submit" class="btn btn--solid" style="width:100%;justify-content:center;margin-top:.8rem">
+          {% trans "Sign in" %}
+        </button>
+      </form>
+
+      <p class="auth-switch">
+        {% trans "Don't have an account?" %}
+        <a href="{% url 'news:signup' %}">{% trans "Sign up" %}</a>
+      </p>
+    </div>
+  </div>
+{% endblock %}

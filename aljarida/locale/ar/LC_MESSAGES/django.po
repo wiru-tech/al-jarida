@@ -1,0 +1,1056 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-19 22:39+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: .\aljarida\settings.py:102 .\news\models.py:121
+#: .\templates\news\blog_list.html:99
+msgid "English"
+msgstr "الإنجليزية"
+
+#: .\aljarida\settings.py:103 .\news\models.py:122
+#: .\templates\news\blog_list.html:98
+msgid "Urdu"
+msgstr "الأردية"
+
+#: .\aljarida\settings.py:104 .\news\models.py:123
+msgid "Arabic"
+msgstr "العربية"
+
+#: .\news\forms.py:17
+msgid "Your name"
+msgstr "اسمك"
+
+#: .\news\forms.py:19
+msgid "Email (not published)"
+msgstr "البريد الإلكتروني (لن يُنشر)"
+
+#: .\news\forms.py:21
+msgid "Join the conversation…"
+msgstr "شارك في النقاش…"
+
+#: .\news\forms.py:29
+msgid "Comment is too short."
+msgstr "التعليق قصير جدًا."
+
+#: .\news\forms.py:64
+msgid "you@example.com"
+msgstr "you@example.com"
+
+#: .\news\forms.py:76
+msgid "Choose a username"
+msgstr "اختر اسم مستخدم"
+
+#: .\news\forms.py:80 .\templates\news\blog_list.html:118
+#: .\templates\news\blog_list.html:145 .\templates\news\login.html:18
+#: .\templates\news\signup.html:22
+msgid "Password"
+msgstr "كلمة المرور"
+
+#: .\news\forms.py:84 .\templates\news\blog_list.html:149
+#: .\templates\news\signup.html:26
+msgid "Confirm password"
+msgstr "تأكيد كلمة المرور"
+
+#: .\news\forms.py:93
+msgid "An account with that email already exists."
+msgstr "يوجد حساب بهذا البريد الإلكتروني بالفعل."
+
+#: .\news\forms.py:120 .\templates\news\blog_list.html:43
+msgid "Give your post a title — عنوان لکھیں"
+msgstr "أضف عنوانًا لمنشورك"
+
+#: .\news\forms.py:125 .\templates\news\blog_list.html:51
+msgid "Write your story here, in English or Urdu… اپنی کہانی یہاں لکھیں"
+msgstr "اكتب قصتك هنا، بالإنجليزية أو الأردية…"
+
+#: .\news\forms.py:132
+msgid "Title is required."
+msgstr "العنوان مطلوب."
+
+#: .\news\forms.py:138
+msgid "Content is required."
+msgstr "المحتوى مطلوب."
+
+#: .\news\i18n_strings.py:23
+msgid "Central"
+msgstr "وسط المدينة"
+
+#: .\news\i18n_strings.py:24
+msgid "Harbour"
+msgstr "الميناء"
+
+#: .\news\i18n_strings.py:25
+msgid "University"
+msgstr "الجامعة"
+
+#: .\news\i18n_strings.py:26
+msgid "Press Enclave"
+msgstr "مجمع الصحافة"
+
+#: .\news\i18n_strings.py:27
+msgid "City Square"
+msgstr "ساحة المدينة"
+
+#: .\news\i18n_strings.py:28
+msgid "North Terminal"
+msgstr "المحطة الشمالية"
+
+#: .\news\models.py:29
+msgid "National News"
+msgstr "أخبار محلية"
+
+#: .\news\models.py:30
+msgid "International News"
+msgstr "أخبار دولية"
+
+#: .\news\models.py:31 .\templates\news\directory.html:15
+msgid "Sports"
+msgstr "رياضة"
+
+#: .\news\models.py:32
+msgid "Technology"
+msgstr "تكنولوجيا"
+
+#: .\news\models.py:33
+msgid "Health"
+msgstr "صحة"
+
+#: .\news\models.py:34
+msgid "Entertainment"
+msgstr "ترفيه"
+
+#: .\news\models.py:35
+msgid "Opinion / Editorial"
+msgstr "رأي / افتتاحية"
+
+#: .\news\models.py:36
+msgid "Islamic Content"
+msgstr "محتوى إسلامي"
+
+#: .\news\models.py:37
+msgid "World"
+msgstr "العالم"
+
+#: .\news\models.py:45
+msgid "Hex accent used for the category label, e.g. #b41d11"
+msgstr "لون Hex يُستخدم لتسمية الفئة، مثل #b41d11"
+
+#: .\news\models.py:47
+msgid "Menu sort order"
+msgstr "ترتيب القائمة"
+
+#: .\news\models.py:94
+msgid "e.g. Senior Political Correspondent"
+msgstr "مثال: مراسل سياسي أول"
+
+#: .\news\models.py:116
+msgid "Draft"
+msgstr "مسودة"
+
+#: .\news\models.py:117
+msgid "Scheduled"
+msgstr "مجدول"
+
+#: .\news\models.py:118 .\templates\news\article_detail.html:13
+msgid "Published"
+msgstr "منشور"
+
+#: .\news\models.py:128
+msgid "Small overline label, e.g. GLOBAL AFFAIRS"
+msgstr "تسمية علوية صغيرة، مثل GLOBAL AFFAIRS"
+
+#: .\news\models.py:131
+msgid "Main article text. Use the toolbar to format text and insert images."
+msgstr "النص الرئيسي للمقال. استخدم شريط الأدوات لتنسيق النص وإدراج الصور."
+
+#: .\news\models.py:134
+msgid "Optional pull-quote or block in a second language (Urdu/Arabic)."
+msgstr "اقتباس اختياري أو فقرة بلغة ثانية (الأردية/العربية)."
+
+#: .\news\models.py:138
+msgid "Language of the secondary block, drives RTL rendering."
+msgstr "لغة الفقرة الثانوية، وتتحكم في عرض الاتجاه من اليمين إلى اليسار."
+
+#: .\news\models.py:149
+msgid "Fallback external image URL (used in the demo)."
+msgstr "رابط صورة خارجي احتياطي (يُستخدم في العرض التجريبي)."
+
+#: .\news\models.py:152
+msgid "YouTube/Vimeo embed URL"
+msgstr "رابط تضمين يوتيوب/فيميو"
+
+#: .\news\models.py:155
+msgid ""
+"Optional self-hosted video upload (mp4/webm) — used if no embed URL is set."
+msgstr ""
+"تحميل فيديو اختياري ذاتي الاستضافة (mp4/webm) — يُستخدم في حال عدم تعيين رابط "
+"تضمين."
+
+#: .\news\models.py:158
+msgid "Show in hero slot"
+msgstr "إظهار في الموضع الرئيسي"
+
+#: .\news\models.py:159
+msgid "Show in breaking ticker"
+msgstr "إظهار في شريط الأخبار العاجلة"
+
+#: .\news\models.py:161
+msgid "Schedule future date/time here"
+msgstr "حدد تاريخًا/وقتًا مستقبليًا هنا"
+
+#: .\news\models.py:269
+msgid "e.g. USD / EUR"
+msgstr "مثال: USD / EUR"
+
+#: .\news\models.py:272
+msgid "Percentage change, may be negative"
+msgstr "نسبة التغير، قد تكون سالبة"
+
+#: .\news\models.py:296
+msgid "Transport Schedule"
+msgstr "جدول النقل"
+
+#: .\news\models.py:297
+msgid "Daily Quote"
+msgstr "اقتباس اليوم"
+
+#: .\news\models.py:298
+msgid "Horoscope"
+msgstr "الأبراج"
+
+#: .\news\models.py:299
+msgid "Daily Profile"
+msgstr "ملف اليوم"
+
+#: .\news\models.py:300
+msgid "Live TV Stream"
+msgstr "بث تلفزيوني مباشر"
+
+#: .\news\models.py:301
+msgid "Islamic Content (Hadith / Ayat)"
+msgstr "محتوى إسلامي (حديث / آية)"
+
+#: .\news\models.py:308
+msgid "Structured payload, e.g. schedule rows or stream URL"
+msgstr "بيانات منظمة، مثل صفوف الجدول أو رابط البث"
+
+#: .\news\models.py:332
+msgid "Left-to-right"
+msgstr "من اليسار إلى اليمين"
+
+#: .\news\models.py:333
+msgid "Right-to-left"
+msgstr "من اليمين إلى اليسار"
+
+#: .\news\models.py:372
+msgid "Feedback"
+msgstr "ملاحظات"
+
+#: .\news\models.py:373
+msgid "Press"
+msgstr "الصحافة"
+
+#: .\news\models.py:374 .\templates\news\directory.html:16
+msgid "Advertising"
+msgstr "إعلانات"
+
+#: .\news\templatetags\i18n_extras.py:64
+#, python-format
+msgid "%(num)d year"
+msgid_plural "%(num)d years"
+msgstr[0] "سنة"
+msgstr[1] "سنة واحدة"
+msgstr[2] "سنتان"
+msgstr[3] "%(num)d سنوات"
+msgstr[4] "%(num)d سنة"
+msgstr[5] "%(num)d سنة"
+
+#: .\news\templatetags\i18n_extras.py:66
+#, python-format
+msgid "%(num)d month"
+msgid_plural "%(num)d months"
+msgstr[0] "شهر"
+msgstr[1] "شهر واحد"
+msgstr[2] "شهران"
+msgstr[3] "%(num)d أشهر"
+msgstr[4] "%(num)d شهرًا"
+msgstr[5] "%(num)d شهر"
+
+#: .\news\templatetags\i18n_extras.py:68
+#, python-format
+msgid "%(num)d week"
+msgid_plural "%(num)d weeks"
+msgstr[0] "أسبوع"
+msgstr[1] "أسبوع واحد"
+msgstr[2] "أسبوعان"
+msgstr[3] "%(num)d أسابيع"
+msgstr[4] "%(num)d أسبوعًا"
+msgstr[5] "%(num)d أسبوع"
+
+#: .\news\templatetags\i18n_extras.py:70
+#, python-format
+msgid "%(num)d day"
+msgid_plural "%(num)d days"
+msgstr[0] "يوم"
+msgstr[1] "يوم واحد"
+msgstr[2] "يومان"
+msgstr[3] "%(num)d أيام"
+msgstr[4] "%(num)d يومًا"
+msgstr[5] "%(num)d يوم"
+
+#: .\news\templatetags\i18n_extras.py:72
+#, python-format
+msgid "%(num)d hour"
+msgid_plural "%(num)d hours"
+msgstr[0] "ساعة"
+msgstr[1] "ساعة واحدة"
+msgstr[2] "ساعتان"
+msgstr[3] "%(num)d ساعات"
+msgstr[4] "%(num)d ساعة"
+msgstr[5] "%(num)d ساعة"
+
+#: .\news\templatetags\i18n_extras.py:74
+#, python-format
+msgid "%(num)d minute"
+msgid_plural "%(num)d minutes"
+msgstr[0] "دقيقة"
+msgstr[1] "دقيقة واحدة"
+msgstr[2] "دقيقتان"
+msgstr[3] "%(num)d دقائق"
+msgstr[4] "%(num)d دقيقة"
+msgstr[5] "%(num)d دقيقة"
+
+#: .\news\templatetags\i18n_extras.py:87
+#: .\news\templatetags\i18n_extras.py:101
+msgid "just now"
+msgstr "الآن"
+
+#: .\news\views.py:91
+msgid "Your comment has been posted."
+msgstr "تم نشر تعليقك."
+
+#: .\news\views.py:93
+msgid "Please correct the errors in your comment."
+msgstr "يرجى تصحيح الأخطاء في تعليقك."
+
+#: .\news\views.py:197
+msgid "Thank you — your message has been sent."
+msgstr "شكرًا لك — تم إرسال رسالتك."
+
+#: .\news\views.py:216
+msgid "Welcome to Al-Jarida — your account is ready."
+msgstr "مرحبًا بك في الجريدة — حسابك جاهز الآن."
+
+#: .\news\views.py:246
+msgid "Post published."
+msgstr "تم نشر المنشور."
+
+#: .\news\views.py:260 .\news\views.py:396
+msgid "You can only edit your own posts."
+msgstr "يمكنك فقط تعديل منشوراتك الخاصة."
+
+#: .\news\views.py:267
+msgid "Post updated."
+msgstr "تم تحديث المنشور."
+
+#: .\news\views.py:280 .\news\views.py:407
+msgid "You can only delete your own posts."
+msgstr "يمكنك فقط حذف منشوراتك الخاصة."
+
+#: .\news\views.py:283
+msgid "Post deleted."
+msgstr "تم حذف المنشور."
+
+#: .\news\views.py:349 .\templates\news\login.html:22
+msgid "Incorrect username or password."
+msgstr "اسم المستخدم أو كلمة المرور غير صحيحة."
+
+#: .\news\views.py:377 .\news\views.py:394 .\news\views.py:405
+msgid "Sign in required."
+msgstr "تسجيل الدخول مطلوب."
+
+#: .\news\views.py:420 .\templates\partials\_footer.html:19
+msgid "Privacy Policy"
+msgstr "سياسة الخصوصية"
+
+#: .\news\views.py:421 .\templates\partials\_footer.html:18
+msgid "Terms of Use"
+msgstr "شروط الاستخدام"
+
+#: .\news\views.py:422
+msgid "Copyright & IP Compliance"
+msgstr "الامتثال لحقوق النشر والملكية الفكرية"
+
+#: .\templates\base.html:10
+msgid "Al-Jarida — Global News Edition"
+msgstr "الجريدة — الطبعة الإخبارية العالمية"
+
+#: .\templates\base.html:11
+msgid ""
+"Independent journalism for a global perspective — rigorous analysis and "
+"comprehensive coverage."
+msgstr ""
+"صحافة مستقلة برؤية عالمية — تحليل دقيق وتغطية شاملة للأحداث التي تشكل عالمنا."
+
+#: .\templates\news\article_detail.html:13
+#: .\templates\news\article_detail.html:101 .\templates\news\category.html:45
+#: .\templates\news\home.html:43 .\templates\partials\_comment.html:4
+#: .\templates\partials\_comment.html:10
+msgid "ago"
+msgstr "منذ"
+
+#: .\templates\news\article_detail.html:63
+msgid "Gallery"
+msgstr "معرض الصور"
+
+#: .\templates\news\article_detail.html:73
+msgid "Discussion"
+msgstr "نقاش"
+
+#: .\templates\news\article_detail.html:81
+msgid "Post Comment"
+msgstr "نشر التعليق"
+
+#: .\templates\news\article_detail.html:88
+msgid "Be the first to join the conversation."
+msgstr "كن أول من ينضم إلى النقاش."
+
+#: .\templates\news\article_detail.html:97
+msgid "Trending Now"
+msgstr "الأكثر تداولاً الآن"
+
+#: .\templates\news\article_detail.html:108
+msgid "Related"
+msgstr "ذات صلة"
+
+#: .\templates\news\blog_form.html:3 .\templates\news\blog_form.html:8
+#: .\templates\news\blog_list.html:33
+msgid "Edit post"
+msgstr "تعديل المنشور"
+
+#: .\templates\news\blog_form.html:3 .\templates\news\blog_list.html:19
+#: .\templates\news\blog_list.html:101
+msgid "Write a post"
+msgstr "اكتب منشورًا"
+
+#: .\templates\news\blog_form.html:8 .\templates\news\blog_list.html:32
+#: .\templates\news\blog_list.html:33
+msgid "Write a new post"
+msgstr "اكتب منشورًا جديدًا"
+
+#: .\templates\news\blog_form.html:9 .\templates\news\blog_list.html:34
+msgid "Direction is detected automatically from what you type."
+msgstr "يتم تحديد الاتجاه تلقائيًا حسب ما تكتبه."
+
+#: .\templates\news\blog_form.html:15 .\templates\news\blog_list.html:40
+msgid "Title"
+msgstr "العنوان"
+
+#: .\templates\news\blog_form.html:22 .\templates\news\blog_list.html:48
+msgid "Content"
+msgstr "المحتوى"
+
+#: .\templates\news\blog_form.html:31 .\templates\news\blog_list.html:58
+msgid "Author"
+msgstr "الكاتب"
+
+#: .\templates\news\blog_form.html:35 .\templates\news\blog_list.html:62
+msgid "Date"
+msgstr "التاريخ"
+
+#: .\templates\news\blog_form.html:43 .\templates\news\blog_list.html:70
+#: .\templates\news\blog_list.html:109
+msgid "Cancel"
+msgstr "إلغاء"
+
+#: .\templates\news\blog_form.html:45 .\templates\news\blog_list.html:73
+msgid "Save changes"
+msgstr "حفظ التغييرات"
+
+#: .\templates\news\blog_form.html:45 .\templates\news\blog_list.html:72
+#: .\templates\news\blog_list.html:73
+msgid "Publish post"
+msgstr "انشر المنشور"
+
+#: .\templates\news\blog_list.html:3 .\templates\partials\_masthead.html:56
+msgid "Blog"
+msgstr "المدونة"
+
+#: .\templates\news\blog_list.html:8
+msgid "Reader Blog"
+msgstr "مدونة القراء"
+
+#: .\templates\news\blog_list.html:9
+msgid "Stories from Al-Jarida readers, in English or Urdu."
+msgstr "قصص من قراء الجريدة، بالإنجليزية أو الأردية."
+
+#: .\templates\news\blog_list.html:21 .\templates\news\blog_list.html:102
+#: .\templates\partials\_masthead.html:35
+msgid "Sign out"
+msgstr "تسجيل الخروج"
+
+#: .\templates\news\blog_list.html:23 .\templates\news\blog_list.html:103
+#: .\templates\news\login.html:3 .\templates\partials\_masthead.html:38
+msgid "Sign In"
+msgstr "تسجيل الدخول"
+
+#: .\templates\news\blog_list.html:24 .\templates\news\blog_list.html:104
+msgid "Sign up to write"
+msgstr "سجّل للكتابة"
+
+#: .\templates\news\blog_list.html:85
+msgid "No posts yet."
+msgstr "لا توجد منشورات بعد."
+
+#: .\templates\news\blog_list.html:86
+msgid "Sign up and be the first to publish one — انگریزی یا اردو میں۔"
+msgstr "سجّل وكن أول من ينشر واحدة — بالإنجليزية أو الأردية."
+
+#: .\templates\news\blog_list.html:95
+msgid "Edit"
+msgstr "تعديل"
+
+#: .\templates\news\blog_list.html:96
+msgid "Delete"
+msgstr "حذف"
+
+#: .\templates\news\blog_list.html:97
+msgid "Delete this post? This cannot be undone."
+msgstr "هل تريد حذف هذا المنشور؟ لا يمكن التراجع عن هذا الإجراء."
+
+#: .\templates\news\blog_list.html:100
+msgid "Something went wrong. Please try again."
+msgstr "حدث خطأ ما. يرجى المحاولة مرة أخرى."
+
+#: .\templates\news\blog_list.html:112 .\templates\news\blog_list.html:124
+#: .\templates\news\blog_list.html:161 .\templates\news\login.html:8
+#: .\templates\news\login.html:26 .\templates\news\signup.html:41
+msgid "Sign in"
+msgstr "تسجيل الدخول"
+
+#: .\templates\news\blog_list.html:113 .\templates\news\login.html:9
+msgid "Welcome back. Enter your details to continue."
+msgstr "مرحبًا بعودتك. أدخل بياناتك للمتابعة."
+
+#: .\templates\news\blog_list.html:115 .\templates\news\blog_list.html:137
+#: .\templates\news\login.html:15 .\templates\news\signup.html:14
+msgid "Username"
+msgstr "اسم المستخدم"
+
+#: .\templates\news\blog_list.html:128 .\templates\news\login.html:31
+msgid "Don't have an account?"
+msgstr "ليس لديك حساب؟"
+
+#: .\templates\news\blog_list.html:129 .\templates\news\login.html:32
+msgid "Sign up"
+msgstr "سجّل الآن"
+
+#: .\templates\news\blog_list.html:134 .\templates\news\signup.html:8
+msgid "Create your account"
+msgstr "أنشئ حسابك"
+
+#: .\templates\news\blog_list.html:135 .\templates\news\signup.html:9
+msgid "Join to write and publish your own blog posts."
+msgstr "انضم لكتابة ونشر تدويناتك الخاصة."
+
+#: .\templates\news\blog_list.html:141 .\templates\news\contact.html:16
+#: .\templates\news\signup.html:18
+msgid "Email"
+msgstr "البريد الإلكتروني"
+
+#: .\templates\news\blog_list.html:156 .\templates\news\signup.html:35
+msgid "Create account"
+msgstr "إنشاء حساب"
+
+#: .\templates\news\blog_list.html:160 .\templates\news\signup.html:40
+msgid "Already have an account?"
+msgstr "لديك حساب بالفعل؟"
+
+#: .\templates\news\category.html:7
+msgid "Tag"
+msgstr "وسم"
+
+#: .\templates\news\category.html:7
+msgid "Section"
+msgstr "قسم"
+
+#: .\templates\news\category.html:13
+msgid "No articles in this section yet."
+msgstr "لا توجد مقالات في هذا القسم بعد."
+
+#: .\templates\news\category.html:26 .\templates\news\home.html:22
+msgid "By"
+msgstr "بقلم"
+
+#: .\templates\news\category.html:27 .\templates\news\home.html:23
+msgid "min read"
+msgstr "دقائق قراءة"
+
+#: .\templates\news\category.html:41
+#: .\templates\partials\_sidebar_widgets.html:45
+msgid "Most Read"
+msgstr "الأكثر قراءة"
+
+#: .\templates\news\contact.html:3 .\templates\news\contact.html:7
+msgid "Contact & Inquiries"
+msgstr "اتصل بنا واستفسارات"
+
+#: .\templates\news\contact.html:8
+msgid "Reach the newsroom for feedback, press, or advertising."
+msgstr "تواصل مع غرفة الأخبار للملاحظات أو الصحافة أو الإعلانات."
+
+#: .\templates\news\contact.html:15
+msgid "Name"
+msgstr "الاسم"
+
+#: .\templates\news\contact.html:17
+msgid "Department"
+msgstr "القسم"
+
+#: .\templates\news\contact.html:18
+msgid "Subject"
+msgstr "الموضوع"
+
+#: .\templates\news\contact.html:19
+msgid "Message"
+msgstr "الرسالة"
+
+#: .\templates\news\contact.html:20
+msgid "Please correct the highlighted fields."
+msgstr "يرجى تصحيح الحقول المحددة."
+
+#: .\templates\news\contact.html:21
+msgid "Send Message"
+msgstr "إرسال الرسالة"
+
+#: .\templates\news\contact.html:25 .\templates\news\widgets.html:17
+msgid "Currency Converter"
+msgstr "محول العملات"
+
+#: .\templates\news\directory.html:3 .\templates\partials\_footer.html:12
+msgid "Directory"
+msgstr "الدليل"
+
+#: .\templates\news\directory.html:7
+msgid "Contact Directory"
+msgstr "دليل الاتصال"
+
+#: .\templates\news\directory.html:8
+msgid "Al-Jarida Media Group — desks, phone numbers and addresses."
+msgstr "مجموعة الجريدة الإعلامية — الأقسام وأرقام الهواتف والعناوين."
+
+#: .\templates\news\directory.html:11
+msgid "Head Office"
+msgstr "المكتب الرئيسي"
+
+#: .\templates\news\directory.html:12
+msgid "Al-Jarida Media Group"
+msgstr "مجموعة الجريدة الإعلامية"
+
+#: .\templates\news\directory.html:12
+msgid "4th Floor, Press Enclave, Boulevard Avenue"
+msgstr "الطابق الرابع، مجمع الصحافة، شارع البوليفار"
+
+#: .\templates\news\directory.html:12
+msgid "Karachi 74200, Pakistan"
+msgstr "كراتشي 74200، باكستان"
+
+#: .\templates\news\directory.html:13
+msgid "Newsroom Desks"
+msgstr "أقسام غرفة الأخبار"
+
+#: .\templates\news\directory.html:14
+msgid "News Desk"
+msgstr "قسم الأخبار"
+
+#: .\templates\news\directory.html:17
+msgid "Press & Syndication"
+msgstr "الصحافة والتوزيع"
+
+#: .\templates\news\directory.html:18
+msgid "Hours"
+msgstr "ساعات العمل"
+
+#: .\templates\news\directory.html:19
+msgid ""
+"The newsroom operates 24 hours. Business office: Mon–Sat, 9:00–18:00 PKT."
+msgstr ""
+"تعمل غرفة الأخبار على مدار 24 ساعة. المكتب الإداري: الإثنين–السبت، 9:00–"
+"18:00 بتوقيت باكستان."
+
+#: .\templates\news\home.html:34
+msgid "Trending / Breaking News"
+msgstr "الأخبار الرائجة / العاجلة"
+
+#: .\templates\news\home.html:59
+msgid "Latest Dispatch"
+msgstr "آخر الأخبار"
+
+#: .\templates\news\home.html:60
+msgid "View All"
+msgstr "عرض الكل"
+
+#: .\templates\news\home.html:74
+msgid "Islamic Life & Culture"
+msgstr "الحياة والثقافة الإسلامية"
+
+#: .\templates\news\home.html:81
+msgid "Read Full Essay"
+msgstr "قراءة المقال كاملاً"
+
+#: .\templates\news\home.html:101
+msgid "More"
+msgstr "المزيد"
+
+#: .\templates\news\legal.html:9
+msgid ""
+"This Privacy Policy explains how Al-Jarida Media Group collects, uses, and "
+"protects information when you use our website."
+msgstr ""
+"توضح سياسة الخصوصية هذه كيفية جمع مجموعة الجريدة الإعلامية للمعلومات "
+"واستخدامها وحمايتها عند استخدامك لموقعنا."
+
+#: .\templates\news\legal.html:10
+msgid "Information We Collect"
+msgstr "المعلومات التي نجمعها"
+
+#: .\templates\news\legal.html:11
+msgid ""
+"We collect information you provide directly, such as when submitting a "
+"comment or contact inquiry, and standard technical data such as browser type "
+"and pages visited."
+msgstr ""
+"نجمع المعلومات التي تقدمها مباشرة، مثل عند إرسال تعليق أو استفسار، بالإضافة "
+"إلى بيانات تقنية قياسية مثل نوع المتصفح والصفحات التي تمت زيارتها."
+
+#: .\templates\news\legal.html:12
+msgid "How We Use Information"
+msgstr "كيف نستخدم المعلومات"
+
+#: .\templates\news\legal.html:13
+msgid ""
+"Information is used to operate the service, respond to inquiries, moderate "
+"discussion, and improve editorial coverage. We do not sell personal data."
+msgstr ""
+"تُستخدم المعلومات لتشغيل الخدمة، والرد على الاستفسارات، وإدارة النقاشات، "
+"وتحسين التغطية التحريرية. نحن لا نبيع البيانات الشخصية."
+
+#: .\templates\news\legal.html:14
+msgid "Your Rights"
+msgstr "حقوقك"
+
+#: .\templates\news\legal.html:15
+msgid ""
+"You may request access to, correction of, or deletion of your personal data "
+"by contacting the newsroom."
+msgstr ""
+"يمكنك طلب الوصول إلى بياناتك الشخصية أو تصحيحها أو حذفها من خلال التواصل مع "
+"غرفة الأخبار."
+
+#: .\templates\news\legal.html:17
+msgid ""
+"By accessing Al-Jarida you agree to these Terms of Use, which govern your "
+"use of the site and its content."
+msgstr ""
+"بدخولك إلى الجريدة، فإنك توافق على شروط الاستخدام هذه التي تحكم استخدامك "
+"للموقع ومحتواه."
+
+#: .\templates\news\legal.html:18
+msgid "Use of Content"
+msgstr "استخدام المحتوى"
+
+#: .\templates\news\legal.html:19
+msgid ""
+"Articles, images, and media are provided for personal, non-commercial "
+"reading. Republication requires written permission."
+msgstr ""
+"يتم توفير المقالات والصور والوسائط للقراءة الشخصية غير التجارية. تتطلب إعادة "
+"النشر إذنًا كتابيًا."
+
+#: .\templates\news\legal.html:20
+msgid "User Contributions"
+msgstr "مساهمات المستخدمين"
+
+#: .\templates\news\legal.html:21
+msgid ""
+"Comments must comply with community standards. We reserve the right to "
+"moderate or remove contributions."
+msgstr ""
+"يجب أن تلتزم التعليقات بمعايير المجتمع. نحتفظ بالحق في مراجعة المساهمات أو "
+"إزالتها."
+
+#: .\templates\news\legal.html:23
+msgid ""
+"All editorial content, trademarks, and design elements on Al-Jarida are the "
+"intellectual property of Al-Jarida Media Group or its licensors."
+msgstr ""
+"جميع المحتويات التحريرية والعلامات التجارية وعناصر التصميم على الجريدة هي "
+"ملكية فكرية لمجموعة الجريدة الإعلامية أو مرخصيها."
+
+#: .\templates\news\legal.html:24
+msgid "Copyright Notice"
+msgstr "إشعار حقوق النشر"
+
+#: .\templates\news\legal.html:25
+msgid ""
+"Reproduction, distribution, or transmission of any content without prior "
+"written consent is prohibited except as permitted by applicable copyright "
+"law."
+msgstr ""
+"يُحظر نسخ أو توزيع أو نقل أي محتوى دون موافقة كتابية مسبقة، إلا بما يسمح به "
+"قانون حقوق النشر المعمول به."
+
+#: .\templates\news\legal.html:26
+msgid "Fair Use & Citation"
+msgstr "الاستخدام العادل والاقتباس"
+
+#: .\templates\news\legal.html:27
+msgid ""
+"Brief excerpts may be quoted for the purpose of review or commentary with "
+"proper attribution to Al-Jarida."
+msgstr ""
+"يمكن اقتباس مقتطفات موجزة لأغراض المراجعة أو التعليق مع الإشارة الصحيحة إلى "
+"الجريدة."
+
+#: .\templates\news\live_tv.html:3 .\templates\news\live_tv.html:9
+#: .\templates\partials\_footer.html:13
+#: .\templates\partials\_sidebar_widgets.html:8
+msgid "Live TV"
+msgstr "بث مباشر"
+
+#: .\templates\news\live_tv.html:4
+msgid "Watch Al-Jarida's news, entertainment, and religious broadcasts live."
+msgstr "شاهد أخبار الجريدة وبرامجها الترفيهية والدينية مباشرة."
+
+#: .\templates\news\live_tv.html:8
+msgid "Multimedia"
+msgstr "الوسائط المتعددة"
+
+#: .\templates\news\live_tv.html:10
+msgid "News, entertainment, and religious broadcasts — streaming live."
+msgstr "الأخبار والترفيه والبرامج الدينية — بث مباشر."
+
+#: .\templates\news\live_tv.html:14
+msgid "Live"
+msgstr "مباشر"
+
+#: .\templates\news\live_tv.html:24
+msgid "No live streams are available right now."
+msgstr "لا يوجد بث مباشر متاح في الوقت الحالي."
+
+#: .\templates\news\search.html:3 .\templates\news\search.html:7
+#: .\templates\partials\_masthead.html:6
+#: .\templates\partials\_search_overlay.html:8
+msgid "Search"
+msgstr "بحث"
+
+#: .\templates\news\search.html:8
+#, python-format
+msgid "%(counter)s result for \"%(q)s\""
+msgid_plural "%(counter)s results for \"%(q)s\""
+msgstr[0] "لا نتائج لـ \"%(q)s\""
+msgstr[1] "نتيجة واحدة لـ \"%(q)s\""
+msgstr[2] "نتيجتان لـ \"%(q)s\""
+msgstr[3] "%(counter)s نتائج لـ \"%(q)s\""
+msgstr[4] "%(counter)s نتيجة لـ \"%(q)s\""
+msgstr[5] "%(counter)s نتيجة لـ \"%(q)s\""
+
+#: .\templates\news\search.html:12
+msgid "Keywords…"
+msgstr "كلمات مفتاحية…"
+
+#: .\templates\news\search.html:14
+msgid "All categories"
+msgstr "جميع الفئات"
+
+#: .\templates\news\search.html:20
+msgid "Relevance"
+msgstr "الصلة"
+
+#: .\templates\news\search.html:21
+msgid "Most recent"
+msgstr "الأحدث"
+
+#: .\templates\news\search.html:22
+msgid "Most read"
+msgstr "الأكثر قراءة"
+
+#: .\templates\news\search.html:24
+msgid "Filter"
+msgstr "تصفية"
+
+#: .\templates\news\search.html:31
+msgid "No stories matched your search."
+msgstr "لم يتم العثور على قصص مطابقة لبحثك."
+
+#: .\templates\news\signup.html:3
+msgid "Create Account"
+msgstr "إنشاء حساب"
+
+#: .\templates\news\widgets.html:3 .\templates\news\widgets.html:9
+#: .\templates\partials\_footer.html:14
+msgid "Utility Widgets"
+msgstr "أدوات مساعدة"
+
+#: .\templates\news\widgets.html:4
+msgid ""
+"Currency rates, transport schedules, daily horoscope, and Islamic content."
+msgstr "أسعار العملات، مواعيد النقل، الأبراج اليومية، والمحتوى الإسلامي."
+
+#: .\templates\news\widgets.html:8
+msgid "Tools"
+msgstr "أدوات"
+
+#: .\templates\news\widgets.html:10
+msgid ""
+"Currency rates, transport schedules, daily horoscope, and Islamic content — "
+"in one place."
+msgstr ""
+"أسعار العملات، مواعيد النقل، الأبراج اليومية، والمحتوى الإسلامي — في مكان "
+"واحد."
+
+#: .\templates\news\widgets.html:24
+msgid "Train / Bus Schedules"
+msgstr "مواعيد القطارات / الحافلات"
+
+#: .\templates\news\widgets.html:43
+msgid "Daily Horoscope"
+msgstr "الأبراج اليومية"
+
+#: .\templates\news\widgets.html:58
+msgid "Ahadith &amp; Aayat"
+msgstr "أحاديث وآيات"
+
+#: .\templates\partials\_comment.html:7
+msgid "Reply"
+msgstr "رد"
+
+#: .\templates\partials\_currency_widget.html:5
+msgid "Amount"
+msgstr "المبلغ"
+
+#: .\templates\partials\_currency_widget.html:7
+msgid "From"
+msgstr "من"
+
+#: .\templates\partials\_currency_widget.html:12
+msgid "To"
+msgstr "إلى"
+
+#: .\templates\partials\_currency_widget.html:20
+msgid "Reference rates"
+msgstr "أسعار مرجعية"
+
+#: .\templates\partials\_footer.html:6
+msgid ""
+"Independent journalism for a global perspective. Providing rigorous analysis "
+"and comprehensive coverage of the events shaping our world."
+msgstr ""
+"صحافة مستقلة برؤية عالمية. نقدم تحليلاً دقيقًا وتغطية شاملة للأحداث التي تشكل "
+"عالمنا."
+
+#: .\templates\partials\_footer.html:9
+msgid "Company"
+msgstr "الشركة"
+
+#: .\templates\partials\_footer.html:10
+msgid "About Us"
+msgstr "من نحن"
+
+#: .\templates\partials\_footer.html:11
+msgid "Contact"
+msgstr "اتصل بنا"
+
+#: .\templates\partials\_footer.html:17
+msgid "Legal"
+msgstr "قانوني"
+
+#: .\templates\partials\_footer.html:20
+msgid "Copyright & IP"
+msgstr "حقوق النشر والملكية الفكرية"
+
+#: .\templates\partials\_footer.html:21
+msgid "RSS Feed"
+msgstr "خلاصة RSS"
+
+#: .\templates\partials\_footer.html:24 .\templates\partials\_masthead.html:42
+msgid "Subscribe"
+msgstr "اشترك"
+
+#: .\templates\partials\_footer.html:25
+msgid "Get the daily briefing delivered to your inbox."
+msgstr "احصل على الموجز اليومي في بريدك الإلكتروني."
+
+#: .\templates\partials\_footer.html:27
+msgid "Email address"
+msgstr "البريد الإلكتروني"
+
+#: .\templates\partials\_footer.html:28
+msgid "Send"
+msgstr "إرسال"
+
+#: .\templates\partials\_footer.html:33
+msgid "All rights reserved."
+msgstr "جميع الحقوق محفوظة."
+
+#: .\templates\partials\_footer.html:34
+msgid "A demo build — editorial standard reference."
+msgstr "نسخة تجريبية — مرجع للمعيار التحريري."
+
+#: .\templates\partials\_live_tv_widget.html:5
+msgid "Play live broadcast"
+msgstr "تشغيل البث المباشر"
+
+#: .\templates\partials\_masthead.html:28
+msgid "Write"
+msgstr "اكتب"
+
+#: .\templates\partials\_masthead.html:39
+msgid "Sign Up"
+msgstr "التسجيل"
+
+#: .\templates\partials\_masthead.html:51
+msgid "Home"
+msgstr "الرئيسية"
+
+#: .\templates\partials\_search_overlay.html:7
+msgid "Search stories, topics, authors…"
+msgstr "ابحث عن القصص، المواضيع، الكتّاب…"
+
+#: .\templates\partials\_sidebar_widgets.html:9
+msgid "All streams"
+msgstr "جميع البثوث"
+
+#: .\templates\partials\_sidebar_widgets.html:18
+msgid "Markets & Currency"
+msgstr "الأسواق والعملات"
+
+#: .\templates\partials\_sidebar_widgets.html:35
+msgid "Daily Perspective"
+msgstr "رؤية اليوم"
+
+#: .\templates\partials\_ticker.html:10
+msgid "Breaking News"
+msgstr "أخبار عاجلة"
+
+#~ msgid "Editor's Picks"
+#~ msgstr "اختيارات المحرر"
+
+#~ msgid "Trending Analysis"
+#~ msgstr "تحليل رائج"

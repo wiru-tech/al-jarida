@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+db.sqlite3
+/staticfiles/
+/media/
+.venv/
+# Bundled virtualenvs — these were committed by accident and make
+# `compilemessages` walk thousands of vendored .po files.
+venv/
+myenv/

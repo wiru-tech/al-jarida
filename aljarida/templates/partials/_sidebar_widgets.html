@@ -1,0 +1,70 @@
+{% load i18n i18n_extras %}
+{% comment %}
+Homepage "At a glance" strip. Each side is its own vertical stack (not a
+shared grid row) so a short widget never leaves dead space under itself
+just because its row-mate is taller.
+
+There is deliberately no "Most Read" widget here any more. The Trending /
+Breaking News rail beside the hero is now ranked by view_count — i.e. it
+IS the most-read list — so the two rendered the same three or four
+headlines within one screen of each other, and the strip ran ~150px
+taller for no added information. Most Read still appears on the article
+and category pages, which have no trending rail of their own.
+{% endcomment %}
+
+<div class="widgets-col">
+  <!-- Live TV -->
+  {% if sidebar_live_tv %}
+  <div class="widget">
+    <div class="widget__title">
+      <span class="live-dot"></span>{% trans "Live TV" %}
+      <a href="{% url 'news:live_tv' %}" class="link-cta">{% trans "All streams" %}</a>
+    </div>
+    {% include "partials/_live_tv_widget.html" with w=sidebar_live_tv %}
+  </div>
+  {% endif %}
+</div>
+
+<div class="widgets-col">
+  {% comment %}
+  Markets — horizontal strip instead of stacked rows.
+
+  Four full-width .market-row entries ran ~140px tall and, in a column
+  this wide, pushed each pair label and its figure to opposite edges
+  with a void between them. One flex row of chips is ~46px and keeps
+  every label directly above its own number.
+
+  .i18n-ltr is kept on every numeric span: these figures must not be
+  bidi-reordered when the page is flowed RTL for Urdu/Arabic.
+  {% endcomment %}
+  {% if sidebar_markets %}
+  <div class="widget">
+    <div class="widget__title">{% trans "Markets & Currency" %}</div>
+    <div class="market-strip">
+      {% for m in sidebar_markets|slice:":4" %}
+      <div class="market-chip">
+        <span class="pair i18n-ltr">{{ m.pair }}</span>
+        <span class="rate i18n-ltr">{{ m.rate }}</span>
+        <span class="chg {{ m.direction }} i18n-ltr">
+          <span class="material-symbols-outlined">{% if m.direction == 'up' %}arrow_upward{% elif m.direction == 'down' %}arrow_downward{% else %}horizontal_rule{% endif %}</span>
+          {{ m.change_pct }}%
+        </span>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- Daily perspective — moved here from the left column when Most Read
+       was removed, so the two stacks stay roughly level instead of
+       leaving the right-hand one a lone 46px strip beside a 250px
+       video frame. -->
+  {% if sidebar_quote %}
+  <div class="widget">
+    <div class="widget__title">{% trans "Daily Perspective" %}</div>
+    <blockquote class="quote-block" lang="{{ sidebar_quote|content_lang:"body,subtitle" }}">"{{ sidebar_quote.body }}"
+      <cite>— {{ sidebar_quote.subtitle }}</cite>
+    </blockquote>
+  </div>
+  {% endif %}
+</div>

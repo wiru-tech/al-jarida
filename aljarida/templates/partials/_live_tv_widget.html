@@ -1,0 +1,9 @@
+{% load i18n i18n_extras %}
+{# Reusable live-stream player card. Vars: w (WidgetData, kind=LIVE_TV). #}
+<div class="live-tv" data-live-tv data-stream="{{ w.meta.stream|default:'' }}">
+  {% if w.meta.thumb %}<img src="{{ w.meta.thumb }}" alt="{{ w.title }}">{% endif %}
+  <button type="button" class="live-tv__play" aria-label="{% trans 'Play live broadcast' %}" data-live-tv-play>
+    <span class="material-symbols-outlined icon-fill">play_arrow</span>
+  </button>
+  <div class="live-tv__label" lang="{{ w|content_lang:"title" }}">{{ w.title }}</div>
+</div>

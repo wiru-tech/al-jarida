@@ -1,0 +1,14 @@
+{% load i18n i18n_extras %}
+{# A single top-level comment plus its approved replies. Var: c (Comment). #}
+<div class="comment" lang="en">
+  <div class="meta"><b class="i18n-ltr">{{ c.name }}</b> <span>· {{ c.created_at|smart_timesince }} {% trans "ago" %}</span></div>
+  <p>{{ c.body }}</p>
+  <button class="link-cta" style="background:none;border:none;cursor:pointer"
+          data-reply="{{ c.id }}">{% trans "Reply" %}</button>
+  {% for r in c.replies.all %}{% if r.is_approved %}
+  <div class="reply" lang="en">
+    <div class="meta"><b class="i18n-ltr">{{ r.name }}</b> <span>· {{ r.created_at|smart_timesince }} {% trans "ago" %}</span></div>
+    <p>{{ r.body }}</p>
+  </div>
+  {% endif %}{% endfor %}
+</div>

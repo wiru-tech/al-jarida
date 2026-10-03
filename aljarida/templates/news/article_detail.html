@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+{% load i18n i18n_extras %}
+{% block title %}{{ article.title }} — Al-Jarida{% endblock %}
+{% block meta_desc %}{{ article.excerpt }}{% endblock %}
+{% block content %}
+<div class="wrap article-wrap">
+
+  <!-- MAIN -->
+  <article>
+    <header class="article-head" lang="{{ article|content_lang }}">
+      <span class="article-badge">{{ article.category.name }}</span>
+      <span class="muted" style="font-size:13px;margin-inline-start:.6rem">
+        {% trans "Published" %} {{ article.publish_at|smart_timesince }} {% trans "ago" %}</span>
+      <h1>{{ article.title }}</h1>
+      <p class="article-standfirst">{{ article.excerpt }}</p>
+      {% if article.author %}
+      <div class="author-line">
+        {% if article.author.avatar %}<img src="{{ article.author.avatar.url }}" alt="">
+        {% else %}<div style="width:44px;height:44px;border-radius:50%;background:var(--surface-container-high)"></div>{% endif %}
+        <div>
+          <div class="n">{{ article.author.display_name }}</div>
+          <div class="r">{{ article.author.role }}</div>
+        </div>
+      </div>
+      {% endif %}
+    </header>
+
+    <!-- Share rail -->
+    {% include "partials/_share_rail.html" with a=article %}
+
+    {% if article.image_src %}
+    <figure class="article-figure" lang="{{ article|content_lang:"image_caption" }}">
+      <img src="{{ article.image_src }}" alt="{{ article.title }}">
+      {% if article.image_caption %}<figcaption>{{ article.image_caption }}</figcaption>{% endif %}
+    </figure>
+    {% endif %}
+
+    <div class="article-body" lang="{{ article|content_lang:"body" }}">
+      {{ article.body_html }}
+
+      {% if article.body_secondary %}
+      <div class="pullquote {% if article.secondary_language == 'ur' %}rtl-block{% elif article.secondary_language == 'ar' %}arabic-block{% endif %}">
+        {{ article.body_secondary }}
+      </div>
+      {% endif %}
+    </div>
+
+    <!-- Video embed / upload -->
+    {% if article.video_embed_url %}
+    <div style="aspect-ratio:16/9;margin:1.5rem 0">
+      <iframe src="{{ article.video_embed_url }}" style="width:100%;height:100%;border:0;border-radius:4px"
+              allowfullscreen loading="lazy"></iframe>
+    </div>
+    {% elif article.video_file %}
+    <div style="aspect-ratio:16/9;margin:1.5rem 0">
+      <video src="{{ article.video_file.url }}" style="width:100%;height:100%;border-radius:4px;background:#000"
+             controls preload="metadata"></video>
+    </div>
+    {% endif %}
+
+    <!-- Gallery -->
+    {% if article.gallery.all %}
+    <h2 class="serif" style="font-size:24px;margin:1.5rem 0 .5rem">{% trans "Gallery" %}</h2>
+    <div class="gallery">
+      {% for g in article.gallery.all %}
+      <figure><img src="{{ g.src }}" alt="{{ g.caption }}"></figure>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- ===== RELATED STORIES =====
+         Directly beneath the story it belongs to, as picture cards in the
+         same grid the homepage uses — not as a list of bare links in the
+         sidebar, where it sat below the fold and read as navigation
+         furniture rather than as "read this next". -->
+    {% if related %}
+    <section class="related" id="related">
+      <div class="band__head">
+        <h2>{% trans "Related Stories" %}</h2>
+        <a href="{{ article.category.get_absolute_url }}">{% trans "More in" %} {{ article.category.name }}
+          <span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span></a>
+      </div>
+      <div class="card-grid">
+        {% for a in related %}
+          {% include "partials/_article_card.html" with a=a show_kicker=True excerpt_words=14 %}
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    <!-- ===== DISCUSSION ===== -->
+    <section class="discussion" id="discussion">
+      <h3><span class="material-symbols-outlined">forum</span> {% trans "Discussion" %} (<span class="i18n-ltr">{{ comment_count }}</span>)</h3>
+
+      <form method="post" action="{% url 'news:post_comment' article.slug %}" data-comment-form>
+        {% csrf_token %}
+        {{ form.parent }}
+        {{ form.name }}
+        {{ form.email }}
+        {{ form.body }}
+        <button type="submit" class="btn btn--navy">{% trans "Post Comment" %}</button>
+      </form>
+
+      <div style="margin-top:1.5rem">
+        {% for c in comments %}
+          {% include "partials/_comment.html" with c=c %}
+        {% empty %}
+        <p class="muted">{% trans "Be the first to join the conversation." %}</p>
+        {% endfor %}
+      </div>
+    </section>
+  </article>
+
+  <!-- SIDEBAR
+       Trending only. "Related" used to sit under it as a second list of
+       bare links; it now renders as picture cards beneath the article
+       body above, which is where a reader looks for what to read next. -->
+  <aside>
+    <div class="tw">
+      <h3>{% trans "Trending Now" %}</h3>
+      {% for a in sidebar_most_read %}
+      <div class="item" lang="{{ a|content_lang }}">
+        <h4><a href="{{ a.get_absolute_url }}">{{ a.title }}</a></h4>
+        <div class="m">{{ a.category.name }} · {{ a.publish_at|smart_timesince }} {% trans "ago" %}</div>
+      </div>
+      {% endfor %}
+    </div>
+  </aside>
+
+</div>
+{% endblock %}

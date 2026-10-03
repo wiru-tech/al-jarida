@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Contact & Inquiries" %} — Al-Jarida{% endblock %}
+{% block content %}
+<div class="wrap">
+  <div class="page-head">
+    <h1>{% trans "Contact & Inquiries" %}</h1>
+    <p>{% trans "Reach the newsroom for feedback, press, or advertising." %}</p>
+  </div>
+
+  <div class="form-narrow">
+    <form method="post" novalidate>
+      {% csrf_token %}
+      {{ form.website }}
+      <label class="label-caps muted">{% trans "Name" %}</label>{{ form.name }}
+      <label class="label-caps muted">{% trans "Email" %}</label>{{ form.email }}
+      <label class="label-caps muted">{% trans "Department" %}</label>{{ form.department }}
+      <label class="label-caps muted">{% trans "Subject" %}</label>{{ form.subject }}
+      <label class="label-caps muted">{% trans "Message" %}</label>{{ form.message }}
+      {% if form.errors %}<div class="flash error">{% trans "Please correct the highlighted fields." %}</div>{% endif %}
+      <button type="submit" class="btn btn--solid" style="margin-top:.5rem">{% trans "Send Message" %}</button>
+    </form>
+
+    <div class="tool-card" style="margin-top:2.5rem">
+      <h3>{% trans "Currency Converter" %}</h3>
+      {% include "partials/_currency_widget.html" %}
+    </div>
+  </div>
+</div>
+{% endblock %}

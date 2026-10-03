@@ -1,0 +1,182 @@
+/* ============================================================
+   AL-JARIDA — RTL layout mirroring (Urdu / Arabic)
+
+   Most of the site mirrors for free: `direction` is an inherited CSS
+   property, so `<html dir="rtl">` (set per-request from the active
+   language in base.html) already flips the visual order of every
+   flex/grid layout in layout.css/components.css without any extra
+   rules here — masthead clusters, nav links, the home hero/trending/
+   sidebar grid, market rows, footer columns, etc. all swap sides
+   automatically. Spacing (col-divider, quote-block, pullquote,
+   comment .reply, live-tv__label, lang-switch__menu, .rk, figcaption)
+   is now written with CSS logical properties (margin-inline-start,
+   border-inline-start, inset-inline-start, text-align:start/end) in
+   layout.css/components.css/responsive.css directly, so it mirrors
+   automatically too — no `[dir="rtl"]` copy needed here anymore.
+
+   What's left here are the categories logical properties/`direction`
+   alone can't fix:
+   1. Typography — every rule in base/layout/components.css reaches
+      font-family through the --sans / --serif custom properties, so
+      redeclaring those two tokens here (scoped to <html lang="ur">
+      and lang="ar">) is enough to swap the *entire* site's chrome —
+      nav, headings, buttons, body copy — over to the embedded
+      Nastaliq/Amiri webfonts. No per-component overrides needed.
+   2. Line-height — Nastaliq (Urdu) is a tall, sloped calligraphic
+      script and Amiri (Arabic) runs taller than Latin text at the
+      same size; the line-heights tuned for Newsreader/Inter (1.08–
+      1.35 on headlines) make consecutive Urdu/Arabic lines collide.
+   3. The breaking-news ticker's marquee direction (a CSS animation,
+      doesn't participate in `direction` mirroring on its own).
+   4. Directional glyphs (forward arrows, reply arrows) that need a
+      horizontal flip so they still point toward "next" in RTL.
+   ============================================================ */
+
+html[lang="ur"]{
+  --sans: var(--urdu);
+  --serif: var(--urdu);
+}
+html[lang="ar"]{
+  --sans: var(--arabic);
+  --serif: var(--arabic);
+}
+
+/* Ticker: the marquee is a transform animation, which `direction`
+   does not mirror by itself. `padding-inline-start:100%` (layout.css)
+   already starts the track off past the correct edge in both
+   directions, but it still needs to travel toward the *other* logical
+   edge — i.e. run backwards — when the page is RTL. */
+[dir="rtl"] .ticker__track{animation-name:ticker-rtl}
+
+/* Ticker items are DB article titles (untranslated English) like the
+   "Database content" block below — pin the font back to Latin so they
+   don't render in the Nastaliq/Amiri faces. */
+html[lang="ur"] .ticker__track,html[lang="ar"] .ticker__track{
+  --sans: var(--sans-ltr);
+}
+
+/* Nastaliq/Amiri need noticeably more line-height than the Latin
+   defaults or ascenders/descenders and stacked diacritics overlap
+   the line above/below. Applied broadly via the inherited `body`
+   line-height plus the handful of components that set their own
+   tighter value; excludes the "Database content" block below, which
+   stays in English/Latin regardless of the active language. */
+html[lang="ur"] body,html[lang="ar"] body{line-height:2}
+html[lang="ur"] h1,html[lang="ur"] h2,html[lang="ur"] h3,html[lang="ur"] h4,
+html[lang="ar"] h1,html[lang="ar"] h2,html[lang="ar"] h3,html[lang="ar"] h4{
+  line-height:1.9;letter-spacing:0;
+}
+html[lang="ur"] .footer-cols p,html[lang="ar"] .footer-cols p{line-height:1.9}
+
+/* Mixed-content (English/number) fragments always render LTR even
+   inside RTL chrome — see the .i18n-ltr utility in base.css, which
+   sets direction:ltr directly on the element, so text-align:start
+   already resolves to "left" there without needing a [dir="rtl"]
+   override (start/end are relative to the element's OWN direction,
+   not the ancestor's). */
+
+/* ---- Database content that is still English -----------------------------
+   Editorial content (article titles/excerpts/bodies, category names,
+   WidgetData copy) is now translatable per-language in the database — see
+   news/translation.py. When an Urdu/Arabic column is filled it must flow
+   RTL in the Nastaliq/Amiri face like the rest of the page, so it is
+   deliberately NOT touched here.
+
+   But translations fall back to English when a column is left blank, so an
+   RTL page can still contain English prose. Left inheriting `direction:rtl`,
+   the bidi algorithm reorders trailing punctuation onto the wrong side of
+   the line (a sentence-final "." jumping in front of the last word), and the
+   calligraphic faces get applied to Latin text they were never drawn for —
+   which is what makes English headlines look "scrambled" under a non-English
+   UI language.
+
+   Templates therefore stamp each content block with the language it actually
+   resolved to (`lang="{{ obj|content_lang }}"`, see the content_lang filter
+   in news/templatetags/i18n_extras.py), and the single rule below catches
+   only the blocks that fell back. Because `direction` and the --serif/--sans
+   custom properties are inherited, one rule on the container covers every
+   nested <h3>/<p>/<a> without listing them — replacing the long per-selector
+   list this block used to carry.
+
+   text-align:right keeps the block anchored to the same side the mirrored
+   RTL grid already placed it on, while direction:ltr fixes word and
+   punctuation order within the line. */
+[dir="rtl"] [lang="en"]{
+  direction:ltr;text-align:right;
+  --serif: var(--serif-ltr);
+  --sans: var(--sans-ltr);
+}
+/* Media and controls inside a fallback block shouldn't inherit the reset. */
+[dir="rtl"] [lang="en"] img,
+[dir="rtl"] [lang="en"] .material-symbols-outlined{direction:initial}
+
+/* Flip directional "forward"/"reply" glyphs so they still point
+   toward reading-order "next" when the page is mirrored. */
+[dir="rtl"] .band__head a .material-symbols-outlined,
+[dir="rtl"] .link-cta .material-symbols-outlined,
+[dir="rtl"] .search-results-live .material-symbols-outlined{
+  transform:scaleX(-1);
+}
+
+/* ============================================================
+   FIX: line-clamp boxes vs. RTL line-height mismatch
+   The h1-h4 line-height bump above (1.9) is needed so Nastaliq/Amiri
+   diacritics don't overlap — but components.css sizes card/trending/
+   most-read text boxes with a FIXED height calculated against the
+   original Latin line-height (1.22-1.35em). When Urdu/Arabic renders
+   at 1.9 instead, two real lines no longer fit inside that fixed box,
+   so the second line gets clipped mid-word by overflow:hidden — the
+   "cut off" text — while the box itself still reserves its old,
+   now-mismatched height, which reads as extra blank space beneath it.
+   Each clamped heading/paragraph below gets its height recalculated
+   to match its *own* RTL line-height, so 2 real lines fit exactly
+   again, in both languages.
+   ============================================================ */
+html[lang="ur"] .card h3,html[lang="ar"] .card h3{
+  line-height:1.7;height:calc(1.7em * 2);
+}
+html[lang="ur"] .card p,html[lang="ar"] .card p{
+  line-height:1.85;height:calc(1.85em * 2);
+}
+html[lang="ur"] .hero-trending__list h3,html[lang="ar"] .hero-trending__list h3{
+  line-height:1.7;height:calc(1.7em * 2);
+}
+html[lang="ur"] .mostread-item h4,html[lang="ar"] .mostread-item h4{
+  line-height:1.7;height:calc(1.7em * 2);
+}
+html[lang="ur"] .tw .item h4,html[lang="ar"] .tw .item h4{
+  line-height:1.7;height:calc(1.7em * 2);
+}
+
+/* Hero headline isn't clamped in the Latin version (no fixed height), but
+   under RTL it needs to be both taller-lined AND capped:
+   - line-height: 1.4 was tried first to keep the hero card compact, but
+     Nastaliq's tall loops need more breathing room between baselines than
+     that — at 1.4 consecutive lines visually collide (a loop from one
+     line paints over the line above it), which reads as garbled/cut-off
+     text. 1.75 is the floor where that stops happening.
+   - clamp: an unbounded headline at the taller 1.75 line-height can
+     outgrow the fixed-height hero card on a long title, the same problem
+     the excerpt already solves with its own line-clamp. */
+html[lang="ur"] .hero__title,html[lang="ar"] .hero__title{
+  line-height:1.75;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;
+  overflow:hidden;
+}
+
+/* .hero__excerpt sets its own line-height:1.6 directly (components.css),
+   which wins over the h1-h4 bump above since it's not a heading — same
+   too-tight-for-Nastaliq collision as the hero title had. */
+html[lang="ur"] .hero__excerpt,html[lang="ar"] .hero__excerpt{
+  line-height:1.85;
+}
+
+/* A pull-quote in an Urdu/Arabic secondary-language block (article body's
+   .body_secondary field) carries BOTH .pullquote and .rtl-block/.arabic-block.
+   .rtl-block sets line-height:2.2 for exactly this script, but .pullquote
+   (components.css, loaded after base.css) sets line-height:1.4 at the same
+   specificity — same file order wins, so the pull-quote silently rendered
+   at the too-tight Latin value regardless of which UI language was active.
+   Two classes beats one regardless of source order, so this always wins. */
+.pullquote.rtl-block{line-height:2.2}
+.pullquote.arabic-block{line-height:1.85}

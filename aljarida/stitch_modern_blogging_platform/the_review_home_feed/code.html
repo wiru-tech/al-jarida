@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Blogging Platform - Home Feed</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-tint": "#515f77",
+                      "on-primary-fixed-variant": "#39475e",
+                      "inverse-surface": "#313030",
+                      "background": "#fcf9f8",
+                      "surface-container-lowest": "#ffffff",
+                      "outline": "#75777d",
+                      "outline-variant": "#c5c6cd",
+                      "on-primary": "#ffffff",
+                      "secondary-container": "#c8f17a",
+                      "error": "#ba1a1a",
+                      "on-secondary": "#ffffff",
+                      "secondary-fixed": "#c8f17a",
+                      "surface-container-low": "#f6f3f2",
+                      "on-primary-container": "#c8d6f2",
+                      "on-secondary-fixed": "#131f00",
+                      "tertiary": "#564220",
+                      "on-error-container": "#93000a",
+                      "inverse-primary": "#b9c7e3",
+                      "on-surface-variant": "#44474d",
+                      "surface-container-highest": "#e5e2e1",
+                      "surface": "#fcf9f8",
+                      "on-error": "#ffffff",
+                      "tertiary-fixed-dim": "#e1c296",
+                      "surface-dim": "#dcd9d9",
+                      "secondary-fixed-dim": "#add461",
+                      "on-background": "#1c1b1b",
+                      "on-tertiary-container": "#f1d1a4",
+                      "on-tertiary-fixed-variant": "#584321",
+                      "on-secondary-fixed-variant": "#364e00",
+                      "inverse-on-surface": "#f3f0ef",
+                      "on-surface": "#1c1b1b",
+                      "on-tertiary-fixed": "#281900",
+                      "secondary": "#496800",
+                      "primary-container": "#4f5d75",
+                      "on-secondary-container": "#4e6e00",
+                      "surface-bright": "#fcf9f8",
+                      "surface-container-high": "#eae7e7",
+                      "on-tertiary": "#ffffff",
+                      "primary": "#37455c",
+                      "tertiary-container": "#705935",
+                      "surface-container": "#f0eded",
+                      "primary-fixed-dim": "#b9c7e3",
+                      "on-primary-fixed": "#0d1c31",
+                      "surface-variant": "#e5e2e1",
+                      "tertiary-fixed": "#fedeb0",
+                      "error-container": "#ffdad6",
+                      "primary-fixed": "#d5e3ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "gutter": "16px",
+                      "stack-md": "24px",
+                      "stack-sm": "12px",
+                      "stack-lg": "48px",
+                      "section-padding": "64px",
+                      "container-margin": "20px",
+                      "base": "8px"
+              },
+              "fontFamily": {
+                      "display-lg-mobile": [
+                              "Playfair Display"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "headline-sm": [
+                              "Playfair Display"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "headline-md-mobile": [
+                              "Playfair Display"
+                      ],
+                      "headline-md": [
+                              "Playfair Display"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "Playfair Display"
+                      ]
+              },
+              "fontSize": {
+                      "display-lg-mobile": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-sm": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "26px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-md-mobile": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-md": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "30px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+            }
+          }
+        }
+      </script>
+<style>
+          .scrollbar-hide::-webkit-scrollbar {
+              display: none;
+          }
+          .scrollbar-hide {
+              -ms-overflow-style: none;
+              scrollbar-width: none;
+          }
+          .glass-card {
+              background: rgba(255, 255, 255, 0.7);
+              backdrop-filter: blur(10px);
+              -webkit-backdrop-filter: blur(10px);
+              border: 1px solid rgba(255, 255, 255, 0.18);
+          }
+          .shimmer {
+              background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+              background-size: 200% 100%;
+              animation: shimmer 2s infinite;
+          }
+          @keyframes shimmer {
+              0% { background-position: -200% 0; }
+              100% { background-position: 200% 0; }
+          }
+      </style>
+</head>
+<body class="bg-background text-on-background antialiased md:flex md:flex-row min-h-screen">
+<!-- TopAppBar (Mobile) & Top Bar (Desktop) -->
+<header class="w-full sticky top-0 z-50 bg-background dark:bg-on-background md:hidden">
+<div class="flex justify-between items-center px-container-margin h-16 w-full">
+<button aria-label="Open Menu" class="text-primary dark:text-primary-fixed hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="font-display-lg-mobile text-display-lg-mobile italic text-primary dark:text-primary-fixed">The Review</h1>
+<div class="w-8 h-8 rounded-full overflow-hidden border-2 border-surface-container-highest cursor-pointer hover:opacity-80 transition-opacity">
+<img alt="User profile picture" class="object-cover w-full h-full" data-alt="A close-up, highly detailed portrait of a sophisticated author with a thoughtful expression. Soft, natural lighting highlighting facial features. Minimalist, high-end editorial photography style with a muted, professional color palette emphasizing indigo and charcoal tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDNQfBORqFHsFx82SLsmlaHwy0XBdrbvYsIhC6_xkgDblOZeds8ZXVm-h2katQMxyYVkutClG1S6gq4o5BLG_3MK_4N8EbUtD51cME3ejwKumrGadApz3d2eZrohvwghChcwhZ-Mmlpg_Cs3TPxmPTTxjEBzJn1w_xGofl45tjAemWrNrcz0ybpVnPSKcFiCqVufFJCPZc4NjSAMB3eSr8ZAdVuLfqXG6Wj9VKz1sk-o48zrfAYOjc"/>
+</div>
+</div>
+</header>
+<!-- NavigationDrawer (Desktop Only) -->
+<nav class="hidden md:flex flex-col h-full w-80 fixed left-0 top-0 z-[60] bg-surface-container-low dark:bg-surface-container-lowest shadow-lg dark:shadow-none py-base">
+<div class="px-container-margin mb-stack-md mt-stack-md flex items-center justify-between">
+<h1 class="font-display-lg text-display-lg italic text-primary">The Review</h1>
+</div>
+<div class="px-container-margin mb-stack-lg flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-surface-container-highest">
+<img alt="Author profile picture" class="object-cover w-full h-full" data-alt="A close-up, highly detailed portrait of a sophisticated author with a thoughtful expression. Soft, natural lighting highlighting facial features. Minimalist, high-end editorial photography style with a muted, professional color palette emphasizing indigo and charcoal tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2YtgwoPwyO-EFZAHQcGE37cAEPexei6FKFSPe2NtL3cMDtaKnX7rmrKF3cm6dLLeKGWy7WamlFUyzMB2PNYY5ULRjMJ93VaAdk-s_oNTsakHyDXzQZ4ybfEqS6tVHIb2FKLJXKbhqoXhYGGRdC_hzylR0SEAUSFpaYaVpx0kKTRbgwNWBm3MJ1AWs9Ake3SuAv6AHLzyetHAfNWQafQ8nYreD04pHCKRRu-DHoXFoBWS3bGCqe4ms"/>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Editorial Feed</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Curated for you</p>
+</div>
+</div>
+<ul class="flex flex-col gap-2 font-body-md text-body-md">
+<li>
+<a class="flex items-center gap-4 bg-secondary-container text-on-secondary-container rounded-full mx-2 px-4 py-3 scale-[0.98] transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="article">article</span>
+                    Latest Articles
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-4 text-on-surface-variant hover:bg-surface-container-highest rounded-full mx-2 px-4 py-3 hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="star">star</span>
+                    Featured Stories
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-4 text-on-surface-variant hover:bg-surface-container-highest rounded-full mx-2 px-4 py-3 hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="auto_stories">auto_stories</span>
+                    Collections
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-4 text-on-surface-variant hover:bg-surface-container-highest rounded-full mx-2 px-4 py-3 hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="bookmark">bookmark</span>
+                    Bookmarks
+                </a>
+</li>
+</ul>
+<div class="mt-auto mb-stack-md">
+<a class="flex items-center gap-4 text-on-surface-variant hover:bg-surface-container-highest rounded-full mx-2 px-4 py-3 hover:bg-surface-container-high transition-colors font-body-md text-body-md" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+                Settings
+            </a>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 pb-24 md:pb-8 md:ml-80 max-w-[1140px] mx-auto w-full pt-4 md:pt-12">
+<!-- Trending Section -->
+<section class="mb-stack-lg px-container-margin">
+<div class="flex justify-between items-end mb-stack-sm">
+<h2 class="font-headline-md-mobile md:font-headline-md text-headline-md-mobile md:text-headline-md text-on-surface">Trending Perspectives</h2>
+<a class="font-label-sm text-label-sm text-primary hover:underline" href="#">View All</a>
+</div>
+<div class="flex overflow-x-auto gap-gutter pb-4 scrollbar-hide -mx-container-margin px-container-margin md:mx-0 md:px-0 md:grid md:grid-cols-2">
+<!-- Trending Card 1 -->
+<article class="min-w-[280px] md:min-w-0 md:w-full relative rounded-xl overflow-hidden shadow-[0px_4px_20px_rgba(0,0,0,0.04)] group cursor-pointer h-72 md:h-96 shrink-0 transition-transform duration-300 hover:-translate-y-1">
+<div class="absolute inset-0 bg-cover bg-center w-full h-full group-hover:scale-105 transition-transform duration-700" data-alt="A striking, abstract architectural photography shot featuring sharp lines and stark shadows on a brutalist concrete building. High-key, soft white lighting creates a bright, modern minimalist aesthetic. The color palette emphasizes deep blacks, pristine whites, and subtle grey tones. Serene and highly structured." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAyy0zsAOClv9mwTsUvuY-OzyKA-n0LdRQm40ca3paJBlqhAI2rfsiqCIWhZZf2V87keeOvvJMWkD-uRkvOWFDThRFWJMqoQX1PMpf1DgKEi5Qt7lmJxNxZgDB4GQrR3C26T5st4TQmUfAkIVFL6yeoelY3LqYV-cdOEDz5m_RtgZNB5bA-5XMmuSvL6hCr8eNqq3u3iEuoGP7GC7MESBh472Xht76CY6-Q0JCvVFx6qQNnlDUHE9-t')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+<div class="absolute bottom-0 left-0 right-0 p-stack-md text-on-primary">
+<span class="inline-block bg-surface-tint text-on-primary font-label-sm text-label-sm px-2 py-1 rounded mb-2 uppercase tracking-wider text-[10px]">Architecture</span>
+<h3 class="font-headline-sm text-headline-sm mb-2 leading-tight">The Brutalist Revival: Concrete Poetry in Modern Cities</h3>
+<div class="flex items-center gap-2 font-label-sm text-label-sm opacity-90">
+<span>Elena Rostova</span>
+<span class="w-1 h-1 rounded-full bg-on-primary"></span>
+<span>8 min read</span>
+</div>
+</div>
+</article>
+<!-- Trending Card 2 -->
+<article class="min-w-[280px] md:min-w-0 md:w-full relative rounded-xl overflow-hidden shadow-[0px_4px_20px_rgba(0,0,0,0.04)] group cursor-pointer h-72 md:h-96 shrink-0 transition-transform duration-300 hover:-translate-y-1">
+<div class="absolute inset-0 bg-cover bg-center w-full h-full group-hover:scale-105 transition-transform duration-700" data-alt="A minimalist flat-lay composition on a pristine white desk. Features a sleek metallic fountain pen, a textured charcoal notebook, and a small ceramic cup of black coffee. Crisp, soft daylight casts gentle shadows. High-end editorial style, intellectual and calm, with a palette of whites, blacks, and subtle warm browns." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBTWc98b4RNbv_ZY4H56rOKpYhfa4ToHqwuFSAJCC38Aow5SyUzJ46K453_lqjxLrXkFrE-JcgFJSicM6px0xLmIH5tUUh-5BbUUe7xTH1YVi3OBKlPpZYxrn2eTgOQYQ042EhIk1PiNYEFvxOtW2nLI2Hq_8T7hRHxDCMEwcKRcvCOkCcXMD2-qYOZ-JISNA9is9PAcEFzJ6c3sfoNAZT2Zv4HyFfdQtIW_JIvhnXHta4jS48o_GF-')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+<div class="absolute bottom-0 left-0 right-0 p-stack-md text-on-primary">
+<span class="inline-block bg-surface-tint text-on-primary font-label-sm text-label-sm px-2 py-1 rounded mb-2 uppercase tracking-wider text-[10px]">Culture</span>
+<h3 class="font-headline-sm text-headline-sm mb-2 leading-tight">The Art of Slow Living in a Hyper-Connected Era</h3>
+<div class="flex items-center gap-2 font-label-sm text-label-sm opacity-90">
+<span>Julian Vance</span>
+<span class="w-1 h-1 rounded-full bg-on-primary"></span>
+<span>12 min read</span>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- Latest Articles Section -->
+<section class="px-container-margin md:px-0 md:max-w-[760px] md:mx-auto">
+<div class="flex justify-between items-end mb-stack-md border-b border-surface-container-highest pb-2">
+<h2 class="font-headline-md-mobile md:font-headline-md text-headline-md-mobile md:text-headline-md text-on-surface">Latest Dispatches</h2>
+</div>
+<div class="flex flex-col gap-stack-md">
+<!-- Article Card 1 -->
+<article class="group flex flex-col md:flex-row gap-gutter md:gap-stack-md items-start cursor-pointer transition-colors duration-200 hover:bg-surface-container-lowest p-2 -mx-2 rounded-lg">
+<div class="w-full md:w-[240px] aspect-video md:aspect-square shrink-0 rounded-lg overflow-hidden relative">
+<img alt="Watch mechanism thumbnail" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" data-alt="A macro shot of a complex vintage watch mechanism. Intricate brass gears, ruby bearings, and delicate steel springs are in sharp focus against a blurred dark background. Lighting is soft and directional, creating a sense of precision and timelessness. High-contrast, sophisticated aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUHP0zzWj42zfWJIiLJT7BvVVUxyRca4d_H46g5F_vYxhrKZGZPT2y-02o2H-8ZIPlB3jv7jHHJi7fpWT9oZ5wjzlCwQ8d8dAXskFpwDSfXf47csS21rCk8Dr5ac9gzSeELRQvHvuYAQR1tSKxHtbGWAm8_J3h_J8mYD8aOq6P2gW348w-OBj9M7RLL93AHlOwLUZD22d8qiqv6ZbDRS4zr4szgsnC1XTX5BZHx4gYPyaSd6x2urBr"/>
+</div>
+<div class="flex-1 flex flex-col pt-1">
+<div class="flex gap-2 mb-2">
+<span class="bg-[#F1F3F5] text-on-surface-variant font-label-sm text-label-sm px-2 py-0.5 rounded uppercase tracking-wider text-[10px]">Technology</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-2 group-hover:text-primary transition-colors">The Illusion of Time: Mechanical Precision in the Digital Age</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4 line-clamp-2 md:line-clamp-3">
+                            As smartwatches dominate wrists, a resurgence of appreciation for mechanical horology emerges among the technocratic elite. We explore the enduring appeal of gears over silicon.
+                        </p>
+<div class="mt-auto flex items-center justify-between w-full">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-container-highest overflow-hidden">
+<img alt="Author avatar" class="w-full h-full object-cover" data-alt="Small avatar portrait of a mature male writer with glasses, looking thoughtful in soft studio lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBU-nu8lM1QJa5V_1MC0hx9fC-is2AI0gQ_YVJlN8oCzKT1w0ORGwsCNuWsPlhK2C554kQ60qpBnpghpHVBYAbChNaPCTO0hi4BdpK2v-hOP03JIPyYNskdxtbVKbCypeo20VaDD_KTPXF82HmhbN7VVTMpSJGAN3CC0SkRqIo6JYVMWKQ2yYmG7xhl44uMXNm9WdMn_qAS4cfik0U0Brcm6k5wu9OM969RNlIsn0bSGSQqAZStBK8s"/>
+</div>
+<span class="font-label-md text-label-md text-on-surface">Dr. Silas Thorne</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">6 min read</span>
+</div>
+</div>
+</article>
+<!-- Article Card 2 -->
+<article class="group flex flex-col md:flex-row gap-gutter md:gap-stack-md items-start cursor-pointer transition-colors duration-200 hover:bg-surface-container-lowest p-2 -mx-2 rounded-lg">
+<div class="w-full md:w-[240px] aspect-video md:aspect-square shrink-0 rounded-lg overflow-hidden relative">
+<img alt="Cabin in snow thumbnail" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" data-alt="A serene landscape featuring a minimalist, solitary wooden cabin in a snowy, expansive forest at dusk. The sky is a deep, moody indigo. Soft, warm light spills from the cabin window. The mood is solitary, reflective, and calm. High-end landscape photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuALji-BSR8y2gdUgTvLrKtztR-FOYFw84JWa2jpojlXVZGCLzdO36CLXqGhPl3-rCJ0aVn92VUMx1qOdNZw5Wbo7ANmMFmusI2d-lkH6NJF1d-0avsWnh0yJ4GmIIMTbrwpjHxAaAAlqpXp5XSYCWIuLuxAHuey775M47z7ZuqQ9fp_Tox6EzJQkOGTNeBPW41g1ObAkBwifa_iZq57uhLCJrhAQNJht_JKRQk7CQyDMgEnuGlSHRKZ"/>
+</div>
+<div class="flex-1 flex flex-col pt-1">
+<div class="flex gap-2 mb-2">
+<span class="bg-[#F1F3F5] text-on-surface-variant font-label-sm text-label-sm px-2 py-0.5 rounded uppercase tracking-wider text-[10px]">Environment</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-2 group-hover:text-primary transition-colors">Silence is a Resource: Finding Solitude in the Anthropocene</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4 line-clamp-2 md:line-clamp-3">
+                            True silence is becoming extinct. In a world defined by constant acoustic intrusion, the quest for quiet spaces is transitioning from a luxury to a psychological necessity.
+                        </p>
+<div class="mt-auto flex items-center justify-between w-full">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-container-highest overflow-hidden">
+<img alt="Author avatar" class="w-full h-full object-cover" data-alt="Small avatar portrait of a young female environmentalist, natural outdoor lighting, serious expression." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDLUU5pAWajMsRTFR7gbh-rOlrGeP_yq9o6vTACoZUcIVK8XtgIvt9R_dGxNw6rYhSNvXr3ZeX01718gb5Xbih0H35f5tynw-edBuENd2YH07aQD7s_n37sqoe0PhYZ_4j7hAWNiuuBJDRDgDG3nlvcAzARD44csNjsgHPyIw7du7DFyttNpMpqQ97AZeDDvHegMRwkhnoJjWZwOraq0U4NNQc7pdNxUvY1M8oOYtnlwwjSNmgVGJ_"/>
+</div>
+<span class="font-label-md text-label-md text-on-surface">Clara Lin</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">10 min read</span>
+</div>
+</div>
+</article>
+<!-- Article Card 3 -->
+<article class="group flex flex-col md:flex-row gap-gutter md:gap-stack-md items-start cursor-pointer transition-colors duration-200 hover:bg-surface-container-lowest p-2 -mx-2 rounded-lg">
+<div class="w-full md:w-[240px] aspect-video md:aspect-square shrink-0 rounded-lg overflow-hidden relative">
+<img alt="Vinyl record thumbnail" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" data-alt="A stylized, close-up shot of a pristine vinyl record on a high-end turntable. The grooves are sharply defined. Dramatic, moody lighting with deep blacks and a subtle sheen on the vinyl. Sophisticated, audiophile aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2fKu3oTjqBr75YX_PojtZmDN8RFrbBDOdH2is2-g8Mqeou4J_iCHlxwkjLZLlEF2_kJwOrjeeXEUeHTinzl-KIdiEc4Re9FMn4udFqqVBFiJnck3HY87roRAnCwLAqENm6Hr3abKFXYd29usBJwCjnC3ba5RNHye-nfQ2397y6h_SAayFUWIeo1Z6xzWf0Bjb-KlTlgTT5QZPE9c_hf38za7cbZSRplNN1LaKDmFa54x8_GW0_jHy"/>
+</div>
+<div class="flex-1 flex flex-col pt-1">
+<div class="flex gap-2 mb-2">
+<span class="bg-[#F1F3F5] text-on-surface-variant font-label-sm text-label-sm px-2 py-0.5 rounded uppercase tracking-wider text-[10px]">Music</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-2 group-hover:text-primary transition-colors">The Analog Ghost: Why Vinyl Defies the Streaming Algorithm</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4 line-clamp-2 md:line-clamp-3">
+                            In an era of infinite, frictionless access to music, the tactile friction of the LP offers a ritualistic listening experience that algorithms simply cannot replicate.
+                        </p>
+<div class="mt-auto flex items-center justify-between w-full">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-container-highest overflow-hidden">
+<img alt="Author avatar" class="w-full h-full object-cover" data-alt="Small avatar portrait of a male music critic in a dimly lit studio setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoi4_HtFzRPEeHCoePraOyk043g5UqoTXlcvP_KGn6miigR1fRb6CKRz98mkzYmNSEWx4qywoS2Ax2CUEk-EU37oQaJBmdyn6Ly7Y1RmJicZTMwMUpQEiFm2BGLadsYXooF5fcXVokhfSOWvA4Mq3D9ilsgKC4twz4qRF6DTJKPw2RIFrIvB0U3ISjxm6LYtONe0UyVscOjsmJ9yb9w7YHYN76qlBMmzY7ATdcS8jEaZhilh-tbk3n"/>
+</div>
+<span class="font-label-md text-label-md text-on-surface">Marcus Reed</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">8 min read</span>
+</div>
+</div>
+</article>
+</div>
+<div class="mt-stack-lg flex justify-center pb-stack-lg">
+<button class="px-8 py-3 border border-outline hover:border-primary text-on-surface hover:text-primary font-label-md text-label-md rounded-lg transition-colors duration-300">
+                    Load More Articles
+                </button>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center bg-surface dark:bg-surface-dim py-2 pb-safe border-t border-outline-variant dark:border-outline md:hidden shadow-[0_-4px_20px_rgba(0,0,0,0.04)]">
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-sm text-label-sm mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="trending_up">trending_up</span>
+<span class="font-label-sm text-label-sm mt-1">Trending</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="add_box">add_box</span>
+<span class="font-label-sm text-label-sm mt-1">Create</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm mt-1">Profile</span>
+</a>
+</nav>
+</body></html>

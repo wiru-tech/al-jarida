@@ -1,0 +1,36 @@
+{% load i18n %}
+<footer class="site-footer">
+  <div class="wrap footer-cols">
+    <div>
+      <div class="fbrand">AL-JARIDA</div>
+      <p>{% trans "Independent journalism for a global perspective. Providing rigorous analysis and comprehensive coverage of the events shaping our world." %}</p>
+    </div>
+    <div>
+      <h4>{% trans "Company" %}</h4>
+      <a href="{% url 'news:directory' %}">{% trans "About Us" %}</a>
+      <a href="{% url 'news:contact' %}">{% trans "Contact" %}</a>
+      <a href="{% url 'news:directory' %}">{% trans "Directory" %}</a>
+      <a href="{% url 'news:live_tv' %}">{% trans "Live TV" %}</a>
+      <a href="{% url 'news:widgets' %}">{% trans "Utility Widgets" %}</a>
+    </div>
+    <div>
+      <h4>{% trans "Legal" %}</h4>
+      <a href="{% url 'news:legal' 'terms' %}">{% trans "Terms of Use" %}</a>
+      <a href="{% url 'news:legal' 'privacy' %}">{% trans "Privacy Policy" %}</a>
+      <a href="{% url 'news:legal' 'copyright' %}">{% trans "Copyright & IP" %}</a>
+      <a href="{% url 'news:rss' %}">{% trans "RSS Feed" %}</a>
+    </div>
+    <div>
+      <h4>{% trans "Subscribe" %}</h4>
+      <p>{% trans "Get the daily briefing delivered to your inbox." %}</p>
+      <form class="foot-sub" action="{% url 'news:contact' %}" method="get">
+        <input type="email" placeholder="{% trans 'Email address' %}">
+        <button class="btn btn--solid">{% trans "Send" %}</button>
+      </form>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span><span class="i18n-ltr">© {% now "Y" %} Al-Jarida Media Group.</span> {% trans "All rights reserved." %}</span>
+    <span>{% trans "A demo build — editorial standard reference." %}</span>
+  </div>
+</footer>

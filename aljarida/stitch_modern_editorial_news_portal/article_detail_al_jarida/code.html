@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+
+<html dir="ltr" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Article Detail - Al-Jarida Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&amp;family=Inter:wght@400;600;700&amp;family=Newsreader:wght@400;600;700&amp;family=Noto+Nastaliq+Urdu:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "surface-container-high": "#e6e8ea",
+                  "secondary": "#b41d11",
+                  "surface-container-highest": "#e0e3e5",
+                  "outline-variant": "#c6c6cd",
+                  "on-background": "#191c1e",
+                  "primary-fixed-dim": "#bec6e0",
+                  "on-primary-fixed": "#131b2e",
+                  "on-tertiary-fixed-variant": "#3c475a",
+                  "primary-fixed": "#dae2fd",
+                  "on-tertiary-container": "#79849a",
+                  "tertiary": "#000000",
+                  "on-error-container": "#93000a",
+                  "on-secondary-fixed-variant": "#930000",
+                  "surface-bright": "#f7f9fb",
+                  "on-tertiary": "#ffffff",
+                  "on-secondary-fixed": "#410000",
+                  "error": "#ba1a1a",
+                  "error-container": "#ffdad6",
+                  "tertiary-fixed-dim": "#bcc7de",
+                  "on-secondary": "#ffffff",
+                  "on-primary": "#ffffff",
+                  "primary": "#000000",
+                  "surface-container-low": "#f2f4f6",
+                  "outline": "#76777d",
+                  "on-tertiary-fixed": "#111c2d",
+                  "inverse-primary": "#bec6e0",
+                  "tertiary-container": "#111c2d",
+                  "on-surface": "#191c1e",
+                  "on-primary-fixed-variant": "#3f465c",
+                  "surface": "#f7f9fb",
+                  "on-surface-variant": "#45464d",
+                  "surface-container": "#eceef0",
+                  "primary-container": "#131b2e",
+                  "secondary-fixed": "#ffdad4",
+                  "secondary-fixed-dim": "#ffb4a8",
+                  "inverse-surface": "#2d3133",
+                  "inverse-on-surface": "#eff1f3",
+                  "secondary-container": "#d83828",
+                  "surface-dim": "#d8dadc",
+                  "surface-container-lowest": "#ffffff",
+                  "surface-variant": "#e0e3e5",
+                  "on-error": "#ffffff",
+                  "background": "#f7f9fb",
+                  "on-secondary-container": "#fffbff",
+                  "tertiary-fixed": "#d8e3fb",
+                  "on-primary-container": "#7c839b",
+                  "surface-tint": "#565e74"
+          },
+          "borderRadius": {
+                  "DEFAULT": "0.125rem",
+                  "lg": "0.25rem",
+                  "xl": "0.5rem",
+                  "full": "0.75rem"
+          },
+          "spacing": {
+                  "gutter": "1.5rem",
+                  "stack-sm": "0.5rem",
+                  "stack-md": "1rem",
+                  "section-gap": "4rem",
+                  "margin-mobile": "1rem",
+                  "container-max": "1280px"
+          },
+          "fontFamily": {
+                  "headline-lg": [
+                          "Newsreader"
+                  ],
+                  "label-caps": [
+                          "Inter"
+                  ],
+                  "arabic-body": [
+                          "Amiri"
+                  ],
+                  "body-lg": [
+                          "Inter"
+                  ],
+                  "body-md": [
+                          "Inter"
+                  ],
+                  "headline-md": [
+                          "Newsreader"
+                  ],
+                  "urdu-body": [
+                          "Noto Nastaliq Urdu"
+                  ],
+                  "headline-lg-mobile": [
+                          "Newsreader"
+                  ],
+                  "display-lg": [
+                          "Newsreader"
+                  ]
+          },
+          "fontSize": {
+                  "headline-lg": [
+                          "32px",
+                          {
+                                  "lineHeight": "40px",
+                                  "fontWeight": "700"
+                          }
+                  ],
+                  "label-caps": [
+                          "12px",
+                          {
+                                  "lineHeight": "16px",
+                                  "letterSpacing": "0.05em",
+                                  "fontWeight": "700"
+                          }
+                  ],
+                  "arabic-body": [
+                          "20px",
+                          {
+                                  "lineHeight": "36px",
+                                  "fontWeight": "400"
+                          }
+                  ],
+                  "body-lg": [
+                          "18px",
+                          {
+                                  "lineHeight": "28px",
+                                  "fontWeight": "400"
+                          }
+                  ],
+                  "body-md": [
+                          "16px",
+                          {
+                                  "lineHeight": "24px",
+                                  "fontWeight": "400"
+                          }
+                  ],
+                  "headline-md": [
+                          "24px",
+                          {
+                                  "lineHeight": "32px",
+                                  "fontWeight": "600"
+                          }
+                  ],
+                  "urdu-body": [
+                          "18px",
+                          {
+                                  "lineHeight": "40px",
+                                  "fontWeight": "400"
+                          }
+                  ],
+                  "headline-lg-mobile": [
+                          "28px",
+                          {
+                                  "lineHeight": "34px",
+                                  "fontWeight": "700"
+                          }
+                  ],
+                  "display-lg": [
+                          "48px",
+                          {
+                                  "lineHeight": "56px",
+                                  "letterSpacing": "-0.02em",
+                                  "fontWeight": "700"
+                          }
+                  ]
+          }
+  },
+      },
+    }
+  </script>
+</head>
+<body class="bg-surface text-on-surface font-body-md antialiased selection:bg-secondary selection:text-on-secondary">
+<!-- TopAppBar (from JSON) -->
+<header class="docked full-width top-0 sticky border-b border-outline-variant z-50 bg-surface">
+<div class="bg-primary text-on-primary text-sm py-1 px-4 flex justify-between items-center overflow-hidden whitespace-nowrap">
+<div class="flex items-center gap-4 animate-[marquee_20s_linear_infinite]">
+<span class="font-bold text-secondary uppercase tracking-widest text-xs">Breaking</span>
+<span>Global markets rally amid surprising technological advancements in energy sector.</span>
+<span class="mx-4">|</span>
+<span>New diplomatic channels open in the Middle East following historic summit.</span>
+</div>
+</div>
+<div class="max-w-container-max mx-auto flex flex-col w-full z-50 bg-surface">
+<div class="flex items-center justify-between px-gutter py-4">
+<a class="font-headline-lg text-headline-lg tracking-tighter text-on-background text-primary" href="#">AL-JARIDA</a>
+<nav class="hidden md:flex gap-6">
+<a class="text-on-surface-variant font-label-caps hover:text-secondary transition-colors duration-200" href="#">World</a>
+<a class="text-secondary font-bold border-b-2 border-secondary hover:text-secondary transition-colors duration-200" href="#">National</a>
+<a class="text-on-surface-variant font-label-caps hover:text-secondary transition-colors duration-200" href="#">Tech</a>
+<a class="text-on-surface-variant font-label-caps hover:text-secondary transition-colors duration-200" href="#">Islamic</a>
+<a class="text-on-surface-variant font-label-caps hover:text-secondary transition-colors duration-200" href="#">Sports</a>
+</nav>
+<div class="flex items-center gap-4 text-primary">
+<button aria-label="language" class="hover:text-secondary transition-colors duration-200">
+<span class="material-symbols-outlined">language</span>
+</button>
+<button aria-label="search" class="hover:text-secondary transition-colors duration-200">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button aria-label="menu" class="md:hidden hover:text-secondary transition-colors duration-200">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-container-max mx-auto px-margin-mobile md:px-gutter py-section-gap grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Floating Social Sidebar (Left on Desktop) -->
+<aside class="hidden lg:flex lg:col-span-1 flex-col gap-4 sticky top-32 h-fit items-center pt-8 border-r border-outline-variant pr-4">
+<button class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center hover:bg-secondary hover:text-on-secondary transition-colors group">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">share</span>
+</button>
+<button class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center hover:bg-[#25D366] hover:text-white transition-colors group">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">chat</span>
+</button>
+<button class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center hover:bg-[#1877F2] hover:text-white transition-colors group">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">thumb_up</span>
+</button>
+<button class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center hover:bg-black hover:text-white transition-colors group">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">alternate_email</span>
+</button>
+</aside>
+<!-- Main Content Area -->
+<article class="lg:col-span-8 flex flex-col gap-6 w-full max-w-[800px] mx-auto lg:mx-0">
+<!-- Article Header -->
+<header class="flex flex-col gap-4">
+<div class="flex items-center gap-2">
+<span class="bg-secondary text-on-secondary font-label-caps text-label-caps px-2 py-1 rounded-sm uppercase">National</span>
+<span class="text-on-surface-variant font-label-caps text-label-caps">|</span>
+<span class="text-on-surface-variant font-label-caps text-label-caps">Published 2 hours ago</span>
+</div>
+<h1 class="font-display-lg text-display-lg text-on-background md:hidden font-headline-lg-mobile text-headline-lg-mobile">
+          Economic Reforms Sweep the Nation as Infrastructure Bill Passes
+        </h1>
+<h1 class="font-display-lg text-display-lg text-on-background hidden md:block">
+          Economic Reforms Sweep the Nation as Infrastructure Bill Passes
+        </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+          A comprehensive analysis of the new policy framework designed to modernize urban centers and stimulate rural economic growth over the next decade.
+        </p>
+<div class="flex items-center gap-4 py-4 border-y border-outline-variant mt-2">
+<img class="w-12 h-12 rounded-full object-cover" data-alt="A professional headshot of a middle-eastern male journalist in a sharp navy suit, looking directly at the camera with a confident expression. The background is a slightly blurred, modern newsroom environment with cool white lighting. The overall tone is authoritative and trustworthy, fitting a premium news portal aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHsTsptmkWDNzUs0pckyGSZ75oN-1d29884EEC3zrNkDxX8nStsWj-jif_wIMMLvw-Cam-Q8pTSnugolXDf-wMTqp_oT3K1gQ_H9y9cFSYRnHiY4uiXawJnBU98ITaBF0NduHdlAZueWlujeoVBkYq2s3GHiBsGe_BcsYPDV_aQjO6x2d1THEKIkJeOnioWQgyOBeI0HgZNNfeSuI9MpYlNTHUyyfuR8qaGWGxx0F-PYENQwkTRFCAgg"/>
+<div>
+<p class="font-bold text-on-background font-body-md">Tariq Rahman</p>
+<p class="text-on-surface-variant font-label-caps text-label-caps">Senior Political Correspondent</p>
+</div>
+</div>
+</header>
+<!-- Featured Image -->
+<figure class="w-full">
+<img class="w-full h-[400px] md:h-[500px] object-cover rounded-DEFAULT shadow-sm" data-alt="A sweeping, high-angle shot of a sprawling modern cityscape at dusk, featuring sleek, illuminated skyscrapers and a complex network of newly constructed highways weaving between them. The lighting is dramatic, with warm amber tones from the streetlights contrasting against the deep blue twilight sky. The image conveys progress, infrastructure, and dynamic economic activity, styled with crisp realism suitable for a lead news article." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAy0a8-QTXk367ueRsjbRck1OxIx2_GcvpK8Cpq-yiNeWE2gFcKDiQjFEvla-E6T-GIehsGA4lV1LKD5jFUc1GQmmny5Nm_gWBJxaD2Lu3zKldcyCAG4Nf41tY2qk2gD5cGCjzmOOoD9UIlRjvmF01KQxO_dYT96xsP6upnDa1nfjoAH-vF4ze8pzEA9IZJPqC4v62N8NOE1yIQnwK6DotxOVrAZKuaNfKVsXFmfp2WJfKRBeB6JM_IA"/>
+<figcaption class="text-on-surface-variant font-label-caps text-label-caps mt-2 text-right">
+          Photo: Al-Jarida / AFP
+        </figcaption>
+</figure>
+<!-- Article Body -->
+<div class="font-body-md text-body-md text-on-background leading-relaxed flex flex-col gap-6 pt-4">
+<p>
+          In a landmark session today, the national assembly voted to pass the comprehensive infrastructure bill, signaling a massive shift in economic policy aimed at revitalization. The $50 billion package focuses heavily on modernizing public transit, expanding high-speed internet to rural communities, and overhauling aging power grids.
+        </p>
+<p>
+          Critics argue the timeline is overly ambitious, but proponents emphasize the immediate job creation benefits. "This is not just about concrete and steel; it's about the future competitiveness of our nation on the global stage," remarked the Minister of Finance during the closing arguments.
+        </p>
+<!-- Regional Excerpt -->
+<blockquote class="bg-surface-container-lowest border-l-4 border-secondary p-6 my-4 shadow-sm" dir="rtl">
+<p class="font-urdu-body text-urdu-body text-on-background leading-[2.2]">
+                یہ ایک تاریخی لمحہ ہے جو ہماری معیشت کو ایک نئی سمت دے گا۔ اس بل کی منظوری سے نہ صرف روزگار کے نئے مواقع پیدا ہوں گے بلکہ ہمارے بنیادی ڈھانچے میں بھی نمایاں بہتری آئے گی۔
+            </p>
+<footer class="mt-4 text-on-surface-variant font-arabic-body text-sm text-left" dir="ltr">— Finance Ministry Statement</footer>
+</blockquote>
+<h2 class="font-headline-md text-headline-md text-primary mt-6 mb-2">The Urban Impact</h2>
+<p>
+          Major metropolitan areas stand to benefit most visibly in the short term. Initial projects slated for next quarter include the expansion of the central subway system and the implementation of smart-city traffic management grids designed to reduce emissions by 15% over five years.
+        </p>
+<p>
+          However, rural advocates are watching closely to ensure funds allocated for broadband expansion are not diverted. The rural digital divide has been a persistent point of contention in recent election cycles.
+        </p>
+</div>
+<!-- Photo Gallery Slider -->
+<div class="mt-8 border-t border-outline-variant pt-8">
+<h3 class="font-headline-md text-headline-md text-on-background mb-4">Gallery: Infrastructure in Focus</h3>
+<div class="relative group">
+<div class="overflow-hidden rounded-DEFAULT shadow-sm bg-surface-container">
+<img class="w-full h-[300px] md:h-[400px] object-cover transition-transform duration-500 hover:scale-105" data-alt="A wide, horizontal photograph showing a massive construction site for a high-speed rail network. Giant cranes and earth-moving equipment are positioned along a wide, graded track bed. Workers in bright safety gear are visible in the foreground. The scene is bathed in bright, clear daylight, emphasizing the scale and active progress of the infrastructure project. The visual style is sharp, photojournalistic realism." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGnCb6cdisKvQ0UsQV99lGG169tsFcq8VC__yv9WlqGvXQmJPOQQ1QzQQEOY_YVODcl-iHBF7h8Z5HYl-YQW-NLpiDklWcJAfCQ54GZ_cYejyf2yCI9rzfsCQpNZsuDhRyGWmyOnlL-rCVYpqq6TP9vP-CgGpkVNhWKYk8Zn8iA89jeebc4lJlMKtC5QW6EgsVEXJvcQWXe4gkx4_j2Apc0apiAPz7-cplOJnSmrDGefr3bEgj0zo6_g"/>
+</div>
+<button class="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-on-background/50 hover:bg-on-background text-on-tertiary rounded-full flex items-center justify-center backdrop-blur-sm transition-colors opacity-0 group-hover:opacity-100">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-on-background/50 hover:bg-on-background text-on-tertiary rounded-full flex items-center justify-center backdrop-blur-sm transition-colors opacity-0 group-hover:opacity-100">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Comments Section -->
+<section class="mt-12 bg-surface-container-lowest p-6 rounded-lg shadow-sm border border-outline-variant">
+<h3 class="font-headline-md text-headline-md text-on-background mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined">forum</span> Discussion (24)
+        </h3>
+<div class="flex gap-4 mb-8">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="A simple, flat, generic user avatar silhouette in light grey on a slightly darker grey circular background. It represents a default profile image for a user commenting on a news site, maintaining a minimalist and unobtrusive UI element aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAacnqUjwMsbmly-QneKv9WvIb0MvGEPpZZxo0fB_Idy34YJqWHXknDeYinhTQ9N5U8W-1726huGYYqXXH8nklEUIEi1Wt5wlJhlqJ4Czmbcycw22RyzbqtGP1-S1MNQcPbGKOuB-b8pIQuVNQMJ2DC__hA1iwkCd-jcxlAxDswtgPLrXwn8WS04QNmeDHPqKPyHOpyxSLN5aSwVmm1xWVYHRNOJeaK2Zy-cT-88gN7lZVmzVPNbv2hNA"/>
+<div class="flex-1">
+<textarea class="w-full bg-surface border border-outline-variant rounded-DEFAULT p-3 text-body-md focus:ring-2 focus:ring-secondary focus:border-secondary transition-all resize-none" placeholder="Join the conversation..." rows="3"></textarea>
+<div class="flex justify-end mt-2">
+<button class="bg-primary text-on-primary px-6 py-2 rounded-DEFAULT font-label-caps text-label-caps uppercase hover:bg-secondary transition-colors">Post Comment</button>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-6">
+<!-- Comment 1 -->
+<div class="flex gap-4">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="A casual portrait of a middle-aged woman with glasses, smiling slightly. The background is a soft, out-of-focus park setting. The lighting is natural and flattering, suitable for a genuine user profile picture on a professional news platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjcnz4bk7dCp-lSTYAr-Fh2PbjzfI2tFDsDFkWQp3ThuPBVXQ5gR40ZqKM_LxFM3e5wUSkUxeAnI6vTAjpxzGtZkohTs-0DOfvEpObqEo3gvyhFVpTS3fvzZrdbIANk7l-x0olGYzRUkjF3z2aFSZFM2cJSWRZrNlmHp7KkBeuqwIvn14Iq6jGYfN-A2ehHtO9WUbg7wQClXqV5-gUVkQxDG-bhVZcKSxC010Rfslu2xGSBMgT3m_XIA"/>
+<div>
+<div class="flex items-baseline gap-2 mb-1">
+<span class="font-bold text-on-background font-body-md">Sarah Jenkins</span>
+<span class="text-on-surface-variant font-label-caps text-label-caps">1 hr ago</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">I hope they actually stick to the timeline this time. The rural broadband initiative is desperately needed.</p>
+<div class="flex gap-4 mt-2">
+<button class="text-on-surface-variant font-label-caps hover:text-secondary flex items-center gap-1 transition-colors"><span class="material-symbols-outlined text-sm">thumb_up</span> 12</button>
+<button class="text-on-surface-variant font-label-caps hover:text-primary transition-colors">Reply</button>
+</div>
+</div>
+</div>
+<!-- Threaded Reply -->
+<div class="flex gap-4 ml-14 border-l-2 border-outline-variant pl-4">
+<img class="w-8 h-8 rounded-full object-cover" data-alt="A close-up shot of a young man with short dark hair, wearing a neutral-colored sweater. The background is a plain, light-colored wall. The image serves as a standard, clear user avatar for a discussion board." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1yDXk348K_VOELF-pk3cSwZyaOJfZakznCerp9n96se016bMK_MJnRx9nRqdwSu0XWbwGFajGiDPeIoY08BtSGxyVn-uefrZnK_4ktsKSPaMwa9SgpDK1rO8uufqHj-09j7JWAwCbbpDkuSxqAMnKBaL4WfHLFRKixL-hRqZ76BhvVxGX9SHBcQnZud8YrjbcQnCXv7_uszlCt7hzbJMaqLwhWO9r0x9tuRN_fgiC9zgsv7AoGJGAPA"/>
+<div>
+<div class="flex items-baseline gap-2 mb-1">
+<span class="font-bold text-on-background text-sm">David M.</span>
+<span class="text-on-surface-variant font-label-caps text-label-caps">45 mins ago</span>
+</div>
+<p class="font-body-md text-sm text-on-surface-variant">Agreed. The funding allocation seems solid on paper, but execution is always the bottleneck.</p>
+</div>
+</div>
+</div>
+</section>
+</article>
+<!-- Right Sidebar (Widgets) -->
+<aside class="lg:col-span-3 flex flex-col gap-8 w-full mt-8 lg:mt-0">
+<!-- Live TV Widget -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-DEFAULT shadow-sm overflow-hidden flex flex-col">
+<div class="bg-primary text-on-primary p-3 flex justify-between items-center">
+<h3 class="font-label-caps text-label-caps uppercase tracking-wider">Al-Jarida Live</h3>
+<span class="flex items-center gap-1 text-secondary font-bold text-xs"><span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span> LIVE</span>
+</div>
+<div class="relative w-full aspect-video bg-black flex items-center justify-center group cursor-pointer">
+<img class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity" data-alt="A still frame from a live news broadcast showing a female news anchor sitting at a sleek, modern glass desk. Behind her is a large digital screen displaying global maps and abstract data visualizations in deep blues and reds. The lighting is bright studio lighting, creating a professional and urgent atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBB8hhnZSV5Cv3bFOsUBAeeAOaP12VPUp6OUamZMdOuzCQEaoQgPux1jtR4DKwGZLBRgcMXPxMNY5f_tXD9pQtNNJuxG-hcjpnfooCAAhGwGyaSq4gmGK8CfjbQOM67ySE1qH-LMLVXdRZ2W1xl745z1IadGWp7yn7bWvAcH2A1rwVnqGA_6rCW7zjBeGerKJcpJprmLVT0nHIAOmkH8V3Rj3_NxaZ1IDxwgrE4YjEijqsIM39UaVnfdg"/>
+<div class="w-12 h-12 rounded-full bg-secondary/90 flex items-center justify-center z-10 shadow-lg group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-white" data-weight="fill">play_arrow</span>
+</div>
+</div>
+</div>
+<!-- Trending Now List -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-DEFAULT shadow-sm p-5 flex flex-col">
+<h3 class="font-headline-md text-headline-md text-primary mb-4 pb-2 border-b border-outline-variant">Trending Now</h3>
+<ol class="flex flex-col gap-0">
+<li class="relative py-4 border-b border-outline-variant last:border-0 group cursor-pointer">
+<span class="absolute left-0 top-3 font-display-lg text-display-lg text-primary/10 font-bold -z-10 group-hover:text-primary/20 transition-colors">1</span>
+<div class="pl-8">
+<h4 class="font-body-md font-bold text-on-background group-hover:text-secondary transition-colors leading-tight mb-1">Global Summit Concludes with Climate Accords</h4>
+<span class="text-on-surface-variant font-label-caps text-label-caps">World • 4h ago</span>
+</div>
+</li>
+<li class="relative py-4 border-b border-outline-variant last:border-0 group cursor-pointer">
+<span class="absolute left-0 top-3 font-display-lg text-display-lg text-primary/10 font-bold -z-10 group-hover:text-primary/20 transition-colors">2</span>
+<div class="pl-8">
+<h4 class="font-body-md font-bold text-on-background group-hover:text-secondary transition-colors leading-tight mb-1">Tech Giants Face New Antitrust Probes</h4>
+<span class="text-on-surface-variant font-label-caps text-label-caps">Tech • 6h ago</span>
+</div>
+</li>
+<li class="relative py-4 border-b border-outline-variant last:border-0 group cursor-pointer">
+<span class="absolute left-0 top-3 font-display-lg text-display-lg text-primary/10 font-bold -z-10 group-hover:text-primary/20 transition-colors">3</span>
+<div class="pl-8">
+<h4 class="font-body-md font-bold text-on-background group-hover:text-secondary transition-colors leading-tight mb-1">Championship Finals: Underdog Victory Stuns Fans</h4>
+<span class="text-on-surface-variant font-label-caps text-label-caps">Sports • 1h ago</span>
+</div>
+</li>
+<li class="relative py-4 border-b border-outline-variant last:border-0 group cursor-pointer">
+<span class="absolute left-0 top-3 font-display-lg text-display-lg text-primary/10 font-bold -z-10 group-hover:text-primary/20 transition-colors">4</span>
+<div class="pl-8">
+<h4 class="font-body-md font-bold text-on-background group-hover:text-secondary transition-colors leading-tight mb-1">Historic Islamic Architecture Restored in Capital</h4>
+<span class="text-on-surface-variant font-label-caps text-label-caps">Islamic • 12h ago</span>
+</div>
+</li>
+</ol>
+</div>
+</aside>
+</main>
+<!-- Footer (from JSON) -->
+<footer class="w-full py-section-gap mt-section-gap border-t-4 border-secondary bg-on-background">
+<div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-4 gap-gutter px-gutter">
+<div class="flex flex-col gap-4">
+<span class="font-headline-md text-headline-md text-surface-container-lowest">AL-JARIDA</span>
+<p class="font-body-md text-body-md text-surface-container-lowest/70 text-sm">Delivering authoritative news and cultural synthesis for the modern world.</p>
+</div>
+<div class="flex flex-col gap-3">
+<span class="font-label-caps text-label-caps text-surface-container-lowest uppercase mb-2">Navigation</span>
+<a class="font-body-md text-body-md text-outline-variant hover:text-primary-fixed transition-colors" href="#">About Us</a>
+<a class="font-body-md text-body-md text-outline-variant hover:text-primary-fixed transition-colors" href="#">Contact</a>
+<a class="font-body-md text-body-md text-outline-variant hover:text-primary-fixed transition-colors" href="#">Advertising</a>
+</div>
+<div class="flex flex-col gap-3">
+<span class="font-label-caps text-label-caps text-surface-container-lowest uppercase mb-2">Legal</span>
+<a class="font-body-md text-body-md text-outline-variant hover:text-primary-fixed transition-colors" href="#">Terms of Service</a>
+<a class="font-body-md text-body-md text-outline-variant hover:text-primary-fixed transition-colors" href="#">Privacy Policy</a>
+</div>
+<div class="flex flex-col gap-4 items-start md:items-end justify-end">
+<p class="font-body-md text-body-md text-surface-container-lowest/50 text-xs text-right">© 2024 Al-Jarida Media Group. All rights reserved.</p>
+</div>
+</div>
+</footer>
+</body></html>

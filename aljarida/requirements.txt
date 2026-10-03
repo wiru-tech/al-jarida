@@ -1,0 +1,8 @@
+Django>=5.0
+Pillow>=10.0
+django-ckeditor>=6.7
+# Per-language database columns for Article/Category/Tag/WidgetData.
+# See news/translation.py for the registered fields.
+django-modeltranslation>=0.19
+# For PostgreSQL (optional): uncomment and configure DATABASES in settings.py
+# psycopg[binary]>=3.1

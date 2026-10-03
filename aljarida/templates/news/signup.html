@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Create Account" %} — Al-Jarida{% endblock %}
+{% block content %}
+{% comment %}
+No .wrap here — see the note in login.html. The tinted panel supplies its
+own gutter and is meant to span the full window width.
+{% endcomment %}
+  <div class="auth-card-wrap">
+    <div class="auth-card">
+      <h1>{% trans "Create your account" %}</h1>
+      <p class="muted">{% trans "Join to write and publish your own blog posts." %}</p>
+
+      <form method="post" novalidate>
+        {% csrf_token %}
+
+        <label class="label-caps muted" for="{{ form.username.id_for_label }}">{% trans "Username" %}</label>
+        {{ form.username }}
+        {% for error in form.username.errors %}<div class="flash error">{{ error }}</div>{% endfor %}
+
+        <label class="label-caps muted" for="{{ form.email.id_for_label }}">{% trans "Email" %}</label>
+        {{ form.email }}
+        {% for error in form.email.errors %}<div class="flash error">{{ error }}</div>{% endfor %}
+
+        <label class="label-caps muted" for="{{ form.password1.id_for_label }}">{% trans "Password" %}</label>
+        {{ form.password1 }}
+        {% for error in form.password1.errors %}<div class="flash error">{{ error }}</div>{% endfor %}
+
+        <label class="label-caps muted" for="{{ form.password2.id_for_label }}">{% trans "Confirm password" %}</label>
+        {{ form.password2 }}
+        {% for error in form.password2.errors %}<div class="flash error">{{ error }}</div>{% endfor %}
+
+        {% if form.non_field_errors %}
+          <div class="flash error">{{ form.non_field_errors|join:" " }}</div>
+        {% endif %}
+
+        <button type="submit" class="btn btn--solid" style="width:100%;justify-content:center;margin-top:.8rem">
+          {% trans "Create account" %}
+        </button>
+      </form>
+
+      <p class="auth-switch">
+        {% trans "Already have an account?" %}
+        <a href="{% url 'news:login' %}">{% trans "Sign in" %}</a>
+      </p>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% load i18n_extras %}
+{# Article row used on search results and category/tag listing pages. Vars: a (Article), excerpt_words (int), show_byline (bool, optional). #}
+<article class="result-item" lang="{{ a|content_lang }}">
+  {% if a.image_src %}<img src="{{ a.image_src }}" alt="">{% else %}<div></div>{% endif %}
+  <div>
+    <div class="kicker">{{ a.category.name }}</div>
+    <h3><a href="{{ a.get_absolute_url }}">{{ a.title }}</a></h3>
+    <p class="muted">{{ a.excerpt|truncatewords:excerpt_words }}</p>
+    {% if show_byline %}
+    <div class="byline" style="margin-top:.5rem">
+      {% if a.author %}{{ a.author.display_name }} · {% endif %}{{ a.publish_at|date:"M j, Y" }}</div>
+    {% endif %}
+  </div>
+</article>

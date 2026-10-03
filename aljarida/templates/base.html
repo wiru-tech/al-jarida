@@ -1,0 +1,40 @@
+{% load static i18n %}<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}" dir="{% if LANGUAGE_CODE in LANGUAGES_RTL %}rtl{% else %}ltr{% endif %}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{% block title %}AL-JARIDA — {% trans "Independent Journalism" %}{% endblock %}</title>
+<meta name="description" content="{% block meta_desc %}{% trans "Independent journalism for a global perspective." %}{% endblock %}">
+<link rel="stylesheet" href="{% static 'css/variables.css' %}">
+<link rel="stylesheet" href="{% static 'css/fonts.css' %}">
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+<link rel="stylesheet" href="{% static 'css/layout.css' %}">
+<link rel="stylesheet" href="{% static 'css/components.css' %}">
+<link rel="stylesheet" href="{% static 'css/rtl.css' %}">
+<link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+{% block extra_head %}{% endblock %}
+</head>
+<body>
+
+{% include "partials/_ticker.html" %}
+{% include "partials/_masthead.html" %}
+{% include "partials/_search_overlay.html" %}
+
+{% if messages %}
+<div class="wrap" style="padding-top:1rem">
+  {% for message in messages %}
+  <div class="flash {{ message.tags }}">{{ message }}</div>
+  {% endfor %}
+</div>
+{% endif %}
+
+<main>
+{% block content %}{% endblock %}
+</main>
+
+{% include "partials/_footer.html" %}
+
+<script src="{% static 'js/main.js' %}"></script>
+{% block extra_js %}{% endblock %}
+</body>
+</html>

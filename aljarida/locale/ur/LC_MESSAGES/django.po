@@ -1,0 +1,1032 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-19 22:39+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: ur\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\aljarida\settings.py:102 .\news\models.py:121
+#: .\templates\news\blog_list.html:99
+msgid "English"
+msgstr "انگریزی"
+
+#: .\aljarida\settings.py:103 .\news\models.py:122
+#: .\templates\news\blog_list.html:98
+msgid "Urdu"
+msgstr "اردو"
+
+#: .\aljarida\settings.py:104 .\news\models.py:123
+msgid "Arabic"
+msgstr "عربی"
+
+#: .\news\forms.py:17
+msgid "Your name"
+msgstr "آپ کا نام"
+
+#: .\news\forms.py:19
+msgid "Email (not published)"
+msgstr "ای میل (شائع نہیں کی جائے گی)"
+
+#: .\news\forms.py:21
+msgid "Join the conversation…"
+msgstr "گفتگو میں شامل ہوں…"
+
+#: .\news\forms.py:29
+msgid "Comment is too short."
+msgstr "تبصرہ بہت مختصر ہے۔"
+
+#: .\news\forms.py:64
+msgid "you@example.com"
+msgstr "you@example.com"
+
+#: .\news\forms.py:76
+msgid "Choose a username"
+msgstr "صارف نام منتخب کریں"
+
+#: .\news\forms.py:80 .\templates\news\blog_list.html:118
+#: .\templates\news\blog_list.html:145 .\templates\news\login.html:18
+#: .\templates\news\signup.html:22
+msgid "Password"
+msgstr "پاس ورڈ"
+
+#: .\news\forms.py:84 .\templates\news\blog_list.html:149
+#: .\templates\news\signup.html:26
+msgid "Confirm password"
+msgstr "پاس ورڈ کی تصدیق کریں"
+
+#: .\news\forms.py:93
+msgid "An account with that email already exists."
+msgstr "اس ای میل کے ساتھ پہلے سے ایک اکاؤنٹ موجود ہے۔"
+
+#: .\news\forms.py:120 .\templates\news\blog_list.html:43
+msgid "Give your post a title — عنوان لکھیں"
+msgstr "اپنی پوسٹ کا عنوان دیں"
+
+#: .\news\forms.py:125 .\templates\news\blog_list.html:51
+msgid "Write your story here, in English or Urdu… اپنی کہانی یہاں لکھیں"
+msgstr "اپنی کہانی یہاں لکھیں، انگریزی یا اردو میں…"
+
+#: .\news\forms.py:132
+msgid "Title is required."
+msgstr "عنوان درکار ہے۔"
+
+#: .\news\forms.py:138
+msgid "Content is required."
+msgstr "مواد درکار ہے۔"
+
+#: .\news\i18n_strings.py:23
+msgid "Central"
+msgstr "سنٹرل"
+
+#: .\news\i18n_strings.py:24
+msgid "Harbour"
+msgstr "ہاربر"
+
+#: .\news\i18n_strings.py:25
+msgid "University"
+msgstr "یونیورسٹی"
+
+#: .\news\i18n_strings.py:26
+msgid "Press Enclave"
+msgstr "پریس انکلیو"
+
+#: .\news\i18n_strings.py:27
+msgid "City Square"
+msgstr "سٹی اسکوائر"
+
+#: .\news\i18n_strings.py:28
+msgid "North Terminal"
+msgstr "نارتھ ٹرمینل"
+
+#: .\news\models.py:29
+msgid "National News"
+msgstr "قومی خبریں"
+
+#: .\news\models.py:30
+msgid "International News"
+msgstr "بین الاقوامی خبریں"
+
+#: .\news\models.py:31 .\templates\news\directory.html:15
+msgid "Sports"
+msgstr "کھیل"
+
+#: .\news\models.py:32
+msgid "Technology"
+msgstr "ٹیکنالوجی"
+
+#: .\news\models.py:33
+msgid "Health"
+msgstr "صحت"
+
+#: .\news\models.py:34
+msgid "Entertainment"
+msgstr "تفریح"
+
+#: .\news\models.py:35
+msgid "Opinion / Editorial"
+msgstr "رائے / اداریہ"
+
+#: .\news\models.py:36
+msgid "Islamic Content"
+msgstr "اسلامی مواد"
+
+#: .\news\models.py:37
+msgid "World"
+msgstr "دنیا"
+
+#: .\news\models.py:45
+msgid "Hex accent used for the category label, e.g. #b41d11"
+msgstr "کیٹیگری لیبل کے لیے استعمال ہونے والا ہیکس رنگ، مثلاً #b41d11"
+
+#: .\news\models.py:47
+msgid "Menu sort order"
+msgstr "مینو کی ترتیب"
+
+#: .\news\models.py:94
+msgid "e.g. Senior Political Correspondent"
+msgstr "مثلاً سینئر پولیٹیکل کورسپونڈنٹ"
+
+#: .\news\models.py:116
+msgid "Draft"
+msgstr "مسودہ"
+
+#: .\news\models.py:117
+msgid "Scheduled"
+msgstr "شیڈول شدہ"
+
+#: .\news\models.py:118 .\templates\news\article_detail.html:13
+msgid "Published"
+msgstr "شائع شدہ"
+
+#: .\news\models.py:128
+msgid "Small overline label, e.g. GLOBAL AFFAIRS"
+msgstr "چھوٹا اوپری لیبل، مثلاً GLOBAL AFFAIRS"
+
+#: .\news\models.py:131
+msgid "Main article text. Use the toolbar to format text and insert images."
+msgstr ""
+"مرکزی مضمون کا متن۔ متن کو فارمیٹ کرنے اور تصاویر شامل کرنے کے لیے ٹول بار "
+"استعمال کریں۔"
+
+#: .\news\models.py:134
+msgid "Optional pull-quote or block in a second language (Urdu/Arabic)."
+msgstr "اختیاری اقتباس یا دوسری زبان (اردو/عربی) میں بلاک۔"
+
+#: .\news\models.py:138
+msgid "Language of the secondary block, drives RTL rendering."
+msgstr "ثانوی بلاک کی زبان، جو دائیں سے بائیں ترتیب کا تعین کرتی ہے۔"
+
+#: .\news\models.py:149
+msgid "Fallback external image URL (used in the demo)."
+msgstr "متبادل بیرونی تصویر کا یو آر ایل (ڈیمو میں استعمال ہوتا ہے)۔"
+
+#: .\news\models.py:152
+msgid "YouTube/Vimeo embed URL"
+msgstr "یوٹیوب/ویمیو ایمبیڈ یو آر ایل"
+
+#: .\news\models.py:155
+msgid ""
+"Optional self-hosted video upload (mp4/webm) — used if no embed URL is set."
+msgstr ""
+"اختیاری سیلف ہوسٹڈ ویڈیو اپ لوڈ (mp4/webm) — اس وقت استعمال ہوتا ہے جب کوئی "
+"ایمبیڈ یو آر ایل مقرر نہ ہو۔"
+
+#: .\news\models.py:158
+msgid "Show in hero slot"
+msgstr "ہیرو سلاٹ میں دکھائیں"
+
+#: .\news\models.py:159
+msgid "Show in breaking ticker"
+msgstr "بریکنگ ٹکر میں دکھائیں"
+
+#: .\news\models.py:161
+msgid "Schedule future date/time here"
+msgstr "یہاں مستقبل کی تاریخ/وقت شیڈول کریں"
+
+#: .\news\models.py:269
+msgid "e.g. USD / EUR"
+msgstr "مثلاً USD / EUR"
+
+#: .\news\models.py:272
+msgid "Percentage change, may be negative"
+msgstr "فیصد تبدیلی، منفی بھی ہو سکتی ہے"
+
+#: .\news\models.py:296
+msgid "Transport Schedule"
+msgstr "ٹرانسپورٹ شیڈول"
+
+#: .\news\models.py:297
+msgid "Daily Quote"
+msgstr "روزانہ اقتباس"
+
+#: .\news\models.py:298
+msgid "Horoscope"
+msgstr "قسمت نامہ"
+
+#: .\news\models.py:299
+msgid "Daily Profile"
+msgstr "روزانہ پروفائل"
+
+#: .\news\models.py:300
+msgid "Live TV Stream"
+msgstr "لائیو ٹی وی سٹریم"
+
+#: .\news\models.py:301
+msgid "Islamic Content (Hadith / Ayat)"
+msgstr "اسلامی مواد (احادیث / آیات)"
+
+#: .\news\models.py:308
+msgid "Structured payload, e.g. schedule rows or stream URL"
+msgstr "ساختہ ڈیٹا، مثلاً شیڈول کی قطاریں یا سٹریم یو آر ایل"
+
+#: .\news\models.py:332
+msgid "Left-to-right"
+msgstr "بائیں سے دائیں"
+
+#: .\news\models.py:333
+msgid "Right-to-left"
+msgstr "دائیں سے بائیں"
+
+#: .\news\models.py:372
+msgid "Feedback"
+msgstr "رائے"
+
+#: .\news\models.py:373
+msgid "Press"
+msgstr "پریس"
+
+#: .\news\models.py:374 .\templates\news\directory.html:16
+msgid "Advertising"
+msgstr "اشتہارات"
+
+#: .\news\templatetags\i18n_extras.py:64
+#, python-format
+msgid "%(num)d year"
+msgid_plural "%(num)d years"
+msgstr[0] "%(num)d سال"
+msgstr[1] "%(num)d سال"
+
+#: .\news\templatetags\i18n_extras.py:66
+#, python-format
+msgid "%(num)d month"
+msgid_plural "%(num)d months"
+msgstr[0] "%(num)d مہینہ"
+msgstr[1] "%(num)d مہینے"
+
+#: .\news\templatetags\i18n_extras.py:68
+#, python-format
+msgid "%(num)d week"
+msgid_plural "%(num)d weeks"
+msgstr[0] "%(num)d ہفتہ"
+msgstr[1] "%(num)d ہفتے"
+
+#: .\news\templatetags\i18n_extras.py:70
+#, python-format
+msgid "%(num)d day"
+msgid_plural "%(num)d days"
+msgstr[0] "%(num)d دن"
+msgstr[1] "%(num)d دن"
+
+#: .\news\templatetags\i18n_extras.py:72
+#, python-format
+msgid "%(num)d hour"
+msgid_plural "%(num)d hours"
+msgstr[0] "%(num)d گھنٹہ"
+msgstr[1] "%(num)d گھنٹے"
+
+#: .\news\templatetags\i18n_extras.py:74
+#, python-format
+msgid "%(num)d minute"
+msgid_plural "%(num)d minutes"
+msgstr[0] "%(num)d منٹ"
+msgstr[1] "%(num)d منٹ"
+
+#: .\news\templatetags\i18n_extras.py:87
+#: .\news\templatetags\i18n_extras.py:101
+msgid "just now"
+msgstr "ابھی ابھی"
+
+#: .\news\views.py:91
+msgid "Your comment has been posted."
+msgstr "آپ کا تبصرہ پوسٹ کر دیا گیا ہے۔"
+
+#: .\news\views.py:93
+msgid "Please correct the errors in your comment."
+msgstr "براہ کرم اپنے تبصرے کی غلطیاں درست کریں۔"
+
+#: .\news\views.py:197
+msgid "Thank you — your message has been sent."
+msgstr "شکریہ — آپ کا پیغام بھیج دیا گیا ہے۔"
+
+#: .\news\views.py:216
+msgid "Welcome to Al-Jarida — your account is ready."
+msgstr "الجریدہ میں خوش آمدید — آپ کا اکاؤنٹ تیار ہے۔"
+
+#: .\news\views.py:246
+msgid "Post published."
+msgstr "پوسٹ شائع کر دی گئی۔"
+
+#: .\news\views.py:260 .\news\views.py:396
+msgid "You can only edit your own posts."
+msgstr "آپ صرف اپنی پوسٹس میں ترمیم کر سکتے ہیں۔"
+
+#: .\news\views.py:267
+msgid "Post updated."
+msgstr "پوسٹ اپ ڈیٹ کر دی گئی۔"
+
+#: .\news\views.py:280 .\news\views.py:407
+msgid "You can only delete your own posts."
+msgstr "آپ صرف اپنی پوسٹس حذف کر سکتے ہیں۔"
+
+#: .\news\views.py:283
+msgid "Post deleted."
+msgstr "پوسٹ حذف کر دی گئی۔"
+
+#: .\news\views.py:349 .\templates\news\login.html:22
+msgid "Incorrect username or password."
+msgstr "غلط صارف نام یا پاس ورڈ۔"
+
+#: .\news\views.py:377 .\news\views.py:394 .\news\views.py:405
+msgid "Sign in required."
+msgstr "سائن ان درکار ہے۔"
+
+#: .\news\views.py:420 .\templates\partials\_footer.html:19
+msgid "Privacy Policy"
+msgstr "پرائیویسی پالیسی"
+
+#: .\news\views.py:421 .\templates\partials\_footer.html:18
+msgid "Terms of Use"
+msgstr "شرائطِ استعمال"
+
+#: .\news\views.py:422
+msgid "Copyright & IP Compliance"
+msgstr "کاپی رائٹ اور آئی پی تعمیل"
+
+#: .\templates\base.html:10
+msgid "Al-Jarida — Global News Edition"
+msgstr "الجریدہ — عالمی خبروں کا ایڈیشن"
+
+#: .\templates\base.html:11
+msgid ""
+"Independent journalism for a global perspective — rigorous analysis and "
+"comprehensive coverage."
+msgstr ""
+"عالمی نقطہ نظر کے لیے آزاد صحافت — دنیا کو تشکیل دینے والے واقعات کا سخت "
+"تجزیہ اور جامع کوریج۔"
+
+#: .\templates\news\article_detail.html:13
+#: .\templates\news\article_detail.html:101 .\templates\news\category.html:45
+#: .\templates\news\home.html:43 .\templates\partials\_comment.html:4
+#: .\templates\partials\_comment.html:10
+msgid "ago"
+msgstr "پہلے"
+
+#: .\templates\news\article_detail.html:63
+msgid "Gallery"
+msgstr "گیلری"
+
+#: .\templates\news\article_detail.html:73
+msgid "Discussion"
+msgstr "گفتگو"
+
+#: .\templates\news\article_detail.html:81
+msgid "Post Comment"
+msgstr "تبصرہ پوسٹ کریں"
+
+#: .\templates\news\article_detail.html:88
+msgid "Be the first to join the conversation."
+msgstr "گفتگو میں شامل ہونے والے پہلے فرد بنیں۔"
+
+#: .\templates\news\article_detail.html:97
+msgid "Trending Now"
+msgstr "اس وقت رجحان میں"
+
+#: .\templates\news\article_detail.html:108
+msgid "Related"
+msgstr "متعلقہ"
+
+#: .\templates\news\blog_form.html:3 .\templates\news\blog_form.html:8
+#: .\templates\news\blog_list.html:33
+msgid "Edit post"
+msgstr "پوسٹ میں ترمیم کریں"
+
+#: .\templates\news\blog_form.html:3 .\templates\news\blog_list.html:19
+#: .\templates\news\blog_list.html:101
+msgid "Write a post"
+msgstr "پوسٹ لکھیں"
+
+#: .\templates\news\blog_form.html:8 .\templates\news\blog_list.html:32
+#: .\templates\news\blog_list.html:33
+msgid "Write a new post"
+msgstr "نئی پوسٹ لکھیں"
+
+#: .\templates\news\blog_form.html:9 .\templates\news\blog_list.html:34
+msgid "Direction is detected automatically from what you type."
+msgstr "سمت آپ کی تحریر سے خودکار طور پر متعین ہوتی ہے۔"
+
+#: .\templates\news\blog_form.html:15 .\templates\news\blog_list.html:40
+msgid "Title"
+msgstr "عنوان"
+
+#: .\templates\news\blog_form.html:22 .\templates\news\blog_list.html:48
+msgid "Content"
+msgstr "مواد"
+
+#: .\templates\news\blog_form.html:31 .\templates\news\blog_list.html:58
+msgid "Author"
+msgstr "مصنف"
+
+#: .\templates\news\blog_form.html:35 .\templates\news\blog_list.html:62
+msgid "Date"
+msgstr "تاریخ"
+
+#: .\templates\news\blog_form.html:43 .\templates\news\blog_list.html:70
+#: .\templates\news\blog_list.html:109
+msgid "Cancel"
+msgstr "منسوخ کریں"
+
+#: .\templates\news\blog_form.html:45 .\templates\news\blog_list.html:73
+msgid "Save changes"
+msgstr "تبدیلیاں محفوظ کریں"
+
+#: .\templates\news\blog_form.html:45 .\templates\news\blog_list.html:72
+#: .\templates\news\blog_list.html:73
+msgid "Publish post"
+msgstr "پوسٹ شائع کریں"
+
+#: .\templates\news\blog_list.html:3 .\templates\partials\_masthead.html:56
+msgid "Blog"
+msgstr "بلاگ"
+
+#: .\templates\news\blog_list.html:8
+msgid "Reader Blog"
+msgstr "قارئین کا بلاگ"
+
+#: .\templates\news\blog_list.html:9
+msgid "Stories from Al-Jarida readers, in English or Urdu."
+msgstr "الجریدہ کے قارئین کی کہانیاں، انگریزی یا اردو میں۔"
+
+#: .\templates\news\blog_list.html:21 .\templates\news\blog_list.html:102
+#: .\templates\partials\_masthead.html:35
+msgid "Sign out"
+msgstr "سائن آؤٹ"
+
+#: .\templates\news\blog_list.html:23 .\templates\news\blog_list.html:103
+#: .\templates\news\login.html:3 .\templates\partials\_masthead.html:38
+msgid "Sign In"
+msgstr "سائن ان"
+
+#: .\templates\news\blog_list.html:24 .\templates\news\blog_list.html:104
+msgid "Sign up to write"
+msgstr "لکھنے کے لیے سائن اپ کریں"
+
+#: .\templates\news\blog_list.html:85
+msgid "No posts yet."
+msgstr "ابھی تک کوئی پوسٹ نہیں۔"
+
+#: .\templates\news\blog_list.html:86
+msgid "Sign up and be the first to publish one — انگریزی یا اردو میں۔"
+msgstr "سائن اپ کریں اور سب سے پہلے پوسٹ شائع کریں — انگریزی یا اردو میں۔"
+
+#: .\templates\news\blog_list.html:95
+msgid "Edit"
+msgstr "ترمیم"
+
+#: .\templates\news\blog_list.html:96
+msgid "Delete"
+msgstr "حذف کریں"
+
+#: .\templates\news\blog_list.html:97
+msgid "Delete this post? This cannot be undone."
+msgstr "کیا یہ پوسٹ حذف کر دی جائے؟ اسے واپس نہیں لایا جا سکتا۔"
+
+#: .\templates\news\blog_list.html:100
+msgid "Something went wrong. Please try again."
+msgstr "کچھ غلط ہو گیا۔ براہ کرم دوبارہ کوشش کریں۔"
+
+#: .\templates\news\blog_list.html:112 .\templates\news\blog_list.html:124
+#: .\templates\news\blog_list.html:161 .\templates\news\login.html:8
+#: .\templates\news\login.html:26 .\templates\news\signup.html:41
+msgid "Sign in"
+msgstr "سائن ان"
+
+#: .\templates\news\blog_list.html:113 .\templates\news\login.html:9
+msgid "Welcome back. Enter your details to continue."
+msgstr "خوش آمدید۔ جاری رکھنے کے لیے اپنی تفصیلات درج کریں۔"
+
+#: .\templates\news\blog_list.html:115 .\templates\news\blog_list.html:137
+#: .\templates\news\login.html:15 .\templates\news\signup.html:14
+msgid "Username"
+msgstr "صارف نام"
+
+#: .\templates\news\blog_list.html:128 .\templates\news\login.html:31
+msgid "Don't have an account?"
+msgstr "اکاؤنٹ نہیں ہے؟"
+
+#: .\templates\news\blog_list.html:129 .\templates\news\login.html:32
+msgid "Sign up"
+msgstr "سائن اپ کریں"
+
+#: .\templates\news\blog_list.html:134 .\templates\news\signup.html:8
+msgid "Create your account"
+msgstr "اپنا اکاؤنٹ بنائیں"
+
+#: .\templates\news\blog_list.html:135 .\templates\news\signup.html:9
+msgid "Join to write and publish your own blog posts."
+msgstr "اپنی بلاگ پوسٹس لکھنے اور شائع کرنے کے لیے شامل ہوں۔"
+
+#: .\templates\news\blog_list.html:141 .\templates\news\contact.html:16
+#: .\templates\news\signup.html:18
+msgid "Email"
+msgstr "ای میل"
+
+#: .\templates\news\blog_list.html:156 .\templates\news\signup.html:35
+msgid "Create account"
+msgstr "اکاؤنٹ بنائیں"
+
+#: .\templates\news\blog_list.html:160 .\templates\news\signup.html:40
+msgid "Already have an account?"
+msgstr "پہلے سے اکاؤنٹ ہے؟"
+
+#: .\templates\news\category.html:7
+msgid "Tag"
+msgstr "ٹیگ"
+
+#: .\templates\news\category.html:7
+msgid "Section"
+msgstr "سیکشن"
+
+#: .\templates\news\category.html:13
+msgid "No articles in this section yet."
+msgstr "اس سیکشن میں ابھی تک کوئی مضمون نہیں۔"
+
+#: .\templates\news\category.html:26 .\templates\news\home.html:22
+msgid "By"
+msgstr "بذریعہ"
+
+#: .\templates\news\category.html:27 .\templates\news\home.html:23
+msgid "min read"
+msgstr "منٹ کا مطالعہ"
+
+#: .\templates\news\category.html:41
+#: .\templates\partials\_sidebar_widgets.html:45
+msgid "Most Read"
+msgstr "سب سے زیادہ پڑھا گیا"
+
+#: .\templates\news\contact.html:3 .\templates\news\contact.html:7
+msgid "Contact & Inquiries"
+msgstr "رابطہ اور استفسارات"
+
+#: .\templates\news\contact.html:8
+msgid "Reach the newsroom for feedback, press, or advertising."
+msgstr "رائے، پریس یا اشتہارات کے لیے نیوز روم سے رابطہ کریں۔"
+
+#: .\templates\news\contact.html:15
+msgid "Name"
+msgstr "نام"
+
+#: .\templates\news\contact.html:17
+msgid "Department"
+msgstr "شعبہ"
+
+#: .\templates\news\contact.html:18
+msgid "Subject"
+msgstr "موضوع"
+
+#: .\templates\news\contact.html:19
+msgid "Message"
+msgstr "پیغام"
+
+#: .\templates\news\contact.html:20
+msgid "Please correct the highlighted fields."
+msgstr "براہ کرم نمایاں کردہ خانے درست کریں۔"
+
+#: .\templates\news\contact.html:21
+msgid "Send Message"
+msgstr "پیغام بھیجیں"
+
+#: .\templates\news\contact.html:25 .\templates\news\widgets.html:17
+msgid "Currency Converter"
+msgstr "کرنسی کنورٹر"
+
+#: .\templates\news\directory.html:3 .\templates\partials\_footer.html:12
+msgid "Directory"
+msgstr "ڈائریکٹری"
+
+#: .\templates\news\directory.html:7
+msgid "Contact Directory"
+msgstr "رابطہ ڈائریکٹری"
+
+#: .\templates\news\directory.html:8
+msgid "Al-Jarida Media Group — desks, phone numbers and addresses."
+msgstr "الجریدہ میڈیا گروپ — ڈیسک، فون نمبرز اور پتے۔"
+
+#: .\templates\news\directory.html:11
+msgid "Head Office"
+msgstr "مرکزی دفتر"
+
+#: .\templates\news\directory.html:12
+msgid "Al-Jarida Media Group"
+msgstr "الجریدہ میڈیا گروپ"
+
+#: .\templates\news\directory.html:12
+msgid "4th Floor, Press Enclave, Boulevard Avenue"
+msgstr "چوتھی منزل، پریس انکلیو، بلیوارڈ ایونیو"
+
+#: .\templates\news\directory.html:12
+msgid "Karachi 74200, Pakistan"
+msgstr "کراچی 74200، پاکستان"
+
+#: .\templates\news\directory.html:13
+msgid "Newsroom Desks"
+msgstr "نیوز روم ڈیسک"
+
+#: .\templates\news\directory.html:14
+msgid "News Desk"
+msgstr "نیوز ڈیسک"
+
+#: .\templates\news\directory.html:17
+msgid "Press & Syndication"
+msgstr "پریس اور سنڈیکیشن"
+
+#: .\templates\news\directory.html:18
+msgid "Hours"
+msgstr "اوقاتِ کار"
+
+#: .\templates\news\directory.html:19
+msgid ""
+"The newsroom operates 24 hours. Business office: Mon–Sat, 9:00–18:00 PKT."
+msgstr ""
+"نیوز روم 24 گھنٹے کام کرتا ہے۔ کاروباری دفتر: پیر تا ہفتہ، 9:00 تا 18:00 PKT۔"
+
+#: .\templates\news\home.html:34
+msgid "Trending / Breaking News"
+msgstr "رجحان ساز / بریکنگ نیوز"
+
+#: .\templates\news\home.html:59
+msgid "Latest Dispatch"
+msgstr "تازہ ترین خبریں"
+
+#: .\templates\news\home.html:60
+msgid "View All"
+msgstr "سب دیکھیں"
+
+#: .\templates\news\home.html:74
+msgid "Islamic Life & Culture"
+msgstr "اسلامی زندگی اور ثقافت"
+
+#: .\templates\news\home.html:81
+msgid "Read Full Essay"
+msgstr "مکمل مضمون پڑھیں"
+
+#: .\templates\news\home.html:101
+msgid "More"
+msgstr "مزید"
+
+#: .\templates\news\legal.html:9
+msgid ""
+"This Privacy Policy explains how Al-Jarida Media Group collects, uses, and "
+"protects information when you use our website."
+msgstr ""
+"یہ پرائیویسی پالیسی بتاتی ہے کہ الجریدہ میڈیا گروپ ہماری ویب سائٹ استعمال "
+"کرتے وقت معلومات کو کیسے اکٹھا، استعمال اور محفوظ کرتا ہے۔"
+
+#: .\templates\news\legal.html:10
+msgid "Information We Collect"
+msgstr "معلومات جو ہم اکٹھی کرتے ہیں"
+
+#: .\templates\news\legal.html:11
+msgid ""
+"We collect information you provide directly, such as when submitting a "
+"comment or contact inquiry, and standard technical data such as browser type "
+"and pages visited."
+msgstr ""
+"ہم وہ معلومات اکٹھی کرتے ہیں جو آپ براہ راست فراہم کرتے ہیں، جیسے تبصرہ یا "
+"رابطہ استفسار جمع کراتے وقت، اور معیاری تکنیکی ڈیٹا جیسے براؤزر کی قسم اور "
+"ملاحظہ کیے گئے صفحات۔"
+
+#: .\templates\news\legal.html:12
+msgid "How We Use Information"
+msgstr "ہم معلومات کیسے استعمال کرتے ہیں"
+
+#: .\templates\news\legal.html:13
+msgid ""
+"Information is used to operate the service, respond to inquiries, moderate "
+"discussion, and improve editorial coverage. We do not sell personal data."
+msgstr ""
+"معلومات سروس چلانے، استفسارات کا جواب دینے، گفتگو کی نگرانی کرنے اور "
+"ایڈیٹوریل کوریج بہتر بنانے کے لیے استعمال ہوتی ہیں۔ ہم ذاتی ڈیٹا فروخت نہیں "
+"کرتے۔"
+
+#: .\templates\news\legal.html:14
+msgid "Your Rights"
+msgstr "آپ کے حقوق"
+
+#: .\templates\news\legal.html:15
+msgid ""
+"You may request access to, correction of, or deletion of your personal data "
+"by contacting the newsroom."
+msgstr ""
+"آپ نیوز روم سے رابطہ کر کے اپنے ذاتی ڈیٹا تک رسائی، تصحیح یا حذف کی درخواست "
+"کر سکتے ہیں۔"
+
+#: .\templates\news\legal.html:17
+msgid ""
+"By accessing Al-Jarida you agree to these Terms of Use, which govern your "
+"use of the site and its content."
+msgstr ""
+"الجریدہ تک رسائی حاصل کر کے آپ ان شرائطِ استعمال سے اتفاق کرتے ہیں جو ویب "
+"سائٹ اور اس کے مواد کے استعمال کو کنٹرول کرتی ہیں۔"
+
+#: .\templates\news\legal.html:18
+msgid "Use of Content"
+msgstr "مواد کا استعمال"
+
+#: .\templates\news\legal.html:19
+msgid ""
+"Articles, images, and media are provided for personal, non-commercial "
+"reading. Republication requires written permission."
+msgstr ""
+"مضامین، تصاویر اور میڈیا ذاتی، غیر تجارتی مطالعے کے لیے فراہم کیے جاتے ہیں۔ "
+"دوبارہ اشاعت کے لیے تحریری اجازت درکار ہے۔"
+
+#: .\templates\news\legal.html:20
+msgid "User Contributions"
+msgstr "صارف کی شراکتیں"
+
+#: .\templates\news\legal.html:21
+msgid ""
+"Comments must comply with community standards. We reserve the right to "
+"moderate or remove contributions."
+msgstr ""
+"تبصروں کو کمیونٹی کے معیارات کی پاسداری کرنی چاہیے۔ ہم شراکتوں کی نگرانی یا "
+"انہیں ہٹانے کا حق محفوظ رکھتے ہیں۔"
+
+#: .\templates\news\legal.html:23
+msgid ""
+"All editorial content, trademarks, and design elements on Al-Jarida are the "
+"intellectual property of Al-Jarida Media Group or its licensors."
+msgstr ""
+"الجریدہ پر تمام ایڈیٹوریل مواد، ٹریڈ مارکس اور ڈیزائن عناصر الجریدہ میڈیا "
+"گروپ یا اس کے لائسنس دہندگان کی دانشورانہ ملکیت ہیں۔"
+
+#: .\templates\news\legal.html:24
+msgid "Copyright Notice"
+msgstr "کاپی رائٹ نوٹس"
+
+#: .\templates\news\legal.html:25
+msgid ""
+"Reproduction, distribution, or transmission of any content without prior "
+"written consent is prohibited except as permitted by applicable copyright "
+"law."
+msgstr ""
+"پیشگی تحریری اجازت کے بغیر کسی بھی مواد کی نقل، تقسیم یا ترسیل ممنوع ہے "
+"سوائے اس کے کہ قابلِ اطلاق کاپی رائٹ قانون اجازت دے۔"
+
+#: .\templates\news\legal.html:26
+msgid "Fair Use & Citation"
+msgstr "منصفانہ استعمال اور حوالہ"
+
+#: .\templates\news\legal.html:27
+msgid ""
+"Brief excerpts may be quoted for the purpose of review or commentary with "
+"proper attribution to Al-Jarida."
+msgstr ""
+"مختصر اقتباسات کو جائزے یا تبصرے کی غرض سے الجریدہ کے مناسب حوالے کے ساتھ "
+"نقل کیا جا سکتا ہے۔"
+
+#: .\templates\news\live_tv.html:3 .\templates\news\live_tv.html:9
+#: .\templates\partials\_footer.html:13
+#: .\templates\partials\_sidebar_widgets.html:8
+msgid "Live TV"
+msgstr "لائیو ٹی وی"
+
+#: .\templates\news\live_tv.html:4
+msgid "Watch Al-Jarida's news, entertainment, and religious broadcasts live."
+msgstr "الجریدہ کی خبریں، تفریحی اور مذہبی نشریات لائیو دیکھیں۔"
+
+#: .\templates\news\live_tv.html:8
+msgid "Multimedia"
+msgstr "ملٹی میڈیا"
+
+#: .\templates\news\live_tv.html:10
+msgid "News, entertainment, and religious broadcasts — streaming live."
+msgstr "خبریں، تفریح، اور مذہبی نشریات — لائیو اسٹریمنگ۔"
+
+#: .\templates\news\live_tv.html:14
+msgid "Live"
+msgstr "لائیو"
+
+#: .\templates\news\live_tv.html:24
+msgid "No live streams are available right now."
+msgstr "اس وقت کوئی لائیو اسٹریم دستیاب نہیں ہے۔"
+
+#: .\templates\news\search.html:3 .\templates\news\search.html:7
+#: .\templates\partials\_masthead.html:6
+#: .\templates\partials\_search_overlay.html:8
+msgid "Search"
+msgstr "تلاش"
+
+#: .\templates\news\search.html:8
+#, python-format
+msgid "%(counter)s result for \"%(q)s\""
+msgid_plural "%(counter)s results for \"%(q)s\""
+msgstr[0] "\"%(q)s\" کے لیے %(counter)s نتیجہ"
+msgstr[1] "\"%(q)s\" کے لیے %(counter)s نتائج"
+
+#: .\templates\news\search.html:12
+msgid "Keywords…"
+msgstr "کلیدی الفاظ…"
+
+#: .\templates\news\search.html:14
+msgid "All categories"
+msgstr "تمام کیٹیگریز"
+
+#: .\templates\news\search.html:20
+msgid "Relevance"
+msgstr "مطابقت"
+
+#: .\templates\news\search.html:21
+msgid "Most recent"
+msgstr "تازہ ترین"
+
+#: .\templates\news\search.html:22
+msgid "Most read"
+msgstr "سب سے زیادہ پڑھا گیا"
+
+#: .\templates\news\search.html:24
+msgid "Filter"
+msgstr "فلٹر"
+
+#: .\templates\news\search.html:31
+msgid "No stories matched your search."
+msgstr "آپ کی تلاش سے کوئی کہانی میل نہیں کھاتی۔"
+
+#: .\templates\news\signup.html:3
+msgid "Create Account"
+msgstr "اکاؤنٹ بنائیں"
+
+#: .\templates\news\widgets.html:3 .\templates\news\widgets.html:9
+#: .\templates\partials\_footer.html:14
+msgid "Utility Widgets"
+msgstr "یوٹیلیٹی ویجٹس"
+
+#: .\templates\news\widgets.html:4
+msgid ""
+"Currency rates, transport schedules, daily horoscope, and Islamic content."
+msgstr ""
+"کرنسی کی شرحیں، ٹرانسپورٹ کے اوقات کار، روزانہ کا قسمت نامہ، اور اسلامی مواد۔"
+
+#: .\templates\news\widgets.html:8
+msgid "Tools"
+msgstr "ٹولز"
+
+#: .\templates\news\widgets.html:10
+msgid ""
+"Currency rates, transport schedules, daily horoscope, and Islamic content — "
+"in one place."
+msgstr ""
+"کرنسی کی شرحیں، ٹرانسپورٹ کے اوقات کار، روزانہ کا قسمت نامہ، اور اسلامی مواد "
+"— ایک ہی جگہ پر۔"
+
+#: .\templates\news\widgets.html:24
+msgid "Train / Bus Schedules"
+msgstr "ٹرین / بس کے اوقات کار"
+
+#: .\templates\news\widgets.html:43
+msgid "Daily Horoscope"
+msgstr "روزانہ کا قسمت نامہ"
+
+#: .\templates\news\widgets.html:58
+msgid "Ahadith &amp; Aayat"
+msgstr "احادیث و آیات"
+
+#: .\templates\partials\_comment.html:7
+msgid "Reply"
+msgstr "جواب دیں"
+
+#: .\templates\partials\_currency_widget.html:5
+msgid "Amount"
+msgstr "رقم"
+
+#: .\templates\partials\_currency_widget.html:7
+msgid "From"
+msgstr "سے"
+
+#: .\templates\partials\_currency_widget.html:12
+msgid "To"
+msgstr "تک"
+
+#: .\templates\partials\_currency_widget.html:20
+msgid "Reference rates"
+msgstr "حوالہ جاتی شرحیں"
+
+#: .\templates\partials\_footer.html:6
+msgid ""
+"Independent journalism for a global perspective. Providing rigorous analysis "
+"and comprehensive coverage of the events shaping our world."
+msgstr ""
+"عالمی نقطہ نظر کے لیے آزاد صحافت۔ دنیا کو تشکیل دینے والے واقعات کا سخت "
+"تجزیہ اور جامع کوریج فراہم کرتے ہیں۔"
+
+#: .\templates\partials\_footer.html:9
+msgid "Company"
+msgstr "کمپنی"
+
+#: .\templates\partials\_footer.html:10
+msgid "About Us"
+msgstr "ہمارے بارے میں"
+
+#: .\templates\partials\_footer.html:11
+msgid "Contact"
+msgstr "رابطہ"
+
+#: .\templates\partials\_footer.html:17
+msgid "Legal"
+msgstr "قانونی"
+
+#: .\templates\partials\_footer.html:20
+msgid "Copyright & IP"
+msgstr "کاپی رائٹ اور آئی پی"
+
+#: .\templates\partials\_footer.html:21
+msgid "RSS Feed"
+msgstr "آر ایس ایس فیڈ"
+
+#: .\templates\partials\_footer.html:24 .\templates\partials\_masthead.html:42
+msgid "Subscribe"
+msgstr "سبسکرائب کریں"
+
+#: .\templates\partials\_footer.html:25
+msgid "Get the daily briefing delivered to your inbox."
+msgstr "روزانہ بریفنگ اپنے ان باکس میں حاصل کریں۔"
+
+#: .\templates\partials\_footer.html:27
+msgid "Email address"
+msgstr "ای میل ایڈریس"
+
+#: .\templates\partials\_footer.html:28
+msgid "Send"
+msgstr "بھیجیں"
+
+#: .\templates\partials\_footer.html:33
+msgid "All rights reserved."
+msgstr "جملہ حقوق محفوظ ہیں۔"
+
+#: .\templates\partials\_footer.html:34
+msgid "A demo build — editorial standard reference."
+msgstr "ایک ڈیمو بلڈ — ایڈیٹوریل معیار کا حوالہ۔"
+
+#: .\templates\partials\_live_tv_widget.html:5
+msgid "Play live broadcast"
+msgstr "لائیو نشریات چلائیں"
+
+#: .\templates\partials\_masthead.html:28
+msgid "Write"
+msgstr "لکھیں"
+
+#: .\templates\partials\_masthead.html:39
+msgid "Sign Up"
+msgstr "سائن اپ"
+
+#: .\templates\partials\_masthead.html:51
+msgid "Home"
+msgstr "گھر"
+
+#: .\templates\partials\_search_overlay.html:7
+msgid "Search stories, topics, authors…"
+msgstr "کہانیاں، موضوعات، مصنفین تلاش کریں…"
+
+#: .\templates\partials\_sidebar_widgets.html:9
+msgid "All streams"
+msgstr "تمام سٹریمز"
+
+#: .\templates\partials\_sidebar_widgets.html:18
+msgid "Markets & Currency"
+msgstr "مارکیٹس اور کرنسی"
+
+#: .\templates\partials\_sidebar_widgets.html:35
+msgid "Daily Perspective"
+msgstr "روزانہ نقطہ نظر"
+
+#: .\templates\partials\_ticker.html:10
+msgid "Breaking News"
+msgstr "بریکنگ نیوز"
+
+#~ msgid "Editor's Picks"
+#~ msgstr "ایڈیٹر کی پسند"
+
+#~ msgid "Trending Analysis"
+#~ msgstr "رجحان ساز تجزیہ"

@@ -1,0 +1,998 @@
+/* ============================================================
+   HOMEPAGE — HERO
+
+   HIERARCHY PASS — read this before changing anything below.
+
+   The previous version gave every panel on the page the same treatment:
+   1px border + --shadow-card + --radius-lg + 1.5rem padding. Hero,
+   trending rail, Live TV, Markets, Daily Perspective, Most Read and all
+   six article cards were rendered at an identical visual weight. When
+   nothing is emphasised, the reader has no entry point and the page
+   reads as scattered boxes rather than a front page.
+
+   The rule now is: the hero featured story is the ONLY elevated surface
+   on the homepage. Everything else separates using a hairline rule and
+   whitespace. That is what creates a reading order, and it also removes
+   roughly 40% of the vertical space the old chrome was consuming.
+   ============================================================ */
+/* ---- The fold has ONE fixed height, set here ----
+   Every previous attempt let one column's height depend on the other's,
+   and each time the dependency ran the wrong way. `start` left a void
+   under a short lead; `stretch` blew the lead's photograph up to match a
+   tall rail. Both are the same mistake: coupling two columns whose
+   contents are unrelated.
+
+   --fold-h breaks the coupling. The lead is exactly this tall, the rail
+   is capped at it and scrolls past it, and neither can push the other
+   around no matter how many trending stories exist or what size their
+   headlines end up being. The fold is now stable by construction rather
+   than by tuning. */
+/* --fold-h is now a FLOOR, not a ceiling.
+   It was a fixed height on both columns, which is what forced the rail to
+   scroll its 5th story out of sight. With the rail free to run to its
+   natural height, `align-items:start` would leave the shorter column
+   short — a ~120px hole under the lead photograph before the widgets
+   strip begins. `stretch` closes it: the rail sets the fold's height and
+   the lead fills it, so the two columns always end on the same line
+   whether the rail holds three stories or five.
+
+   This is safe in a way the original `stretch` was not, because the lead
+   is a grid of its own (media | body) and the media cell crops with
+   object-fit:cover — the extra height is absorbed by the crop, not by
+   distorting the picture. --fold-h remains as a minimum so a one-story
+   rail can't collapse the lead to the height of its headline. */
+.hero-section{--fold-h:340px;
+  display:grid;grid-template-columns:minmax(0,1.85fr) minmax(0,290px);
+  gap:var(--gap-lg);padding:.75rem 0 1.25rem;align-items:stretch}
+.hero-section>*{min-width:0}
+
+/* ---- Lead story: image BESIDE text, not above it ----
+   The stacked version put a ~720px-wide 16/9 photograph above the
+   headline. That is a landing-page hero, and it had two costs: the image
+   alone was 400px tall so the headline sat near the fold, and a picture
+   that wide flattens into a band rather than reading as a photograph.
+
+   Splitting the card horizontally halves the image to ~330px and lets the
+   headline start at the top of the fold where the eye already is. The
+   media column stretches to whatever height the text needs (no fixed
+   aspect-ratio) so the two sides always end flush. */
+/* No border, no shadow, no fill. The lead was the last boxed element on
+   the page — every other panel had already been unboxed, so the card
+   around it was the one thing still reading as a container rather than
+   as content. A masthead-style lead earns prominence from the size of
+   its photograph and headline, not from a frame.
+
+   The image keeps its own radius; the card no longer needs one, and
+   dropping overflow:hidden with it means the hover zoom is scoped to
+   the media cell instead of the whole card. */
+/* min-height (the fold floor) rather than a fixed height, so the card can
+   grow to whatever the trending rail beside it needs — see the
+   .hero-section note above. */
+.hero-featured{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.12fr);
+  min-height:var(--fold-h, 320px);gap:0;
+  background:transparent;border:none;box-shadow:none}
+.hero-featured>*{min-width:0}
+.hero-featured__media{position:relative;display:block;overflow:hidden;
+  border-radius:var(--radius-md)}
+/* Padding raised from 1rem to 1.5/1.75rem. At the old value the headline
+   started ~16px from the photograph's edge, which reads as the text
+   touching the picture — the gutter between a column of type and an
+   image needs to be wider than the gaps inside the type itself, or the
+   two blocks stop looking like separate elements. */
+.hero-featured__body{padding:0 0 0 1.6rem;display:flex;
+  flex-direction:column;justify-content:center;gap:.1rem}
+/* Kicker as an image-overlay badge. The base .kicker is now bare text, so
+   the chip background is restored here only — where it sits on top of a
+   photo and needs its own ground to stay legible. */
+.kicker--badge{position:absolute;top:.85rem;inset-inline-start:.85rem;margin:0;
+  background:var(--surface-container-lowest);
+  padding:.25rem .5rem;border-radius:var(--radius);
+  box-shadow:0 1px 3px rgba(0,0,0,.12)}
+
+/* SCOPED to .hero-featured__media on purpose. Absolute positioning only
+   works because that cell is position:relative; applied to a bare
+   .hero__img with no positioned ancestor (the older .hero-col markup)
+   it escapes to the viewport and wrecks the page. Any rule that depends
+   on an ancestor's position must name that ancestor. */
+.hero-featured__media > .hero__img{position:absolute;inset:0;
+  width:100%;height:100%;object-fit:cover;display:block;
+  background:var(--surface-container);
+  transition:transform .5s var(--ease-smooth)}
+.hero__img{width:100%;object-fit:cover;display:block;
+  background:var(--surface-container);border-radius:var(--radius-md)}
+/* Fills the card's fixed height; object-fit:cover crops rather than
+   distorts, so any source aspect ratio works. */
+.hero-featured__media{height:100%}
+.hero-featured__media:hover > .hero__img{transform:scale(1.02)}
+.hero__title{font-family:var(--serif);font-weight:700;font-size:var(--fs-hero);
+  line-height:var(--lh-tight);letter-spacing:-.02em;margin:.25rem 0 .1rem;
+  color:var(--primary-black)}
+.hero__title a:hover{color:var(--primary)}
+.hero__excerpt{font-size:var(--fs-md);color:var(--on-surface-variant);
+  line-height:1.6;margin:.35rem 0 1rem;
+  /* Cap the deck at two lines. An unbounded 3-4 line standfirst in 17px
+     was competing with the headline for attention instead of supporting
+     it — the deck's job is to make you read the headline, not to be read
+     in full on the index page. */
+  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;
+  overflow:hidden}
+.byline{font-size:var(--fs-meta);font-weight:700;color:var(--on-surface)}
+.byline span{color:var(--on-surface-variant);font-weight:400}
+
+/* Trending / Breaking News rail — now a bare column, not a card. It sits
+   beside the hero, so a border around it created two competing boxes on
+   one fold. A single heavy top rule marks it as a distinct section. */
+/* font-size on the container catches the case where the rail's headline
+   is not a heading element at all — a <div> or bare <a> sets no size of
+   its own, so it inherits this 13px instead of the 16px body default.
+   Between this and the heading override below, the rail ends up at meta
+   size whatever element the template happens to use. */
+/* ---- The rail is NOT capped at the fold height ----
+   It used to be `max-height:var(--fold-h)` with the list scrolling
+   inside. That looked tidy in the abstract and was wrong in practice:
+   five trending stories don't fit in 340px, so the page shipped with #4
+   sliced through the middle of its second line and #5 reachable only by
+   noticing a 5px scrollbar inside a page that itself scrolls. Content
+   that has been deliberately placed on the fold should not be hidden by
+   the chrome that frames it.
+
+   The columns are `align-items:start`, so letting the rail run to its
+   natural height costs nothing — it simply ends lower than the lead, and
+   the widgets strip below starts after the taller of the two. Whether
+   the rail carries three stories or five, nothing is ever cut. */
+.hero-trending{background:transparent;border:none;box-shadow:none;padding:0;
+  font-size:var(--fs-meta);display:flex;flex-direction:column}
+.hero-trending__head{flex:none;display:flex;align-items:center;gap:.5rem;
+  padding-bottom:.6rem;margin-bottom:.2rem;
+  border-bottom:2px solid var(--primary-black)}
+
+.hero-trending__list{list-style:none}
+.hero-trending__list li{display:flex;gap:.6rem;padding:.45rem 0;
+  border-bottom:var(--rule)}
+.hero-trending__list li:first-child{padding-top:.5rem}
+.hero-trending__list li:last-child{border-bottom:none;padding-bottom:0}
+.hero-trending__num{font-family:var(--serif);font-weight:700;font-size:13px;
+  color:var(--outline-variant);line-height:1.5;flex-shrink:0;width:12px}
+.hero-trending__body{min-width:0}
+.hero-trending__kicker{display:block;font-size:10px;font-weight:700;
+  letter-spacing:.07em;text-transform:uppercase;color:var(--secondary);
+  margin-bottom:.1rem}
+/* ---- Rail headlines ----
+   Scoped to .hero-trending, NOT .hero-trending__list. The list wrapper
+   may carry a different class (or none) depending on which generation of
+   home.html is installed, and a rule anchored to a wrapper that isn't
+   there does nothing — which is why the rail kept rendering five
+   card-sized serif headlines and running ~200px taller than the lead.
+   Anchoring to the section itself can't miss.
+
+   Every heading level is listed because the markup may use any of them,
+   and `.serif` is listed because a heading carrying that class picks up
+   --serif at specificity 0-1-0; .hero-trending h4 is 0-1-1, so it wins
+   without needing !important.
+
+   The .hero-trending__head rule immediately below restores the section
+   label, which this rule would otherwise catch. Same specificity, so
+   source order decides — it must stay after this block. */
+.hero-trending h2,
+.hero-trending h3,
+.hero-trending h4,
+.hero-trending h5,
+.hero-trending .serif,
+.hero-trending .trend-item h3{font-family:var(--sans);font-weight:700;
+  font-size:var(--fs-meta);line-height:var(--lh-snug);margin:0 0 .15rem;
+  letter-spacing:0;text-transform:none;color:var(--on-surface);
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;
+  overflow:hidden}
+.hero-trending h2 a:hover,
+.hero-trending h3 a:hover,
+.hero-trending h4 a:hover,
+.hero-trending h5 a:hover{color:var(--primary)}
+
+/* ---- Last-resort override for the rail's typography ----
+   The container rules on .hero-trending (the scroll cap, the max-height)
+   demonstrably apply, yet the headline rules above do not — so something
+   with higher priority is winning: an inline style, or a selector in
+   rtl.css / fonts.css that loads later. Rather than keep guessing which,
+   this forces the result.
+
+   !important is a last resort and is used deliberately here, scoped as
+   tightly as possible: only inside .hero-trending, only for typography,
+   and with the icon font excluded so Material Symbols still render as
+   glyphs rather than as their ligature text. If you later find the rule
+   that was winning and remove it, delete this block too — it exists to
+   beat something specific, not as a general habit. */
+.hero-trending *:not(.material-symbols-outlined){
+  font-family:var(--sans) !important}
+.hero-trending :is(h1,h2,h3,h4,h5,h6){
+  font-size:var(--fs-meta) !important;
+  font-weight:700 !important;
+  line-height:var(--lh-snug) !important;
+  letter-spacing:0 !important}
+
+/* Restores the "TRENDING / BREAKING NEWS" label — must stay after the
+   override above, and needs !important to beat it. */
+.hero-trending__head h2{font-size:var(--fs-sm) !important;font-weight:700;
+  letter-spacing:.08em !important;text-transform:uppercase;
+  color:var(--on-surface);
+  display:block;-webkit-line-clamp:none;overflow:visible;margin:0}
+
+/* Rail rows: tight enough that five of them land near the lead's height. */
+.hero-trending li,
+.hero-trending .trend-item{padding:.45rem 0;border-bottom:var(--rule)}
+.hero-trending li:last-child,
+.hero-trending .trend-item:last-child{border-bottom:none}
+.hero-trending time{font-size:10px;color:var(--outline)}
+.hero-trending .kicker{font-size:10px;margin-bottom:.1rem;padding:0;
+  background:transparent}
+
+/* ============================================================
+   HOMEPAGE — AT-A-GLANCE WIDGETS
+   Each side is a single independent flex column (.widgets-col), not a 2x2
+   grid: with a shared grid row, the row's height is set by its tallest
+   cell (Live TV's 16:9 video), so the shorter cell beside it still left a
+   bare gap in the *track* below itself before the next row began.
+   Stacking each column's own widgets in normal flow means a widget's
+   height only ever depends on its own content, never its row-mate's.
+   ============================================================ */
+/* 1.3fr / 1fr, not 1fr / 1fr. Live TV genuinely needs width for a 16/9
+   frame; a currency table does not, and a 530px-wide rate row is what
+   left all that air between the pair label and its figure. */
+/* 1.15fr / 1fr. At 1.3 the Live TV frame grew tall enough that the left
+   column outran the right one by ~150px, leaving the dead patch under
+   Most Read. Narrowing the video column shortens it (16/9 height follows
+   width) and widens the list column, which closes most of the gap
+   without touching either widget's own styles. */
+.widgets-strip{display:grid;
+  grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);
+  gap:.8rem var(--gap-lg);padding-bottom:0;align-items:start}
+.widgets-col{display:flex;flex-direction:column;gap:.9rem}
+/* Widgets are support furniture, not stories. Dropping the card chrome
+   here is the single change that most reduces the "scattered" feel —
+   four bordered boxes in a 2x2 arrangement is what was reading as
+   clutter. A rule above the label groups each widget just as clearly. */
+.widgets-strip .widget{background:transparent;border:none;box-shadow:none;
+  border-top:1.5px solid var(--primary-black);padding:.6rem 0 0;margin-bottom:0}
+
+.widget{margin-bottom:.8rem}
+/* justify-content:space-between so a trailing link ("All streams") sits
+   flush right on the label row instead of floating next to the label. */
+.widget__title{font-size:var(--fs-sm);font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--on-surface);margin-bottom:.6rem;
+  display:flex;align-items:center;gap:.45rem;justify-content:space-between}
+.widget__title>a{margin-inline-start:auto;color:var(--primary);
+  font-size:var(--fs-xs);letter-spacing:.06em}
+.widget__title>a:hover{text-decoration:underline}
+.live-dot{width:7px;height:7px;border-radius:50%;background:var(--negative);
+  display:inline-block;animation:pulse 1.6s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+@media(prefers-reduced-motion:reduce){.live-dot{animation:none}}
+/* max-height caps the frame in the wider left widget column; without it
+   a 16/9 box at ~430px runs 240px and outgrows the rate strip beside it. */
+.live-tv{position:relative;border-radius:var(--radius-md);overflow:hidden;
+  width:100%;aspect-ratio:16/9;max-height:230px;background:#000}
+.live-tv img{width:100%;height:100%;object-fit:cover;opacity:.85}
+.live-tv iframe,.live-tv video{width:100%;height:100%;border:0;display:block}
+.live-tv__play{position:absolute;inset:0;display:flex;align-items:center;
+  justify-content:center;cursor:pointer;background:none;border:none;padding:0}
+.live-tv__play span{background:rgba(55,69,92,.9);color:#fff;width:40px;height:40px;
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:20px;transition:transform .15s ease}
+.live-tv__play:hover span{transform:scale(1.1)}
+.live-tv__label{position:absolute;inset-inline-start:.6rem;bottom:.55rem;color:#fff;
+  font-size:var(--fs-sm);font-weight:600;text-shadow:0 1px 3px rgba(0,0,0,.6)}
+
+/* ---- Rate strip: one horizontal row of chips ----
+   Four stacked full-width rows ran ~140px tall and stretched each pair
+   away from its own figure. A single flex row of four chips is ~46px and
+   puts every label directly above its number.
+
+   flex-wrap plus a min-width floor is what keeps this safe: the chips sit
+   in one row while there's space and wrap to two-up when there isn't,
+   rather than compressing until the figures truncate. `1 1 0` (not
+   `1 1 auto`) makes every chip take an equal share regardless of how long
+   its label is, so the dividers line up evenly. */
+.market-strip{display:flex;flex-wrap:wrap;gap:.35rem 0}
+.market-chip{flex:1 1 0;min-width:104px;padding:.15rem .6rem;
+  border-inline-start:var(--rule);font-variant-numeric:tabular-nums}
+.market-chip:first-child{border-inline-start:none;padding-inline-start:0}
+.market-chip .pair{display:block;font-size:10px;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;
+  color:var(--on-surface-variant);margin-bottom:.05rem}
+.market-chip .rate{display:block;font-size:var(--fs-md);font-weight:700;
+  color:var(--on-surface);line-height:1.25}
+.market-chip .chg{display:flex;align-items:center;gap:.1rem;
+  font-size:10px;font-weight:600}
+.market-chip .chg .material-symbols-outlined{font-size:12px}
+
+/* Legacy stacked rows — kept so any page still using .market-row renders
+   sanely, but .market-strip above is the intended markup. */
+/* Compact fallback for the stacked markup. This renders when
+   _sidebar_widgets.html has not been updated to use .market-strip, so it
+   is tuned to be small on its own rather than relying on the new
+   partial being installed: 11px figures, 2px row padding, ~22px a row.
+   Four pairs come to ~90px instead of ~140px. */
+.market-row{display:grid;grid-template-columns:minmax(0,1fr) auto auto;
+  gap:.4rem;padding:.15rem 0;border-bottom:var(--rule);
+  font-size:var(--fs-sm);align-items:baseline;line-height:1.5;
+  font-variant-numeric:tabular-nums}
+.market-row:last-child{border-bottom:none}
+.market-row .pair{font-weight:700;letter-spacing:.04em;
+  font-size:10px;text-transform:uppercase;color:var(--on-surface-variant)}
+.market-row .chg{display:flex;align-items:center;justify-content:flex-end;
+  gap:.1rem;font-size:10px;font-weight:600}
+.market-row .chg .material-symbols-outlined{font-size:12px}
+.chg.up{color:#0a8f3c}.chg.down{color:var(--negative)}
+.chg.flat{color:var(--outline)}
+
+/* The pull-quote was running four lines at 15px italic serif, which is
+   what pushed the left widget column past the right one. Dropping to the
+   body size and a tighter measure brings it to three lines and roughly
+   levels the two columns. */
+.quote-block{border-inline-start:2px solid var(--primary);
+  padding-inline-start:.85rem;font-family:var(--serif);font-style:italic;
+  font-size:var(--fs-body);line-height:1.5;color:var(--on-surface)}
+.quote-block cite{display:block;font-style:normal;font-size:var(--fs-xs);
+  font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--on-surface-variant);margin-top:.5rem}
+
+.mostread-item{display:flex;gap:.5rem;padding:.35rem 0;
+  border-bottom:var(--rule);align-items:baseline}
+.mostread-item:last-child{border-bottom:none}
+/* 34px ghosted numerals were nearly as tall as the two-line headline they
+   labelled, which made the rank read as the content. 24px at low opacity
+   still scans as a sequence without out-shouting the story. */
+.mostread-item .num{font-family:var(--serif);font-weight:700;font-size:15px;
+  color:rgba(55,69,92,.28);line-height:1.4;flex-shrink:0;
+  width:12px;text-align:end}
+.mostread-item h4{font-size:var(--fs-meta);line-height:var(--lh-snug);
+  font-weight:600;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;
+  overflow:hidden}
+.mostread-item h4 a:hover{color:var(--primary)}
+
+/* ============================================================
+   LATEST DISPATCH GRID
+   ============================================================ */
+.band{padding:var(--band-pad) 0 calc(var(--band-pad) * .8);border-top:var(--rule)}
+/* The section head carries the page's one recurring flourish: a short
+   sage bar keyed to the same hue as the category kickers, so the accent
+   colour means "category" everywhere it appears instead of being
+   decoration in one place and information in another. */
+.band__head{display:flex;align-items:baseline;justify-content:space-between;
+  gap:1rem;margin-bottom:.8rem;position:relative;padding-top:.7rem}
+.band__head::before{content:"";position:absolute;top:0;inset-inline-start:0;
+  width:34px;height:2px;background:var(--secondary)}
+.band__head h2{font-family:var(--serif);font-weight:700;
+  font-size:var(--fs-section);color:var(--primary-black);letter-spacing:-.015em}
+.band__head a{font-size:var(--fs-meta);font-weight:600;color:var(--primary);
+  display:inline-flex;align-items:center;gap:.2rem;white-space:nowrap}
+.band__head a:hover{text-decoration:underline}
+.card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:var(--gap-lg) var(--gap);align-items:stretch}
+/* A section with fewer than 3 articles otherwise leaves 1-2 empty grid
+   tracks beside a single narrow card — bound the row instead of letting
+   it strand a card next to a wide gap. Desktop only (min-width matches
+   responsive.css's mobile stacking breakpoint at 768px) so it can't
+   outrank the higher-specificity :has() selector down there. */
+@media(min-width:769px){
+  .card-grid:has(> :last-child:nth-child(1)){grid-template-columns:minmax(0,340px)}
+  .card-grid:has(> :last-child:nth-child(2)){grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
+/* ---- Article card ----
+   No border, no shadow, no internal padding. Three consequences, all
+   wanted: (1) the cards stop competing with the hero; (2) the image
+   spans the full column instead of being inset by 1.1rem on each side,
+   so the picture does more work at a smaller card size; (3) the text
+   aligns to the same left edge as the image, which is what makes a grid
+   of stories read as a grid rather than as six separate objects. The
+   --gap between columns is the only separator needed.
+
+   Grid stretches every card in a row to the tallest; making the card a
+   flex column is what lets that extra height be absorbed by the body
+   instead of leaving short cards floating with a bare gap beneath. */
+.card{display:flex;flex-direction:column;
+  background:transparent;overflow:hidden;
+  border:none;box-shadow:none;border-radius:var(--radius-md);
+  padding-bottom:0}
+/* The media wrapper owns the aspect box so the ratio holds whether the
+   article has an image or not — an article with no photo keeps its card
+   the same height as its neighbours instead of pulling its text ~195px
+   up and breaking the row's alignment. */
+.card__media{display:block;width:100%;aspect-ratio:16/9;overflow:hidden;
+  border-radius:var(--radius-md);background:var(--surface-container)}
+.card__media--empty{display:block;width:100%;height:100%;
+  background:linear-gradient(135deg,var(--surface-container),var(--surface-container-high))}
+.card__media img{width:100%;height:100%}
+.card img{width:100%;aspect-ratio:16/9;object-fit:cover;
+  border-radius:var(--radius-md);
+  transition:transform .45s var(--ease-smooth);
+  /* The aspect-ratio box reserves its space before the file arrives.
+     Without a fill that reserved area reads as an unexplained blank
+     patch while the image loads — or permanently, if a remote
+     featured_image_url 404s. */
+  background:var(--surface-container)}
+.card:hover img{transform:scale(1.03)}
+.card__media img{aspect-ratio:auto}
+@media(prefers-reduced-motion:reduce){
+  .card:hover img,.hero-featured:hover .hero__img{transform:none}
+}
+/* ---- Gap below the card image ----
+   The spacing must live on the IMAGE, not on the kicker. The kicker is
+   conditional (`{% if show_kicker %}`), so sections that omit it — the
+   per-category grids — had their headline land flush against the
+   photograph with no gap at all, while Latest Dispatch looked fine
+   because its kicker happened to supply the margin. Spacing that depends
+   on an optional element is spacing that disappears without warning.
+
+   Covers both markups: a bare <a> wrapping the img (current templates)
+   and the .card__media wrapper. :first-of-type rather than :first-child
+   because the anchor is only the first child when an image exists. */
+.card > a:first-of-type,
+.card > .card__media,
+.card > img{display:block;margin-bottom:.7rem}
+
+/* The card is a flex column, so children stretch to full width by
+   default — the kicker must keep hugging its own text.
+   margin-top:0 because the image above already supplies the gap; the two
+   used to stack (the partial carried an inline margin-top of its own),
+   opening a ~20px hole between picture and kicker. That inline style is
+   gone from _article_card.html, so this no longer needs !important. */
+.card>.kicker{margin-inline:0;margin-top:0;align-self:flex-start;
+  margin-bottom:.25rem}
+/* A fixed `height` (not min-height, which only sets a floor) plus
+   `overflow:hidden` is what actually guarantees exactly N lines —
+   -webkit-line-clamp alone left a gap: when the clamp didn't engage the
+   box grew to fit every line, so a longer excerpt ran past its card into
+   the next row. The fixed height enforces the cap regardless of
+   line-clamp support; line-clamp adds the ellipsis where browsers apply it. */
+.card h3{font-family:var(--serif);font-weight:700;font-size:var(--fs-card);
+  line-height:var(--lh-snug);margin:0 0 .35rem;padding-inline:0;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;
+  overflow:hidden;height:calc(var(--lh-snug) * 2em)}
+.card h3 a:hover{color:var(--primary);text-decoration:underline;
+  text-underline-offset:2px;text-decoration-thickness:1px}
+.card p{font-size:var(--fs-meta);color:var(--on-surface-variant);
+  line-height:var(--lh-body);padding-inline:0;margin-bottom:0;
+  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;
+  overflow:hidden;height:calc(var(--lh-body) * 3em)}
+
+/* Islamic content section — keeps a tinted ground because it genuinely
+   is a different kind of content, but loses the border so it reads as a
+   change of surface rather than another box. */
+.islamic{background:var(--surface-container-low);
+  border:none;border-radius:var(--radius-lg);
+  padding:1.25rem;margin:.5rem 0;position:relative;overflow:hidden}
+.islamic::before{content:"";position:absolute;inset:0;
+  background-image:radial-gradient(var(--primary-container) 1px,transparent 1px);
+  background-size:22px 22px;opacity:.04;pointer-events:none}
+.islamic__head{display:flex;align-items:center;gap:.5rem;
+  border-bottom:2px solid rgba(0,0,0,.2);padding-bottom:.45rem;
+  margin-bottom:.9rem;width:fit-content}
+.islamic__head .material-symbols-outlined{color:var(--primary)}
+.islamic__head h2{font-family:var(--serif);font-weight:700;
+  font-size:var(--fs-section)}
+.islamic__grid{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);
+  gap:var(--gap-lg);position:relative;z-index:1}
+/* ---- Islamic section: pictures, not ghosted numerals ----
+   This band used to be the only place on the homepage where articles
+   appeared with no photograph — the lead was a headline over a paragraph
+   with a wide empty gutter beside it, and the two rows below it were
+   labelled with big grey "02"/"03" numerals. The numerals implied a rank
+   that doesn't exist here (these are just the next two essays) while
+   taking the space a thumbnail could use. Every article on the page now
+   carries its own picture. */
+.islamic__lead{display:grid;grid-template-columns:minmax(0,150px) minmax(0,1fr);
+  gap:1rem;align-items:start}
+.islamic__media{display:block;overflow:hidden;border-radius:var(--radius-md);
+  background:var(--surface-container)}
+.islamic__media img{width:100%;aspect-ratio:4/3;object-fit:cover;
+  transition:transform .45s var(--ease-smooth)}
+.islamic__media:hover img{transform:scale(1.03)}
+.islamic__lead h3{font-family:var(--serif);font-weight:700;
+  font-size:var(--fs-sub);line-height:var(--lh-snug);margin-bottom:.45rem}
+.islamic__lead p{color:var(--on-surface-variant);font-size:var(--fs-body);
+  margin-bottom:.7rem}
+.islamic__list .row{display:flex;gap:.85rem;padding:.7rem 0;
+  border-bottom:var(--rule);align-items:center}
+.islamic__list .row:first-child{padding-top:0}
+.islamic__list .row:last-child{border-bottom:none;padding-bottom:0}
+.islamic__list .row__thumb{display:block;flex:none;width:76px;
+  overflow:hidden;border-radius:var(--radius-md);
+  background:var(--surface-container)}
+.islamic__list .row__thumb img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.islamic__list h4{font-size:var(--fs-meta);line-height:var(--lh-snug);
+  font-weight:600}
+.link-cta{color:var(--primary);font-size:var(--fs-meta);font-weight:700;
+  text-transform:uppercase;letter-spacing:.05em;display:inline-flex;
+  align-items:center;gap:.2rem}
+.link-cta:hover{text-decoration:underline}
+
+/* ---- Category / tag page ----
+   These replace three inline styles that used to sit on the markup. The
+   headline one mattered: it hardcoded font-size:32px, overriding the
+   fluid --fs-hero token, so the section lead was the one headline on the
+   site that did not shrink on a narrow screen — at 380px it ran wider
+   than its column while every other headline scaled. Sizes belong to the
+   type scale, not to the template. */
+.section-wrap{padding-top:1.5rem}
+.section-lead{margin-bottom:1.75rem}
+
+/* Section grids */
+.mini-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:var(--gap-lg) var(--gap);margin-top:.85rem;align-items:stretch}
+@media(min-width:769px){
+  .mini-grid:has(> :last-child:nth-child(1)){grid-template-columns:minmax(0,340px)}
+  .mini-grid:has(> :last-child:nth-child(2)){grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
+/* ============================================================
+   ARTICLE DETAIL
+   ============================================================ */
+/* align-items:start (overriding grid's default stretch) is what makes the
+   sticky sidebar work: without it the aside stretches to match the long
+   article column's height, so its short "Most Read" card sits at the top
+   of a tall empty box — the same dead whitespace, moved inside the aside. */
+/* NO max-width here. The template is <div class="wrap article-wrap">, so
+   both classes hit the same element: .wrap caps it at --container-max,
+   and a max-width:100% here overrode that cap — same specificity, and
+   components.css loads after base.css, so the later rule won. The result
+   was the only page on the site with no container: full-window width,
+   no centring, content flush to the viewport edge.
+
+   A utility class like .wrap and a layout class like .article-wrap must
+   not both set the same property, or which one wins depends on file
+   order rather than on intent. */
+/* ---- One measure for the whole reading column ----
+   The article column is ~760px wide, but .article-body capped its
+   paragraphs at 68ch (~600px) while the headline, standfirst, byline and
+   comment form each ran the full 760. Three different measures stacked
+   vertically is what made the page look unbalanced: every paragraph
+   ended ~160px short of the headline above it, leaving a dead strip down
+   the right-hand side of the story.
+   --measure fixes the text to one width. Pictures (.article-figure,
+   .gallery) and the related-stories grid deliberately stay at full
+   column width — a lead photograph breaking out wider than the type is
+   a newspaper convention, and unlike the old mismatch it is legible as
+   intentional because the *text* edges all agree. */
+.article-wrap{--measure:68ch;
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,300px);
+  gap:var(--gap-lg);padding-block:1.25rem;align-items:start}
+.article-head,.article-body,.discussion{max-width:var(--measure)}
+/* Grid items default to min-width:auto and refuse to shrink below their
+   content — one wide element inside body_html (a table, a code block, an
+   unbroken URL) then pushes the whole grid past the viewport, which is
+   what put the page into horizontal scroll and cut SUBSCRIBE off. */
+.article-wrap > *{min-width:0}
+/* Same guard for editor-pasted content, which can carry its own widths. */
+.article-body img,.article-body iframe,.article-body video,
+.article-body table,.article-body pre{max-width:100%}
+.article-body pre{overflow-x:auto}
+.article-body table{display:block;overflow-x:auto}
+/* 46px clears the sticky masthead above it, plus breathing room. */
+.article-wrap aside{position:sticky;top:calc(46px + 1rem)}
+.article-badge{display:inline-block;background:var(--secondary);color:#fff;
+  font-size:var(--fs-xs);font-weight:700;letter-spacing:.06em;
+  text-transform:uppercase;padding:.2rem .5rem;border-radius:var(--radius)}
+.article-head{border-bottom:var(--rule);padding-bottom:.85rem;
+  margin-bottom:.85rem}
+.article-head h1{font-family:var(--serif);font-weight:700;
+  font-size:var(--fs-article);line-height:var(--lh-tight);letter-spacing:-.022em;
+  margin:.6rem 0;color:var(--primary-black)}
+.article-standfirst{font-size:var(--fs-sub);color:var(--on-surface-variant);
+  line-height:1.45}
+.author-line{display:flex;align-items:center;gap:.65rem;margin-top:.8rem;
+  padding-top:.8rem;border-top:var(--rule)}
+/* 44px to match the inline placeholder div in article_detail.html,
+   so an author with an avatar and one without line up identically. */
+.author-line img{width:44px;height:44px;border-radius:50%;object-fit:cover}
+.author-line .n{font-weight:700;font-size:var(--fs-meta)}
+.author-line .r{font-size:var(--fs-sm);color:var(--on-surface-variant)}
+/* ---- Article lead image ----
+   21/9, not 16/9. At the article column's ~720px the previous ratio came
+   to ~405px tall — the reader scrolled most of a screen of photograph
+   before reaching the first line of the story. A cinematic crop is the
+   standard newspaper answer: the picture still spans the full measure and
+   still sets the scene, at roughly 300px instead of 405.
+
+   object-fit:cover crops toward the centre, so portrait and square
+   sources work too — nothing is ever squashed. If a particular photo
+   loses its subject to the crop, set object-position on that figure
+   (e.g. object-position:top) rather than changing the ratio globally. */
+.article-figure{margin:.9rem 0 1.1rem}
+.article-figure img{width:100%;aspect-ratio:21/9;max-height:300px;
+  object-fit:cover;object-position:center;
+  border-radius:var(--radius-md);background:var(--surface-container)}
+/* The credit line is attribution, not content — it sits below the frame
+   at the smallest step on the scale. */
+.article-figure figcaption{font-size:var(--fs-xs);color:var(--outline);
+  text-align:end;margin-top:.35rem;letter-spacing:.01em}
+/* The one place that stays generous. Index pages get denser; the reading
+   surface itself keeps a long measure and open leading, because that is
+   where the size actually earns its space. (The width itself now comes
+   from --measure on .article-wrap, shared with the head and the
+   discussion — see the note there.) */
+.article-body p{font-size:var(--fs-lg);line-height:var(--lh-prose);
+  margin-bottom:1.1rem;color:var(--on-surface)}
+.article-body h2{font-family:var(--serif);font-size:var(--fs-sub);
+  font-weight:700;margin:1.6rem 0 .6rem;color:var(--primary-black)}
+.pullquote{border-inline-start:2px solid var(--primary);
+  padding-block:.9rem;padding-inline:1.2rem 0;
+  margin:1.4rem 0;background:transparent;box-shadow:none;
+  font-family:var(--serif);font-size:var(--fs-sub);line-height:1.4}
+.gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:.7rem;margin:1rem 0}
+.gallery img{width:100%;aspect-ratio:3/2;object-fit:cover;
+  border-radius:var(--radius-md);background:var(--surface-container)}
+.share-rail{display:flex;gap:.5rem;margin-top:.9rem}
+.hero-featured__body .share-rail{margin-top:.8rem}
+.hero-featured__body .share-rail a{width:28px;height:28px;font-size:12px}
+.share-rail a{width:34px;height:34px;border:var(--rule);
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:14px;color:var(--on-surface-variant);transition:.15s}
+.share-rail a:hover{background:var(--primary-container);color:#fff;
+  border-color:var(--primary-container)}
+.share-rail a[data-share="whatsapp"]:hover{background:#25D366;border-color:#25D366}
+.share-rail a[data-share="facebook"]:hover{background:#1877F2;border-color:#1877F2}
+.share-rail a[data-share="twitter"]:hover{background:#000;border-color:#000}
+.share-rail a[data-share="linkedin"]:hover{background:#0A66C2;border-color:#0A66C2}
+
+/* ---- Related stories ----
+   Sits between the story and the comments, and reuses .band__head and
+   .card-grid verbatim so a related row is visually identical to a
+   homepage section — same rule, same sage tick, same card. Nothing here
+   redefines the grid; it only supplies the separation from the article
+   body above and the discussion below. */
+.related{margin-top:1.5rem;padding-top:.25rem;
+  border-top:2px solid var(--primary-black)}
+.related .band__head{padding-top:.7rem;margin-bottom:.9rem}
+/* The row's own rule already separates it, so the discussion below it
+   doesn't need a second heavy line 200px further down — one is a
+   section break, two in a row is a stack of boxes. */
+.related + .discussion{border-top:var(--rule);margin-top:1.75rem}
+
+/* ---- Comments ----
+   The measure comes from --measure on .article-wrap, matching the
+   article body. A comment form is read the same way the article is, so
+   letting it run the full column width put a 400px-wide name field under
+   a narrower paragraph — two different measures stacked, which is what
+   made the block look oversized rather than any single control being
+   too big. */
+.discussion{border:none;border-top:2px solid var(--primary-black);
+  border-radius:0;padding:.9rem 0 0;margin-top:1.25rem;
+  background:transparent;box-shadow:none}
+/* display:block, not flex. As a flex container every text run in the
+   heading became its own flex item, so `gap` was inserted between them
+   — including between the parentheses and the comment count, which is
+   what rendered "Discussion ( 0 )". The icon gets its own margin
+   instead; .material-symbols-outlined is already vertical-align:middle,
+   so it still sits on the heading's centre line. */
+.discussion h3{font-family:var(--serif);font-size:var(--fs-card);
+  margin-bottom:.7rem;display:block}
+.discussion h3 .material-symbols-outlined{margin-inline-end:.45rem}
+.field-input{width:100%;border:1px solid var(--outline-variant);
+  border-radius:var(--radius);padding:.5rem .65rem;font-family:var(--sans);
+  font-size:var(--fs-meta);margin-bottom:.5rem;outline:none;background:#fff;
+  line-height:1.5}
+/* A bare <textarea> defaults to rows=2 but browsers size it far taller
+   once padding and line-height are applied; pinning the height keeps the
+   composer proportional to the fields above it. resize:vertical still
+   lets anyone drag it larger to write a long comment. */
+.discussion textarea.field-input,
+.discussion textarea{min-height:78px;height:78px;resize:vertical}
+/* Name and email are short fields; side by side they cost one row
+   instead of two. :has() keeps this off any comment form that doesn't
+   have both. */
+@media(min-width:600px){
+  .discussion form:has(input[name="name"] + input[name="email"]){
+    display:grid;grid-template-columns:1fr 1fr;gap:0 .5rem}
+  .discussion form:has(input[name="name"] + input[name="email"]) > textarea,
+  .discussion form:has(input[name="name"] + input[name="email"]) > button,
+  .discussion form:has(input[name="name"] + input[name="email"]) > .btn{
+    grid-column:1/-1}
+}
+.discussion .btn{margin-top:.15rem}
+.field-input:focus{border-color:var(--primary-container)}
+.comment{padding:.85rem 0;border-top:var(--rule)}
+.comment .meta{font-size:var(--fs-meta);margin-bottom:.25rem}
+.comment .meta b{font-weight:700}.comment .meta span{color:var(--outline)}
+.comment .reply{margin-inline-start:1.5rem;margin-top:.7rem;
+  padding-inline-start:.9rem;border-inline-start:2px solid var(--divider)}
+
+/* ---- Trending sidebar (article page) ----
+   Three problems with the flat version: every row carried the same
+   weight so the list had no rhythm and read as four unrelated links; the
+   meta line was uppercase and letterspaced, which made a timestamp shout
+   as loudly as the headline it belonged to; and the rows were spaced
+   like paragraphs rather than like a list.
+
+   The numbers come from a CSS counter, so no template change is needed.
+   :has(.item .m) scopes the numbering to the "Trending Now" block —
+   "Related" has no .m line, so it stays unnumbered, which is right:
+   numbering implies rank, and related stories aren't ranked. */
+.tw{border:none;border-top:2px solid var(--primary-black);border-radius:0;
+  padding:.7rem 0 0;background:transparent;box-shadow:none}
+.tw:has(.item .m){counter-reset:tw}
+.tw h3{font-family:var(--serif);font-size:var(--fs-card);
+  border-bottom:none;padding-bottom:0;margin-bottom:.5rem;
+  letter-spacing:-.01em}
+
+.tw .item{padding:.5rem 0;border-bottom:var(--rule)}
+.tw .item:last-child{border-bottom:none;padding-bottom:0}
+.tw:has(.item .m) .item{counter-increment:tw;
+  display:grid;grid-template-columns:16px minmax(0,1fr);
+  column-gap:.55rem;align-items:start}
+/* The numeral spans both rows in column 1; EVERY other child is pinned to
+   column 2. Without that second rule the .m meta line — the third grid
+   item — auto-flowed back into column 1 and had to render inside a 16px
+   track, which is why "Technology · 1 week, 2 days ago" broke to one word
+   per line. Any grid whose item count can vary needs its children placed
+   explicitly, not left to auto-flow. */
+.tw:has(.item .m) .item::before{content:counter(tw);
+  grid-column:1;grid-row:1/-1;
+  font-family:var(--serif);font-weight:700;font-size:15px;line-height:1.35;
+  color:rgba(55,69,92,.3)}
+.tw:has(.item .m) .item > *{grid-column:2;min-width:0}
+
+.tw .item h4{font-size:var(--fs-meta);font-weight:600;
+  line-height:var(--lh-snug);margin:0;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;
+  overflow:hidden}
+.tw .item h4 a:hover{color:var(--primary);text-decoration:underline;
+  text-underline-offset:2px}
+
+/* Meta drops the uppercase and the letterspacing. A category plus a
+   timestamp is orientation, not a headline — it should be readable when
+   looked for and invisible otherwise. */
+.tw .item .m{font-size:10px;color:var(--outline);margin-top:.2rem;
+  text-transform:none;letter-spacing:0}
+
+/* ============================================================
+   WIDGETS PAGE: currency calc, transport
+   ============================================================ */
+.tool-card{background:var(--surface-container-lowest);border:var(--rule);
+  border-radius:var(--radius-lg);padding:1.15rem;margin-bottom:var(--gap);
+  box-shadow:none}
+.tool-card h3{font-family:var(--serif);font-size:var(--fs-card);
+  margin-bottom:.8rem}
+.calc-row{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);
+  gap:.7rem;align-items:end}
+.calc-row label{font-size:var(--fs-sm);font-weight:600;display:block;
+  margin-bottom:.25rem}
+.calc-out{font-family:var(--serif);font-size:var(--fs-section);font-weight:700;
+  color:var(--primary);margin-top:.85rem;display:flex;align-items:baseline;
+  gap:.5rem;font-variant-numeric:tabular-nums}
+.calc-out .calc-live-tag{font-family:var(--sans);font-size:var(--fs-xs);
+  font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#0a8f3c}
+.calc-out .calc-live-tag.stale{color:var(--outline)}
+
+.schedule-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.7rem;
+  padding:.35rem 0;border-bottom:var(--rule);font-size:var(--fs-meta)}
+.schedule-row:last-child{border-bottom:none}
+
+.islamic-item{padding:0 0 1rem;border:none;border-bottom:var(--rule);
+  border-radius:0;background:transparent;margin-bottom:1rem}
+.islamic-item:last-child{margin-bottom:0;border-bottom:none;padding-bottom:0}
+.islamic-item .arabic-block{margin:.5rem 0}
+
+/* ============================================================
+   FORMS / GENERIC PAGES
+   ============================================================ */
+.page-head{padding:1rem 0 .8rem;border-bottom:var(--rule)}
+.page-head .kicker{margin-bottom:.3rem}
+.page-head h1{font-family:var(--serif);font-size:var(--fs-section);
+  font-weight:700;line-height:var(--lh-tight);color:var(--primary-black)}
+.page-head p{color:var(--on-surface-variant);margin-top:.35rem;
+  font-size:var(--fs-body)}
+.prose{max-width:68ch;padding:1.5rem 0}
+.prose h2{font-family:var(--serif);font-size:var(--fs-sub);margin:1.4rem 0 .6rem}
+.prose p{margin-bottom:.9rem;color:var(--on-surface);font-size:var(--fs-lg);
+  line-height:var(--lh-prose)}
+.form-narrow{max-width:600px;margin:0 auto;padding:1.5rem 0}
+
+/* ---- Search / category result row ----
+   Kept as a bordered row because here the border is doing real work: on a
+   list page there is no grid structure to separate one result from the
+   next, so the row needs its own edge. This is the exception that proves
+   the rule — chrome where it aids scanning, not by default. */
+.result-item{display:grid;grid-template-columns:170px minmax(0,1fr);
+  gap:1.1rem;padding:1rem;margin-bottom:.85rem;align-items:start;
+  background:var(--surface-container-lowest);border:var(--rule);
+  border-radius:var(--radius-lg);box-shadow:none;
+  transition:border-color .2s ease,box-shadow .2s ease}
+.result-item:last-child{margin-bottom:0}
+.result-item:hover{border-color:var(--outline-variant);
+  box-shadow:var(--shadow-card)}
+.result-item img{width:100%;aspect-ratio:16/10;object-fit:cover;
+  border-radius:var(--radius);background:var(--surface-container)}
+.result-item h3{font-family:var(--serif);font-size:var(--fs-sub);
+  font-weight:700;line-height:var(--lh-snug);margin:.25rem 0}
+.result-item h3 a:hover{color:var(--primary)}
+.result-item p{line-height:var(--lh-body);font-size:var(--fs-body);
+  color:var(--on-surface-variant)}
+.filters{display:flex;gap:.85rem;flex-wrap:wrap;margin:1.1rem 0;
+  padding-bottom:.85rem;border-bottom:var(--rule)}
+.filters select,.filters input{border:1px solid var(--outline-variant);
+  border-radius:var(--radius);padding:.45rem .6rem;font-size:var(--fs-meta)}
+
+/* ============================================================
+   READER ACCOUNTS — Sign In / Sign Up / user chip (masthead)
+   ============================================================ */
+.account-cluster{display:flex;align-items:center;gap:.5rem;
+  padding-inline-end:.5rem;margin-inline-end:.5rem;
+  border-inline-end:var(--rule)}
+.account-cluster form{display:inline-flex}
+.user-chip{display:inline-flex;align-items:center;gap:.45rem;
+  background:var(--surface-container-low);border-radius:999px;
+  padding:.25rem .7rem .25rem .25rem}
+[dir="rtl"] .user-chip{padding:.25rem .25rem .25rem .7rem}
+[dir="rtl"] .hero-featured__body{padding:0 1.6rem 0 0}
+.user-chip__avatar{width:22px;height:22px;border-radius:50%;
+  background:var(--secondary-container,#c8f17a);color:var(--secondary);
+  font-size:var(--fs-xs);font-weight:700;display:flex;align-items:center;
+  justify-content:center}
+.user-chip__name{font-size:var(--fs-meta);font-weight:600;color:var(--on-surface);
+  max-width:110px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.btn--danger{color:var(--negative);border-color:var(--negative)}
+.btn--danger:hover{background:var(--negative);color:#fff}
+
+/* ============================================================
+   AUTH PAGES — Sign In / Sign Up cards
+   ============================================================ */
+.auth-card-wrap{display:flex;justify-content:center;
+  padding:2rem var(--container-pad);
+  background:linear-gradient(135deg,rgba(55,69,92,.07) 0%,rgba(73,104,0,.07) 100%)}
+/* Glass card: inputs stay solid #fff so typed text keeps full contrast —
+   only the card surface itself is translucent. */
+.auth-card{width:100%;max-width:420px;background:var(--glass-bg);
+  backdrop-filter:blur(var(--glass-blur));
+  -webkit-backdrop-filter:blur(var(--glass-blur));
+  border:1px solid var(--glass-border);border-radius:var(--radius-lg);
+  box-shadow:var(--shadow-lift);padding:2rem}
+.auth-card h1{font-family:var(--serif);font-size:var(--fs-section);
+  font-weight:700;margin-bottom:.25rem}
+.auth-card form{margin-top:1rem}
+.auth-card input[type="text"],.auth-card input[type="password"],
+.auth-card input[type="email"]{width:100%;border:1px solid var(--outline-variant);
+  border-radius:var(--radius);padding:.65rem .75rem;font-family:var(--sans);
+  font-size:var(--fs-meta);margin-bottom:.8rem;outline:none;background:#fff}
+.auth-card input:focus{border-color:var(--primary-container)}
+.auth-switch{text-align:center;font-size:var(--fs-meta);
+  color:var(--on-surface-variant);margin-top:1rem}
+.auth-switch a,.auth-switch .link-btn{color:var(--primary);font-weight:700}
+.auth-switch a:hover,.auth-switch .link-btn:hover{text-decoration:underline}
+.link-btn{background:none;border:none;padding:0;font:inherit;cursor:pointer}
+
+/* ============================================================
+   AUTH MODAL — JS-driven Sign In / Sign Up
+   ============================================================ */
+.modal-backdrop{position:fixed;inset:0;background:rgba(15,15,18,.55);
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  display:flex;align-items:center;justify-content:center;padding:1.2rem;
+  z-index:200}
+.modal-backdrop[hidden]{display:none}
+.modal-card{position:relative;width:100%;max-width:420px;max-height:90vh;
+  overflow-y:auto}
+.modal-close{position:absolute;top:.7rem;inset-inline-end:.8rem;
+  background:none;border:none;font-size:22px;line-height:1;cursor:pointer;
+  color:var(--on-surface-variant)}
+.modal-close:hover{color:var(--on-surface)}
+
+/* ============================================================
+   READER BLOG — list + composer
+   ============================================================ */
+.blog-page-head{display:flex;align-items:flex-start;
+  justify-content:space-between;gap:1rem;flex-wrap:wrap}
+#blogAuthActions{display:flex;gap:.5rem;flex-wrap:wrap}
+.blog-feed{display:flex;flex-direction:column;gap:1rem;padding:1.25rem 0}
+.blog-card{background:var(--surface-container-lowest);border:var(--rule);
+  border-radius:var(--radius-lg);padding:1.15rem;box-shadow:none;
+  transition:border-color .15s ease,box-shadow .15s ease}
+.blog-card:hover{border-color:var(--outline-variant);
+  box-shadow:var(--shadow-card)}
+.blog-card__meta{display:flex;align-items:center;gap:.45rem;flex-wrap:wrap;
+  font-size:var(--fs-sm);font-weight:700;text-transform:uppercase;
+  letter-spacing:.04em;color:var(--on-surface-variant);margin-bottom:.6rem}
+.blog-card__meta .dot{opacity:.5}
+.blog-card__meta time{text-transform:none;font-weight:400}
+.lang-tag{font-size:var(--fs-xs);font-weight:700;padding:.12rem .5rem;
+  border-radius:999px;background:var(--surface-container);
+  color:var(--on-surface-variant);text-transform:uppercase;letter-spacing:.04em}
+.lang-tag.is-rtl{background:var(--secondary-container,#c8f17a);color:var(--secondary)}
+.blog-card__title{font-family:var(--serif);font-size:var(--fs-sub);
+  font-weight:700;margin-bottom:.4rem;color:var(--primary-black)}
+.blog-card__content{color:var(--on-surface-variant);font-size:var(--fs-body);
+  white-space:pre-wrap;line-height:var(--lh-body)}
+.blog-card__actions{display:flex;gap:.5rem;margin-top:1rem;padding-top:1rem;
+  border-top:var(--rule)}
+.blog-card__actions .btn{font-size:var(--fs-xs)}
+.blog-empty{text-align:center;padding:1.75rem 1rem;
+  border:1px dashed var(--outline-variant);border-radius:var(--radius-lg);
+  color:var(--on-surface-variant)}
+.blog-empty p{font-family:var(--serif);font-size:var(--fs-sub);
+  color:var(--on-surface);margin-bottom:.35rem}
+
+/* Composer: live LTR/RTL badge next to the title/content fields */
+.dir-field{position:relative}
+.dir-badge{position:absolute;top:.55rem;inset-inline-end:.55rem;
+  font-size:var(--fs-xs);font-weight:700;letter-spacing:.06em;
+  padding:.12rem .45rem;border-radius:999px;background:var(--surface-container);
+  color:var(--on-surface-variant);pointer-events:none}
+.dir-badge.is-rtl{background:var(--secondary-container,#c8f17a);color:var(--secondary)}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:.85rem}
+.field-row .field-input[readonly]{background:var(--surface-container-low);
+  color:var(--on-surface-variant)}
+.composer-actions{display:flex;justify-content:flex-end;gap:.6rem;margin-top:.85rem}
+
+/* Per-field / per-post Urdu typography, detected live from what was typed —
+   distinct from the whole-site language toggle in rtl.css. Scoped to
+   reader-authored content that can mix English and Urdu in one post, so
+   each RTL field/block gets its own generous line-height regardless of
+   the site's active language. */
+.blog-card__title[dir="rtl"],
+.blog-card__content[dir="rtl"],
+.dir-field .field-input[dir="rtl"]{
+  font-family:var(--urdu);
+  line-height:2.1;
+  letter-spacing:normal;
+  text-align:right;
+}
+
+/* ============================================================
+   LEGACY HOMEPAGE MARKUP (.home-grid generation)
+
+   An earlier generation of home.html uses a three-column top grid —
+   .hero-col | .trend-col | .sidebar-col — with .trend-item rows and
+   .section-head labels, and none of the .hero-featured / .hero-trending
+   / .widgets-strip classes above.
+
+   Both generations are styled so the page renders in the current design
+   whichever template set is installed. If you know you are on the newer
+   markup, this block is inert and can be deleted; it costs nothing to
+   leave in place.
+   ============================================================ */
+.home-grid{display:grid;
+  grid-template-columns:minmax(0,1.25fr) minmax(0,1fr) minmax(0,280px);
+  gap:var(--gap-lg);padding:1rem 0 1.25rem;align-items:start}
+.home-grid>*{min-width:0}
+.col-divider{border-inline-start:var(--rule);padding-inline-start:var(--gap-lg)}
+
+/* Capped rather than free-growing: at ~430px wide a 16/10 image ran 270px
+   tall and pushed the headline toward the fold. 16/9 with a ceiling keeps
+   the lead's height predictable as stories change. */
+.hero-col .hero__img{aspect-ratio:16/9;max-height:300px}
+/* Same fragility as the card: hero.kicker sits inside an {% if %}, so
+   the gap below the image is hung on the image, not on the kicker. */
+.hero-col > article > a:first-of-type,
+.hero-col .hero__img{margin-bottom:.7rem}
+.hero-col .kicker{margin-top:0 !important;margin-bottom:.3rem}
+
+/* Same treatment as the trending rail: these are list rows, not five
+   competing lead headlines, so they lose the serif and drop to meta size.
+   That is what stops the middle column running ~200px past the hero. */
+.section-head{font-size:var(--fs-sm);font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--on-surface);
+  padding-bottom:.55rem;margin-bottom:.5rem;
+  border-bottom:2px solid var(--primary-black)}
+.trend-item{padding:.5rem 0;border-bottom:var(--rule)}
+.trend-item:first-child{padding-top:.4rem}
+.trend-item:last-child{border-bottom:none}
+.trend-item .kicker{font-size:10px;margin-bottom:.1rem}
+.trend-item h3{font-family:var(--sans);font-weight:700;
+  font-size:var(--fs-meta);line-height:var(--lh-snug);margin:0 0 .15rem;
+  letter-spacing:0;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;
+  overflow:hidden}
+.trend-item h3 a:hover{color:var(--primary)}
+.trend-item time{font-size:10px;color:var(--outline)}
+
+/* The sidebar column holds two .widgets-col stacks; in a 280px track they
+   belong one above the other, not side by side. */
+.sidebar-col{display:flex;flex-direction:column;gap:var(--gap)}
+.sidebar-col .widget{background:transparent;border:none;box-shadow:none;
+  border-top:1.5px solid var(--primary-black);padding:.6rem 0 0;
+  margin-bottom:0}
+.sidebar-col .widget .widget__title{color:var(--on-surface)}
+/* At this width the four rate chips wrap to 2x2 on their own — the
+   min-width floor on .market-chip is what triggers it, so no extra rule
+   is needed here. */

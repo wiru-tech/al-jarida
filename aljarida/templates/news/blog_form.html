@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load static i18n %}
+{% block title %}{% if editing %}{% trans "Edit post" %}{% else %}{% trans "Write a post" %}{% endif %} — Al-Jarida{% endblock %}
+{% block content %}
+<div class="wrap">
+  <div class="form-narrow">
+    <div class="page-head" style="padding-top:0">
+      <h1>{% if editing %}{% trans "Edit post" %}{% else %}{% trans "Write a new post" %}{% endif %}</h1>
+      <p>{% trans "Direction is detected automatically from what you type." %}</p>
+    </div>
+
+    <form method="post" novalidate id="blogPostForm">
+      {% csrf_token %}
+
+      <label class="label-caps muted" for="{{ form.title.id_for_label }}">{% trans "Title" %}</label>
+      <div class="dir-field">
+        {{ form.title }}
+        <span class="dir-badge" id="titleDirBadge">LTR</span>
+      </div>
+      {% for error in form.title.errors %}<div class="flash error">{{ error }}</div>{% endfor %}
+
+      <label class="label-caps muted" for="{{ form.content.id_for_label }}">{% trans "Content" %}</label>
+      <div class="dir-field">
+        {{ form.content }}
+        <span class="dir-badge" id="contentDirBadge">LTR</span>
+      </div>
+      {% for error in form.content.errors %}<div class="flash error">{{ error }}</div>{% endfor %}
+
+      <div class="field-row">
+        <div>
+          <label class="label-caps muted">{% trans "Author" %}</label>
+          <input type="text" class="field-input" value="{{ user.get_full_name|default:user.username }}" readonly>
+        </div>
+        <div>
+          <label class="label-caps muted">{% trans "Date" %}</label>
+          <input type="text" class="field-input"
+                 value="{% if post %}{{ post.created_at|date:'F j, Y' }}{% else %}{% now 'F j, Y' %}{% endif %}"
+                 readonly>
+        </div>
+      </div>
+
+      <div class="composer-actions">
+        <a href="{% url 'news:blog_list' %}" class="btn btn--outline">{% trans "Cancel" %}</a>
+        <button type="submit" class="btn btn--solid">
+          {% if editing %}{% trans "Save changes" %}{% else %}{% trans "Publish post" %}{% endif %}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/direction.js' %}"></script>
+{% endblock %}

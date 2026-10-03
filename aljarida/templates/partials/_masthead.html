@@ -1,0 +1,59 @@
+{% load i18n %}
+<header class="masthead">
+  <div class="wrap masthead__row">
+    <div class="masthead__left">
+      <button class="icon-btn menu-toggle" aria-label="Menu"><span class="material-symbols-outlined">menu</span></button>
+      <button class="icon-btn" data-search-toggle aria-label="{% trans 'Search' %}"><span class="material-symbols-outlined">search</span></button>
+    </div>
+    <a href="{% url 'news:home' %}" class="brand">AL-JARIDA</a>
+    <div class="masthead__right">
+      <!-- Language switcher -->
+      <div class="lang-switch" data-lang-switch>
+        <button class="icon-btn" data-lang-btn style="font-size:13px;gap:.3rem;font-weight:600">
+          <span class="material-symbols-outlined" style="font-size:18px">language</span> <span class="i18n-ltr">{{ LANGUAGE_CODE|upper }}</span>
+        </button>
+        <div class="lang-switch__menu">
+          <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+            <input name="next" type="hidden" value="{{ request.path }}">
+            {% get_available_languages as langs %}
+            {% for code, name in langs %}
+              <button type="submit" name="language" value="{{ code }}">{{ name }}</button>
+            {% endfor %}
+          </form>
+        </div>
+      </div>
+      <!-- Reader account: Sign In / Sign Up, or Write + user chip + Sign out -->
+      <div class="account-cluster">
+        {% if user.is_authenticated %}
+          <a href="{% url 'news:blog_create' %}" class="btn btn--solid">{% trans "Write" %}</a>
+          <span class="user-chip" title="{{ user.email }}">
+            <span class="user-chip__avatar">{{ user.username|slice:":1"|upper }}</span>
+            <span class="user-chip__name i18n-ltr">{{ user.get_full_name|default:user.username }}</span>
+          </span>
+          <form method="post" action="{% url 'news:logout' %}" style="display:inline">
+            {% csrf_token %}
+            <button type="submit" class="btn btn--outline">{% trans "Sign out" %}</button>
+          </form>
+        {% else %}
+          <a href="{% url 'news:login' %}" class="btn btn--outline">{% trans "Sign In" %}</a>
+          <a href="{% url 'news:signup' %}" class="btn btn--solid">{% trans "Sign Up" %}</a>
+        {% endif %}
+      </div>
+      <a href="{% url 'news:contact' %}" class="btn btn--solid subscribe-txt">{% trans "Subscribe" %}</a>
+    </div>
+  </div>
+</header>
+
+<!-- Primary nav -->
+<nav class="mainnav">
+  <div class="wrap">
+    <div class="nav-links">
+      <a href="{% url 'news:home' %}" class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}">{% trans "Home" %}</a>
+      {% for cat in nav_categories %}
+        <a href="{{ cat.get_absolute_url }}"
+           class="{% if category.slug == cat.slug %}active{% endif %}">{{ cat.name }}</a>
+      {% endfor %}
+      <a href="{% url 'news:blog_list' %}" class="{% if request.resolver_match.url_name == 'blog_list' %}active{% endif %}">{% trans "Blog" %}</a>
+    </div>
+  </div>
+</nav>

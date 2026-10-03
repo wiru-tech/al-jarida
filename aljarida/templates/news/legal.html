@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{{ page_title }} — Al-Jarida{% endblock %}
+{% block content %}
+<div class="wrap">
+  <div class="page-head"><h1>{{ page_title }}</h1></div>
+  <div class="prose">
+    {% if page == 'privacy' %}
+      <p>{% trans "This Privacy Policy explains how Al-Jarida Media Group collects, uses, and protects information when you use our website." %}</p>
+      <h2>{% trans "Information We Collect" %}</h2>
+      <p>{% trans "We collect information you provide directly, such as when submitting a comment or contact inquiry, and standard technical data such as browser type and pages visited." %}</p>
+      <h2>{% trans "How We Use Information" %}</h2>
+      <p>{% trans "Information is used to operate the service, respond to inquiries, moderate discussion, and improve editorial coverage. We do not sell personal data." %}</p>
+      <h2>{% trans "Your Rights" %}</h2>
+      <p>{% trans "You may request access to, correction of, or deletion of your personal data by contacting the newsroom." %}</p>
+    {% elif page == 'terms' %}
+      <p>{% trans "By accessing Al-Jarida you agree to these Terms of Use, which govern your use of the site and its content." %}</p>
+      <h2>{% trans "Use of Content" %}</h2>
+      <p>{% trans "Articles, images, and media are provided for personal, non-commercial reading. Republication requires written permission." %}</p>
+      <h2>{% trans "User Contributions" %}</h2>
+      <p>{% trans "Comments must comply with community standards. We reserve the right to moderate or remove contributions." %}</p>
+    {% else %}
+      <p>{% trans "All editorial content, trademarks, and design elements on Al-Jarida are the intellectual property of Al-Jarida Media Group or its licensors." %}</p>
+      <h2>{% trans "Copyright Notice" %}</h2>
+      <p>{% trans "Reproduction, distribution, or transmission of any content without prior written consent is prohibited except as permitted by applicable copyright law." %}</p>
+      <h2>{% trans "Fair Use & Citation" %}</h2>
+      <p>{% trans "Brief excerpts may be quoted for the purpose of review or commentary with proper attribution to Al-Jarida." %}</p>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

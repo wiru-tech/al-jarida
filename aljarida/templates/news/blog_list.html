@@ -1,0 +1,171 @@
+{% extends "base.html" %}
+{% load static i18n %}
+{% block title %}{% trans "Blog" %} — Al-Jarida{% endblock %}
+{% block content %}
+<div class="wrap">
+  <div class="page-head blog-page-head">
+    <div>
+      <h1>{% trans "Reader Blog" %}</h1>
+      <p>{% trans "Stories from Al-Jarida readers, in English or Urdu." %}</p>
+    </div>
+    <!-- JS fills this with either "Write a post" (signed in) or
+         "Sign in" / "Sign up to write" (signed out) — see blog.js
+         renderAuthActions(). Server-rendered starting state below
+         avoids a flash of the wrong state before JS runs. -->
+    <div id="blogAuthActions">
+      {% if user.is_authenticated %}
+        <button type="button" class="btn btn--solid" data-blog-write>
+          <span class="material-symbols-outlined" style="font-size:16px">edit</span>
+          {% trans "Write a post" %}
+        </button>
+        <button type="button" class="btn btn--outline" data-blog-signout>{% trans "Sign out" %}</button>
+      {% else %}
+        <button type="button" class="btn btn--outline" data-blog-signin>{% trans "Sign In" %}</button>
+        <button type="button" class="btn btn--solid" data-blog-signup>{% trans "Sign up to write" %}</button>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- Composer: create/edit form, JS-driven, hidden until opened -->
+  <div id="blogComposer" class="form-narrow" hidden>
+    <div class="page-head" style="padding-top:0">
+      <h2 id="blogComposerHeading" data-write-label="{% trans 'Write a new post' %}"
+          data-edit-label="{% trans 'Edit post' %}">{% trans "Write a new post" %}</h2>
+      <p>{% trans "Direction is detected automatically from what you type." %}</p>
+    </div>
+
+    <form id="blogPostForm" novalidate>
+      <input type="hidden" id="blogPostId" value="">
+
+      <label class="label-caps muted" for="blogTitleInput">{% trans "Title" %}</label>
+      <div class="dir-field">
+        <input type="text" id="blogTitleInput" class="field-input" autocomplete="off"
+               placeholder="{% trans 'Give your post a title — عنوان لکھیں' %}">
+        <span class="dir-badge" id="titleDirBadge">LTR</span>
+      </div>
+      <div class="flash error" id="blogTitleError" hidden></div>
+
+      <label class="label-caps muted" for="blogContentInput">{% trans "Content" %}</label>
+      <div class="dir-field">
+        <textarea id="blogContentInput" class="field-input" rows="8"
+                  placeholder="{% trans 'Write your story here, in English or Urdu… اپنی کہانی یہاں لکھیں' %}"></textarea>
+        <span class="dir-badge" id="contentDirBadge">LTR</span>
+      </div>
+      <div class="flash error" id="blogContentError" hidden></div>
+
+      <div class="field-row">
+        <div>
+          <label class="label-caps muted">{% trans "Author" %}</label>
+          <input type="text" class="field-input" id="blogAuthorDisplay" readonly>
+        </div>
+        <div>
+          <label class="label-caps muted">{% trans "Date" %}</label>
+          <input type="text" class="field-input" id="blogDateDisplay" readonly>
+        </div>
+      </div>
+
+      <div class="flash error" id="blogFormError" hidden></div>
+
+      <div class="composer-actions">
+        <button type="button" class="btn btn--outline" id="blogComposerCancel">{% trans "Cancel" %}</button>
+        <button type="submit" class="btn btn--solid" id="blogComposerSubmit"
+                data-publish-label="{% trans 'Publish post' %}"
+                data-save-label="{% trans 'Save changes' %}">{% trans "Publish post" %}</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="blog-feed" id="blogFeed" aria-live="polite"></div>
+</div>
+
+<!-- Templates consumed by blog.js — kept in markup (not JS strings) so
+     translated copy stays in .po catalogs like the rest of the site. -->
+<template id="blogEmptyTemplate">
+  <div class="blog-empty">
+    <p>{% trans "No posts yet." %}</p>
+    <span>{% trans "Sign up and be the first to publish one — انگریزی یا اردو میں۔" %}</span>
+  </div>
+</template>
+
+<!-- Strings blog.js needs but that don't otherwise appear as static markup
+     (card-level Edit/Delete buttons and lang tags are built dynamically) —
+     kept here so the translated text still comes from the .po catalogs
+     rather than being hardcoded in JS. -->
+<div id="blogI18nStrings" hidden
+     data-edit="{% trans 'Edit' %}"
+     data-delete="{% trans 'Delete' %}"
+     data-delete-confirm="{% trans 'Delete this post? This cannot be undone.' %}"
+     data-lang-ur="{% trans 'Urdu' %}"
+     data-lang-en="{% trans 'English' %}"
+     data-error-generic="{% trans 'Something went wrong. Please try again.' %}"
+     data-write="{% trans 'Write a post' %}"
+     data-signout="{% trans 'Sign out' %}"
+     data-signin="{% trans 'Sign In' %}"
+     data-signup-to-write="{% trans 'Sign up to write' %}"></div>
+
+<!-- Auth modal: Sign In / Sign Up, entirely JS-driven -->
+<div class="modal-backdrop" id="authModalBackdrop" hidden>
+  <div class="modal-card auth-card" role="dialog" aria-modal="true" aria-labelledby="authModalTitle">
+    <button type="button" class="modal-close" id="authModalClose" aria-label="{% trans 'Cancel' %}">&times;</button>
+
+    <div id="authModalSignIn">
+      <h1 id="authModalTitle">{% trans "Sign in" %}</h1>
+      <p class="muted">{% trans "Welcome back. Enter your details to continue." %}</p>
+      <form id="signInForm" novalidate>
+        <label class="label-caps muted" for="signInUsername">{% trans "Username" %}</label>
+        <input type="text" id="signInUsername" class="field-input" autocomplete="username" required>
+
+        <label class="label-caps muted" for="signInPassword">{% trans "Password" %}</label>
+        <input type="password" id="signInPassword" class="field-input" autocomplete="current-password" required>
+
+        <div class="flash error" id="signInError" hidden></div>
+
+        <button type="submit" class="btn btn--solid" style="width:100%;justify-content:center;margin-top:.8rem">
+          {% trans "Sign in" %}
+        </button>
+      </form>
+      <p class="auth-switch">
+        {% trans "Don't have an account?" %}
+        <button type="button" class="link-btn" data-show-signup>{% trans "Sign up" %}</button>
+      </p>
+    </div>
+
+    <div id="authModalSignUp" hidden>
+      <h1>{% trans "Create your account" %}</h1>
+      <p class="muted">{% trans "Join to write and publish your own blog posts." %}</p>
+      <form id="signUpForm" novalidate>
+        <label class="label-caps muted" for="signUpUsername">{% trans "Username" %}</label>
+        <input type="text" id="signUpUsername" class="field-input" autocomplete="username" required>
+        <div class="flash error" id="signUpUsernameError" hidden></div>
+
+        <label class="label-caps muted" for="signUpEmail">{% trans "Email" %}</label>
+        <input type="email" id="signUpEmail" class="field-input" autocomplete="email" required>
+        <div class="flash error" id="signUpEmailError" hidden></div>
+
+        <label class="label-caps muted" for="signUpPassword1">{% trans "Password" %}</label>
+        <input type="password" id="signUpPassword1" class="field-input" autocomplete="new-password" required>
+        <div class="flash error" id="signUpPassword1Error" hidden></div>
+
+        <label class="label-caps muted" for="signUpPassword2">{% trans "Confirm password" %}</label>
+        <input type="password" id="signUpPassword2" class="field-input" autocomplete="new-password" required>
+        <div class="flash error" id="signUpPassword2Error" hidden></div>
+
+        <div class="flash error" id="signUpError" hidden></div>
+
+        <button type="submit" class="btn btn--solid" style="width:100%;justify-content:center;margin-top:.8rem">
+          {% trans "Create account" %}
+        </button>
+      </form>
+      <p class="auth-switch">
+        {% trans "Already have an account?" %}
+        <button type="button" class="link-btn" data-show-signin>{% trans "Sign in" %}</button>
+      </p>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/direction.js' %}"></script>
+<script src="{% static 'js/blog.js' %}"></script>
+{% endblock %}

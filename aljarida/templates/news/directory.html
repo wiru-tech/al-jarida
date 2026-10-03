@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Directory" %} — Al-Jarida{% endblock %}
+{% block content %}
+<div class="wrap">
+  <div class="page-head">
+    <h1>{% trans "Contact Directory" %}</h1>
+    <p>{% trans "Al-Jarida Media Group — desks, phone numbers and addresses." %}</p>
+  </div>
+  <div class="prose">
+    <h2>{% trans "Head Office" %}</h2>
+    <p class="raw-content">{% trans "Al-Jarida Media Group" %}<br>{% trans "4th Floor, Press Enclave, Boulevard Avenue" %}<br>{% trans "Karachi 74200, Pakistan" %}</p>
+    <h2>{% trans "Newsroom Desks" %}</h2>
+    <p><b>{% trans "News Desk" %}:</b> <span class="i18n-ltr">+92 21 111 000 111 · news@al-jarida.example</span><br>
+       <b>{% trans "Sports" %}:</b> <span class="i18n-ltr">+92 21 111 000 222 · sports@al-jarida.example</span><br>
+       <b>{% trans "Advertising" %}:</b> <span class="i18n-ltr">+92 21 111 000 333 · ads@al-jarida.example</span><br>
+       <b>{% trans "Press & Syndication" %}:</b> <span class="i18n-ltr">press@al-jarida.example</span></p>
+    <h2>{% trans "Hours" %}</h2>
+    <p>{% trans "The newsroom operates 24 hours. Business office: Mon–Sat, 9:00–18:00 PKT." %}</p>
+  </div>
+</div>
+{% endblock %}

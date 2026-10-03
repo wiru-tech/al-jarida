@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% load i18n i18n_extras %}
+{% block content %}
+<div class="wrap">
+
+  <!-- ============ HERO ============ -->
+  <div class="hero-section">
+
+    <!-- Featured story -->
+    {% if hero %}
+    <article class="hero-featured" lang="{{ hero|content_lang }}">
+      {% if hero.image_src %}
+        <a href="{{ hero.get_absolute_url }}" class="hero-featured__media">
+          <img class="hero__img" src="{{ hero.image_src }}" alt="{{ hero.title }}">
+          {% if hero.kicker %}<span class="kicker kicker--badge">{{ hero.kicker }}</span>{% endif %}
+        </a>
+      {% endif %}
+      <div class="hero-featured__body">
+        <h1 class="hero__title"><a href="{{ hero.get_absolute_url }}">{{ hero.title }}</a></h1>
+        <p class="hero__excerpt">{{ hero.excerpt }}</p>
+        <div class="byline">
+          {% if hero.author %}<span>{% trans "By" %} <span class="i18n-ltr">{{ hero.author.display_name }}</span></span> {% endif %}
+          <span>· {{ hero.read_minutes }} {% trans "min read" %}</span>
+        </div>
+        {% include "partials/_share_rail.html" with a=hero %}
+      </div>
+    </article>
+    {% endif %}
+
+    <!-- Trending / Breaking News -->
+    <aside class="hero-trending">
+      <div class="hero-trending__head">
+        <span class="live-dot"></span>
+        <h2>{% trans "Trending / Breaking News" %}</h2>
+      </div>
+      <ol class="hero-trending__list">
+        {% for a in trending %}
+        <li lang="{{ a|content_lang }}">
+          <span class="hero-trending__num">{{ forloop.counter }}</span>
+          <div class="hero-trending__body">
+            {% if a.kicker %}<span class="hero-trending__kicker">{{ a.kicker }}</span>{% endif %}
+            <h3><a href="{{ a.get_absolute_url }}">{{ a.title }}</a></h3>
+            <time>{{ a.publish_at|smart_timesince }} {% trans "ago" %}</time>
+          </div>
+        </li>
+        {% endfor %}
+      </ol>
+    </aside>
+  </div>
+
+  <!-- ============ AT A GLANCE WIDGETS ============ -->
+  <div class="widgets-strip">
+    {% include "partials/_sidebar_widgets.html" %}
+  </div>
+
+  <!-- ============ LATEST DISPATCH ============ -->
+  <section class="band">
+    <div class="band__head">
+      <h2>{% trans "Latest Dispatch" %}</h2>
+      <a href="{% url 'news:search' %}?sort=recent">{% trans "View All" %} <span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span></a>
+    </div>
+    <div class="card-grid">
+      {% for a in latest %}
+        {% include "partials/_article_card.html" with a=a show_kicker=True excerpt_words=16 %}
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- ============ ISLAMIC SECTION ============ -->
+  {% if islamic_articles %}
+  <div class="islamic">
+    <div class="islamic__head">
+      <span class="material-symbols-outlined icon-fill" style="color:var(--secondary);font-size:22px">mosque</span>
+      <h2>{{ islamic_category.name }}</h2>
+    </div>
+    <div class="islamic__grid">
+      {% with lead=islamic_articles.0 %}
+      <div class="islamic__lead" lang="{{ lead|content_lang }}">
+        <a href="{{ lead.get_absolute_url }}" class="islamic__media">
+          <img src="{{ lead.image_src }}" alt="{{ lead.title }}" loading="lazy">
+        </a>
+        <div class="islamic__leadtext">
+          <h3><a href="{{ lead.get_absolute_url }}">{{ lead.title }}</a></h3>
+          <p>{{ lead.excerpt|truncatewords:24 }}</p>
+          <a class="link-cta" href="{{ lead.get_absolute_url }}">{% trans "Read Full Essay" %} <span class="material-symbols-outlined" style="font-size:14px">arrow_forward</span></a>
+        </div>
+      </div>
+      {% endwith %}
+      <div class="islamic__list">
+        {% for a in islamic_articles|slice:"1:3" %}
+        <div class="row" lang="{{ a|content_lang }}">
+          <a href="{{ a.get_absolute_url }}" class="row__thumb">
+            <img src="{{ a.image_src }}" alt="{{ a.title }}" loading="lazy">
+          </a>
+          <h4><a href="{{ a.get_absolute_url }}">{{ a.title }}</a></h4>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- ============ SECTION GRIDS ============ -->
+  {% for sec in sections %}
+  <section class="band">
+    <div class="band__head">
+      <h2>{{ sec.category.name }}</h2>
+      <a href="{{ sec.category.get_absolute_url }}">{% trans "More" %} <span class="material-symbols-outlined" style="font-size:16px">arrow_forward</span></a>
+    </div>
+    <div class="mini-grid">
+      {% for a in sec.articles %}
+        {% include "partials/_article_card.html" with a=a show_kicker=False excerpt_words=14 %}
+      {% endfor %}
+    </div>
+  </section>
+  {% endfor %}
+
+</div>
+{% endblock %}

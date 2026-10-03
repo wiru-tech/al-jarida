@@ -1,0 +1,12 @@
+{% load i18n %}
+<div class="search-bar" data-search-bar>
+  <div class="wrap">
+    <form action="{% url 'news:search' %}" method="get">
+      <span class="material-symbols-outlined" style="font-size:22px">search</span>
+      <input type="search" name="q" data-live-search autocomplete="off"
+             placeholder="{% trans 'Search stories, topics, authors…' %}">
+      <button type="submit" class="btn btn--navy">{% trans "Search" %}</button>
+    </form>
+    <div class="search-results-live" data-live-results></div>
+  </div>
+</div>
